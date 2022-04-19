@@ -1,4 +1,5 @@
 const client = require("./client");
+const { getAllUsers, createUser } = require("./index");
 // declare your model imports here
 // for example, User
 
@@ -77,9 +78,18 @@ async function createTables() {
 
 async function populateInitialData() {
   try {
+    const newPeople = [
+      { username: "Cory", password: "CoryCory1" },
+      { username: "Alex", password: "AlexAlex1" },
+      { username: "Chudi", password: "ChudiChudi1" },
+      { username: "Itcel", password: " ItcelItcel1" },
+    ];
+    const users = await Promise.all(newPeople.map(createUser()));
+
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })
+    return users;
   } catch (error) {
     throw error;
   }
@@ -96,6 +106,7 @@ async function rebuild() {
     client.connect();
     await dropTables();
     await createTables();
+    await populateInitialData();
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;
