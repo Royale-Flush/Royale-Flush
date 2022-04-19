@@ -5,10 +5,11 @@ const { client } = require("./");
 async function dropTables() {
   try {
     await client.query(`
-      DELETE TABLE IF EXISTS users;
-      DELETE TABLE IF EXISTS toilets;
-      DELETE TABLE IF EXISTS bidets;
-      DELETE TABLE IF EXISTS portable;
+      DELETE TABLE IF EXISTS order;
+      DELETE TABLE IF EXISTS orderProduct;
+      DELETE TABLE IF EXISTS customer;
+      DELETE TABLE IF EXISTS product;
+      DELETE TABLE IF EXISTS categories;
       `);
   } catch (error) {
     console.log("Error dropping Tables", error);
@@ -18,41 +19,53 @@ async function dropTables() {
 async function createTables() {
   try {
     await client.query(`
-        CREATE TABLE users (
+        CREATE TABLE customer (
             id SERIAL PRIMARY KEY,
             username VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL
-            active BOOLEAN DEFAULT false
+            password VARCHAR(255) NOT NULL,
+            name VARCHAR(30) NOT NULL, 
+            address VARCHAR(50), 
+            email VARCHAR(50), 
+            phone VARCHAR(20), 
+            payment VARCHAR (20)
+
             );
         `);
   } catch (error) {
     console.log("Error building Tables", error);
   }
   await client.query(`
-        CREATE TABLE toilets (
+        CREATE TABLE categories (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) UNIQUE NOT NULL,
-            color VARCHAR(255) NOT NULL,
-            flusher VARCHAR(255) NOT NULL,
-            gallons integer not null,
-            dimensions integer not null
+            tags VARCHAR(255) 
             );
         `);
   await client.query(`
-        CREATE TABLE bidets (
+        CREATE TABLE product (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) UNIQUE NOT NULL,
-            pressure integer not null
+            price integer not null, 
+            "categoryId" integer REFERENCES categories(id) not null 
             );
         `);
   await client.query(`
-        CREATE TABLE portable (
+        CREATE TABLE orderProduct (
+            orderProductID SERIAL PRIMARY KEY,
+            orderId integer NOT NULL,
+            "productId" integer REFERENCES product(id) not null,
+            quantity integer NOT NULL,
+          
+            );
+        `);
+
+  await client.query(`
+        CREATE TABLE order (
             id SERIAL PRIMARY KEY,
-            name VARCHAR(255) UNIQUE NOT NULL,
-            type VARCHAR(255) NOT NULL,
-            color VARCHAR(255) NOT NULL,
-            gallons integer not null,
-            dimensions integer not null
+            "customerId" integer references customer(id),
+            "totalAmount" integer not null,
+            isActive boolean default false 
+          
             );
         `);
 }
