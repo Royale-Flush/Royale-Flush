@@ -26,7 +26,7 @@ async function createTables() {
             id SERIAL PRIMARY KEY,
             username VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
-            name VARCHAR(30) NOT NULL, 
+            name VARCHAR(30), 
             address VARCHAR(50), 
             email VARCHAR(50), 
             phone VARCHAR(20), 
@@ -84,7 +84,7 @@ async function populateInitialData() {
       { username: "Chudi", password: "ChudiChudi1" },
       { username: "Itcel", password: " ItcelItcel1" },
     ];
-    const users = await Promise.all(newPeople.map(createUser()));
+    const users = await Promise.all(newPeople.map(createUser));
 
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
