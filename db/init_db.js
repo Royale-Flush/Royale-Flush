@@ -81,9 +81,17 @@ async function populateInitialData() {
     const newPeople = [
       { username: "Cory", password: "CoryCory1" },
       { username: "Alex", password: "AlexAlex1" },
-      { username: "Chudi", password: "ChudiChudi1" },
+      {
+        username: "Chudiisnumber1",
+        password: "ChudiChudi1",
+        name: "Chudi",
+        address: "1281 Hope Ct",
+        email: "chudiisnumber1@Yahoo.com",
+        phone: "281-330-8004",
+      },
       { username: "Itcel", password: " ItcelItcel1" },
     ];
+
     const users = await Promise.all(newPeople.map(createUser));
 
     // create useful starting data by leveraging your

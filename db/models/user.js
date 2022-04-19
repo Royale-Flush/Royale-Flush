@@ -10,28 +10,36 @@ async function getAllUsers() {
     `);
     return user;
   } catch (error) {
-    console.log("getAllUsers error: ", error);
+    console.log(error);
   }
 }
 
-async function createUser({ username, password }) {
+async function createUser({
+  username,
+  password,
+  name,
+  address,
+  email,
+  phone,
+  payment,
+}) {
   try {
     const {
       rows: [user],
     } = await client.query(
       `
-      INSERT INTO customer(username, password)
-      VALUES ($1, $2)
+      INSERT INTO customer(username, password, name, address, email, phone, payment)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
       ON CONFLICT (username) DO NOTHING
       RETURNING *;
       `,
-      [username, password]
+      [username, password, name, address, email, phone, payment]
     );
     if (user === undefined) return null;
 
     return user;
   } catch (error) {
-    console.log("Create Users error: ", error);
+    console.log(error);
   }
 }
 module.exports = {
