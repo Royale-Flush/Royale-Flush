@@ -1,15 +1,16 @@
-const { client } = require("./");
+const client = require("./client");
 // declare your model imports here
 // for example, User
 
 async function dropTables() {
   try {
     await client.query(`
-      DELETE TABLE IF EXISTS order;
-      DELETE TABLE IF EXISTS orderProduct;
-      DELETE TABLE IF EXISTS customer;
-      DELETE TABLE IF EXISTS product;
-      DELETE TABLE IF EXISTS categories;
+      DROP TABLE IF EXISTS orders;
+      DROP TABLE IF EXISTS orderProduct;
+      DROP TABLE IF EXISTS customer;
+      DROP TABLE IF EXISTS product;
+      DROP TABLE IF EXISTS categories;
+      
       `);
   } catch (error) {
     console.log("Error dropping Tables", error);
@@ -18,8 +19,9 @@ async function dropTables() {
 
 async function createTables() {
   try {
+    console.log("...creating customers");
     await client.query(`
-        CREATE TABLE customer (
+        CREATE TABLE customer(
             id SERIAL PRIMARY KEY,
             username VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
@@ -27,21 +29,20 @@ async function createTables() {
             address VARCHAR(50), 
             email VARCHAR(50), 
             phone VARCHAR(20), 
-            payment VARCHAR (20)
-
+            payment VARCHAR(20)
             );
         `);
-  } catch (error) {
-    console.log("Error building Tables", error);
-  }
-  await client.query(`
+    console.log("...passed customer table ");
+    await client.query(`
+
         CREATE TABLE categories (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) UNIQUE NOT NULL,
-            tags VARCHAR(255) 
+            tags VARCHAR(255)
             );
         `);
-  await client.query(`
+    console.log("...passed categories table ");
+    await client.query(`
         CREATE TABLE product (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) UNIQUE NOT NULL,
@@ -49,25 +50,29 @@ async function createTables() {
             "categoryId" integer REFERENCES categories(id) not null 
             );
         `);
-  await client.query(`
+    console.log("...passed products table ");
+    await client.query(`
         CREATE TABLE orderProduct (
             orderProductID SERIAL PRIMARY KEY,
             orderId integer NOT NULL,
             "productId" integer REFERENCES product(id) not null,
-            quantity integer NOT NULL,
+            quantity integer NOT NULL
           
             );
         `);
+    console.log("...passed orderProducts table ");
 
-  await client.query(`
-        CREATE TABLE order (
+    await client.query(`
+        CREATE TABLE orders (
             id SERIAL PRIMARY KEY,
-            "customerId" integer references customer(id),
+            "customerId" integer references customer(id) not null,
             "totalAmount" integer not null,
-            isActive boolean default false 
-          
+            isActive boolean default false
             );
-        `);
+            `);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 async function populateInitialData() {
@@ -94,7 +99,11 @@ async function rebuild() {
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;
+  } finally {
+    client.end();
   }
 }
+
+rebuild();
 
 module.exports = { rebuild };
