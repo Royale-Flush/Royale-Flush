@@ -19,22 +19,22 @@ const newCategories = [
 ];
 
 const newOrder = [
-  { totalAmount: "1034.56" },
-  { totalAmount: "14.26" },
-  { totalAmount: "8108742.99" },
+  { customerId: "1", totalAmount: "1034.56" },
+  { customerId: "2", totalAmount: "14.26" },
+  { customerId: "3", totalAmount: "8108742.99" },
 ];
 
 const newProduct = [
-  { name: "The Royale", price: "12.49" },
-  { name: "The Deluxe", price: "10.49" },
-  { name: "The King", price: "11.49" },
-  { name: "The Queen", price: "7.49" },
+  { categoryId: "1", name: "The Royale", price: "12.49" },
+  { categoryId: "2", name: "The Deluxe", price: "10.49" },
+  { categoryId: "3", name: "The King", price: "11.49" },
+  { categoryId: "1", name: "The Queen", price: "7.49" },
 ];
 
 const newProductOrder = [
-  { quantity: "7" },
-  { quantity: "6" },
-  { quantity: "98" },
+  { productId: "1", quantity: "7" },
+  { productId: "2", quantity: "6" },
+  { productId: "3", quantity: "98" },
 ];
 
 module.exports = {
