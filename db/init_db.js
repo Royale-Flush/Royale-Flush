@@ -1,7 +1,18 @@
 const client = require("./client");
-const { getAllUsers, createUser } = require("./index");
-// declare your model imports here
-// for example, User
+const {
+  Customer,
+  Categories,
+  Order,
+  Product,
+  ProductOrder,
+} = require("./models");
+const {
+  newPeople,
+  newCategories,
+  newOrder,
+  newProduct,
+  newProductOrder,
+} = require("./SeedData");
 
 async function dropTables() {
   try {
@@ -47,27 +58,25 @@ async function createTables() {
         CREATE TABLE product (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) UNIQUE NOT NULL,
-            price integer not null, 
-            "categoryId" integer REFERENCES categories(id) not null 
+            price numeric not null, 
+            "categoryId" integer REFERENCES categories(id)
             );
         `);
     console.log("...passed products table ");
     await client.query(`
         CREATE TABLE orderProduct (
-            orderProductID SERIAL PRIMARY KEY,
-            orderId integer NOT NULL,
-            "productId" integer REFERENCES product(id) not null,
+            ID SERIAL PRIMARY KEY,
+            "productId" integer REFERENCES product(id) ,
             quantity integer NOT NULL
-          
             );
         `);
     console.log("...passed orderProducts table ");
-
+    //orders needs to have a not null customer(id)
     await client.query(`
         CREATE TABLE orders (
             id SERIAL PRIMARY KEY,
-            "customerId" integer references customer(id) not null,
-            "totalAmount" integer not null,
+            "customerId" integer references customer(id),
+            "totalAmount" numeric not null,
             isActive boolean default false
             );
             `);
@@ -78,26 +87,20 @@ async function createTables() {
 
 async function populateInitialData() {
   try {
-    const newPeople = [
-      { username: "Cory", password: "CoryCory1" },
-      { username: "Alex", password: "AlexAlex1" },
-      {
-        username: "Chudiisnumber1",
-        password: "ChudiChudi1",
-        name: "Chudi",
-        address: "1281 Hope Ct",
-        email: "chudiisnumber1@Yahoo.com",
-        phone: "281-330-8004",
-      },
-      { username: "Itcel", password: " ItcelItcel1" },
-    ];
-
-    const users = await Promise.all(newPeople.map(createUser));
+    const users = await Promise.all(newPeople.map(Customer.createUser));
+    const categories = await Promise.all(
+      newCategories.map(Categories.createCategories)
+    );
+    const order = await Promise.all(newOrder.map(Order.createOrders));
+    const product = await Promise.all(newProduct.map(Product.createProduct));
+    const productOrder = await Promise.all(
+      newProductOrder.map(ProductOrder.createProductOrders)
+    );
 
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })
-    return users;
+    return users, categories, order, product, productOrder;
   } catch (error) {
     throw error;
   }
