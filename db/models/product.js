@@ -20,6 +20,32 @@ async function createProduct({ categoryId, name, price }) {
   }
 }
 
+async function deleteProduct({ id }) {
+  try {
+    await client.query(
+      `DELETE FROM orderproduct
+   WHERE "productId" = $1
+   ;
+   `,
+      [id]
+    );
+
+    const {
+      rows: [product],
+    } = await client.query(
+      `
+            DELETE FROM product *
+            WHERE id = ${id}
+            RETURNING *;
+            `
+    );
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   createProduct,
+  deleteProduct,
 };

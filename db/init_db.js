@@ -6,6 +6,7 @@ const {
   Product,
   ProductOrder,
 } = require("./models");
+const { deleteProduct } = require("./models/product");
 const {
   newPeople,
   newCategories,
@@ -66,7 +67,7 @@ async function createTables() {
     await client.query(`
         CREATE TABLE orderProduct (
             ID SERIAL PRIMARY KEY,
-            "productId" integer REFERENCES product(id) ,
+            "productId" integer REFERENCES product(id),
             quantity integer NOT NULL
             );
         `);
@@ -96,11 +97,16 @@ async function populateInitialData() {
     const productOrder = await Promise.all(
       newProductOrder.map(ProductOrder.createProductOrders)
     );
-
-    // create useful starting data by leveraging your
-    // Model.method() adapters to seed your db, for example:
-    // const user1 = await User.createUser({ ...user info goes here... })
     return users, categories, order, product, productOrder;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function unpopulateInitialData() {
+  try {
+    const deletingProduct = deleteProduct({ id: 1 });
+    return deletingProduct;
   } catch (error) {
     throw error;
   }
@@ -118,6 +124,7 @@ async function rebuild() {
     await dropTables();
     await createTables();
     await populateInitialData();
+    await unpopulateInitialData();
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;
