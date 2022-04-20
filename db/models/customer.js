@@ -63,7 +63,7 @@ async function getUserByPassword(password) {
   try {
     const { rows: user } = await client.query(
       `
-    SELECT password FROM customer
+    SELECT * FROM customer
     WHERE password = $1
     `,
       [password]
@@ -77,7 +77,7 @@ async function getUserByEmail(email) {
   try {
     const { rows: user } = await client.query(
       `
-    SELECT email FROM customer
+    SELECT * FROM customer
     WHERE email = $1
     `,
       [email]
