@@ -1,5 +1,5 @@
 const client = require("./client");
-const { getAllUsers, createUser } = require("./index");
+const { User } = require("./index");
 // declare your model imports here
 // for example, User
 
@@ -48,7 +48,7 @@ async function createTables() {
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) UNIQUE NOT NULL,
             price integer not null, 
-            "categoryId" integer REFERENCES categories(id) not null 
+            "categoryId" integer REFERENCES categories(id) 
             );
         `);
     console.log("...passed products table ");
@@ -92,7 +92,7 @@ async function populateInitialData() {
       { username: "Itcel", password: " ItcelItcel1" },
     ];
 
-    const users = await Promise.all(newPeople.map(createUser));
+    const users = await Promise.all(newPeople.map(User.createUser));
 
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
