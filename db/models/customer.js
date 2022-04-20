@@ -87,6 +87,10 @@ async function getUserByEmail(email) {
     throw error;
   }
 }
+async function postNewUser(username, password){
+  
+}
+
 module.exports = {
   getAllUsers,
   createUser,
