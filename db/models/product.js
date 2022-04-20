@@ -6,7 +6,7 @@ async function createProduct({ name, price }) {
       rows: [product],
     } = await client.query(
       `
-        INSERT INTO product(name, price)
+        INSERT INTO product( name, price)
         VALUES ($1, $2)
         ON CONFLICT (name) DO NOTHING
         RETURNING *;
