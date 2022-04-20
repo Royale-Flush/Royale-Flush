@@ -125,20 +125,11 @@ async function renderProductByCategory() {
     const renderingByCategory = await Product.getProductsByCategory({
       id: 2,
     });
-
-    console.log(renderingByCategory);
-
-    return renderProductByCategory;
+    return renderingByCategory;
   } catch (error) {
     throw error;
   }
 }
-
-// buildTables(){
-//   .then(populateInitialData)
-//   .catch(console.error)
-//   .finally(() => client.end());
-// }
 
 async function rebuild() {
   try {

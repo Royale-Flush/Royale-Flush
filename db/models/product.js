@@ -13,7 +13,7 @@ async function createProduct({ categoryId, name, price }) {
         `,
       [categoryId, name, price]
     );
-
+    //console.log("bunch of random ass text: ", product);
     return product;
   } catch (error) {
     console.log(error);
@@ -21,8 +21,6 @@ async function createProduct({ categoryId, name, price }) {
 }
 
 async function deleteProduct({ id }) {
-  console.log("!!!  deleteProduct");
-
   try {
     await client.query(
       `DELETE FROM orderproduct
@@ -41,8 +39,7 @@ async function deleteProduct({ id }) {
             RETURNING *;
             `
     );
-    console.log("!!! end deleteProduct");
-
+    // console.log("deleting shit: ", product);
     return product;
   } catch (error) {
     console.log(error);
@@ -50,43 +47,31 @@ async function deleteProduct({ id }) {
 }
 
 async function getAllProducts() {
-  console.log("!!! getAllProducts");
-
   try {
-    const {
-      rows: [product],
-    } = await client.query(
+    const { rows } = await client.query(
       `
       SELECT * FROM product
     `
     );
-    console.log("!!! end getAllProducts");
-
-    return product;
+    // console.log("getting shit: ", rows);
+    return rows;
   } catch (error) {
     console.log(error);
   }
 }
 
 async function getProductsByCategory({ categoryId }) {
-  console.log("!!! getProductsByCategory");
   try {
-    const {
-      rows: [product],
-    } = await client.query(
+    const { rows } = await client.query(
       `
-                SELECT category.*, category.id as "categoryId"
-                FROM product 
+                SELECT *, categories.id as "categoryId" FROM product 
                 JOIN categories ON product."categoryId" = categories.id
-                WHERE category.id = $1;
-
-                
+                WHERE categories.id = $1;
                 `,
       [categoryId]
     );
-    console.log("!!! end getProductsByCategory");
-
-    return product;
+    console.log("getting stuff based on categories: ", rows);
+    return rows;
   } catch (error) {
     console.log(error);
   }
