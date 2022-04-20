@@ -59,8 +59,38 @@ async function getUserById({ id }) {
   }
 }
 
+async function getUserByPassword(password) {
+  try {
+    const { rows: user } = await client.query(
+      `
+    SELECT password FROM customer
+    WHERE password = $1
+    `,
+      [password]
+    );
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+async function getUserByEmail(email) {
+  try {
+    const { rows: user } = await client.query(
+      `
+    SELECT email FROM customer
+    WHERE email = $1
+    `,
+      [email]
+    );
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
 module.exports = {
   getAllUsers,
   createUser,
   getUserById,
+  getUserByPassword,
+  getUserByEmail,
 };
