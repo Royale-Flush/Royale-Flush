@@ -62,7 +62,9 @@ async function getAllProducts() {
 
 async function getProductsByCategory({ categoryId }) {
   try {
-    const { rows } = await client.query(
+    const {
+      rows: [product],
+    } = await client.query(
       `
                 SELECT *, categories.id as "categoryId" FROM product 
                 JOIN categories ON product."categoryId" = categories.id
@@ -70,8 +72,8 @@ async function getProductsByCategory({ categoryId }) {
                 `,
       [categoryId]
     );
-    console.log("getting stuff based on categories: ", rows);
-    return rows;
+    console.log("getting stuff based on categories: ", product);
+    return product;
   } catch (error) {
     console.log(error);
   }
