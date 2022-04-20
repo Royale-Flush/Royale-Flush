@@ -6,9 +6,8 @@ async function createOrders({ totalAmount }) {
       rows: [orders],
     } = await client.query(
       `
-          INSERT INTO orders(totalAmount)
+          INSERT INTO orders("totalAmount")
           VALUES ($1)
-          WHERE orders.isActive = false
           RETURNING *;
           `,
       [totalAmount]

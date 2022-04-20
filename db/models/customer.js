@@ -36,7 +36,6 @@ async function createUser({
       [username, password, name, address, email, phone, payment]
     );
     if (user === undefined) return null;
-
     return user;
   } catch (error) {
     console.log(error);
