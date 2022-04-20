@@ -89,7 +89,59 @@ async function getUserByEmail({ email }) {
     throw error;
   }
 }
-async function postNewUser(username, password) {}
+async function destroyUser({ id }) {
+  try {
+    await client.query(
+      `
+    DELETE from orders
+    WHERE "customerId"=$1
+    `,
+      [id]
+    );
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+  DELETE FROM customer
+  WHERE id = $1
+  RETURNING *
+  
+  `,
+      [id]
+    );
+    console.log("what", user);
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+async function updateUser({
+  password,
+  name,
+  address,
+  email,
+  phone,
+  payment,
+  id,
+}) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+    UPDATE customer
+    SET password = ($1), name =($2), address=($3), email =($4), phone=($5), payment=($6)
+    WHERE id=$7
+    RETURNING*; 
+    `,
+      [password, name, address, email, phone, payment, id]
+    );
+    console.log("did we update?", user);
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
 
 module.exports = {
   getAllUsers,
@@ -97,4 +149,6 @@ module.exports = {
   getUserById,
   getUserByPassword,
   getUserByEmail,
+  destroyUser,
+  updateUser,
 };

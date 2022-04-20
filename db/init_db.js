@@ -108,8 +108,17 @@ async function testingSTuff() {
   const somebody = Customer.getUserById({ id: "1" });
   const forgotUser = Customer.getUserByPassword({ password: "ChudiChudi1" });
   const emails = Customer.getUserByEmail({ email: "chudiisnumber1@Yahoo.com" });
-
-  return everyone, somebody, forgotUser, emails;
+  const erase = Customer.destroyUser({ id: "3" });
+  const change = Customer.updateUser({
+    password: "ChudiChudi1",
+    name: "Chudi1",
+    address: "1281 Hope Ct",
+    email: "chudiisnumber1@Yahoo.com",
+    phone: "281-330-8004",
+    payment: null,
+    id: "2",
+  });
+  return everyone, somebody, forgotUser, emails, erase, change;
 }
 
 async function rebuild() {
@@ -119,6 +128,7 @@ async function rebuild() {
     await createTables();
     await populateInitialData();
     await testingSTuff();
+    // console.log("anything");
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;
