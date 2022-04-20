@@ -21,6 +21,8 @@ async function createProduct({ categoryId, name, price }) {
 }
 
 async function deleteProduct({ id }) {
+  console.log("!!!  deleteProduct");
+
   try {
     await client.query(
       `DELETE FROM orderproduct
@@ -39,6 +41,8 @@ async function deleteProduct({ id }) {
             RETURNING *;
             `
     );
+    console.log("!!! end deleteProduct");
+
     return product;
   } catch (error) {
     console.log(error);
@@ -46,6 +50,8 @@ async function deleteProduct({ id }) {
 }
 
 async function getAllProducts() {
+  console.log("!!! getAllProducts");
+
   try {
     const {
       rows: [product],
@@ -54,6 +60,32 @@ async function getAllProducts() {
       SELECT * FROM product
     `
     );
+    console.log("!!! end getAllProducts");
+
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getProductsByCategory({ categoryId }) {
+  console.log("!!! getProductsByCategory");
+  try {
+    const {
+      rows: [product],
+    } = await client.query(
+      `
+                SELECT category.*, category.id as "categoryId"
+                FROM product 
+                JOIN categories ON product."categoryId" = categories.id
+                WHERE category.id = $1;
+
+                
+                `,
+      [categoryId]
+    );
+    console.log("!!! end getProductsByCategory");
+
     return product;
   } catch (error) {
     console.log(error);
@@ -64,4 +96,5 @@ module.exports = {
   createProduct,
   deleteProduct,
   getAllProducts,
+  getProductsByCategory,
 };
