@@ -2,13 +2,11 @@ const client = require("../client");
 
 async function getAllUsers() {
   try {
-    const {
-      rows: [user],
-    } = await client.query(`
-    SELECT * FROM customer,
-    RETURNING *;
+    const { rows } = await client.query(`
+    SELECT * FROM customer
     `);
-    return user;
+    // console.log("Gonna get all the users: ", rows);
+    return rows;
   } catch (error) {
     console.log(error);
   }
@@ -36,6 +34,7 @@ async function createUser({
       [username, password, name, address, email, phone, payment]
     );
     if (user === undefined) return null;
+    // console.log("Gonna create all the users: ", user);
     return user;
   } catch (error) {
     console.log(error);
@@ -53,13 +52,14 @@ async function getUserById({ id }) {
     `,
       [id]
     );
+    // console.log("Gonna get all the users by their ID's: ", user);
     return user;
   } catch (error) {
     throw error;
   }
 }
 
-async function getUserByPassword(password) {
+async function getUserByPassword({ password }) {
   try {
     const { rows: user } = await client.query(
       `
@@ -68,12 +68,13 @@ async function getUserByPassword(password) {
     `,
       [password]
     );
+    // console.log("Gonna get all the users by their passwords: ", user);
     return user;
   } catch (error) {
     throw error;
   }
 }
-async function getUserByEmail(email) {
+async function getUserByEmail({ email }) {
   try {
     const { rows: user } = await client.query(
       `
@@ -82,14 +83,13 @@ async function getUserByEmail(email) {
     `,
       [email]
     );
+    // console.log("Gonna get all the users by their emails: ", user);
     return user;
   } catch (error) {
     throw error;
   }
 }
-async function postNewUser(username, password){
-  
-}
+async function postNewUser(username, password) {}
 
 module.exports = {
   getAllUsers,

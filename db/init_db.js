@@ -97,20 +97,20 @@ async function populateInitialData() {
       newProductOrder.map(ProductOrder.createProductOrders)
     );
 
-    // create useful starting data by leveraging your
-    // Model.method() adapters to seed your db, for example:
-    // const user1 = await User.createUser({ ...user info goes here... })
     return users, categories, order, product, productOrder;
   } catch (error) {
     throw error;
   }
 }
 
-// buildTables(){
-//   .then(populateInitialData)
-//   .catch(console.error)
-//   .finally(() => client.end());
-// }
+async function testingSTuff() {
+  const everyone = Customer.getAllUsers();
+  const somebody = Customer.getUserById({ id: "1" });
+  const forgotUser = Customer.getUserByPassword({ password: "ChudiChudi1" });
+  const emails = Customer.getUserByEmail({ email: "chudiisnumber1@Yahoo.com" });
+
+  return everyone, somebody, forgotUser, emails;
+}
 
 async function rebuild() {
   try {
@@ -118,6 +118,7 @@ async function rebuild() {
     await dropTables();
     await createTables();
     await populateInitialData();
+    await testingSTuff();
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;
