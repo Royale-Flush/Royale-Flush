@@ -122,10 +122,16 @@ async function repopulateData() {
 
 async function renderProductByCategory() {
   try {
+    console.log("first attempt");
     const renderingByCategory = await Product.getProductsByCategory({
-      id: 2,
+      categoryId: 3,
     });
-    return renderingByCategory;
+    const editor = await Product.EditProduct({
+      id: "2",
+      name: "The Wholey One",
+      price: "0.00",
+    });
+    return renderingByCategory, editor;
   } catch (error) {
     throw error;
   }
