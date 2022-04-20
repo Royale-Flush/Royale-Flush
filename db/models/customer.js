@@ -41,7 +41,26 @@ async function createUser({
     console.log(error);
   }
 }
+
+async function getUserById({ id }) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+    SELECT * FROM customer
+    WHERE id = $1
+    `,
+      [id]
+    );
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   getAllUsers,
   createUser,
+  getUserById,
 };
