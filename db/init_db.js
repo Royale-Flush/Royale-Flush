@@ -6,7 +6,7 @@ const {
   Product,
   ProductOrder,
 } = require("./models");
-const { deleteProduct } = require("./models/product");
+const { deleteProduct, getAllProducts } = require("./models/product");
 const {
   newPeople,
   newCategories,
@@ -112,6 +112,15 @@ async function unpopulateInitialData() {
   }
 }
 
+async function repopulateData() {
+  try {
+    const gettingProducts = getAllProducts();
+    return gettingProducts;
+  } catch (error) {
+    throw error;
+  }
+}
+
 // buildTables(){
 //   .then(populateInitialData)
 //   .catch(console.error)
@@ -125,6 +134,7 @@ async function rebuild() {
     await createTables();
     await populateInitialData();
     await unpopulateInitialData();
+    await repopulateData();
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;

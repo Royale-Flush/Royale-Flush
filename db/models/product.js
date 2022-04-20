@@ -45,7 +45,23 @@ async function deleteProduct({ id }) {
   }
 }
 
+async function getAllProducts() {
+  try {
+    const {
+      rows: [product],
+    } = await client.query(
+      `
+      SELECT * FROM product
+    `
+    );
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   createProduct,
   deleteProduct,
+  getAllProducts,
 };
