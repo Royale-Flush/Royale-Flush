@@ -77,9 +77,10 @@ async function createTables() {
             id SERIAL PRIMARY KEY,
             "customerId" integer references customer(id),
             "totalAmount" numeric not null,
-            isActive boolean default false
+            isActive boolean default false not null
             );
             `);
+    //should customerId be the same as orders serial Id???
   } catch (error) {
     console.error(error);
   }
@@ -98,30 +99,14 @@ async function populateInitialData() {
     );
     return users, categories, order, product, productOrder;
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 }
 
-async function unpopulateInitialData() {
+async function productManipulation() {
   try {
     const deletingProduct = await Product.deleteProduct({ id: 1 });
-    return deletingProduct;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function repopulateData() {
-  try {
     const gettingProducts = await Product.getAllProducts();
-    return gettingProducts;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function renderProductByCategory() {
-  try {
     const renderingByCategory = await Product.getProductsByCategory({
       categoryId: 3,
     });
@@ -130,68 +115,39 @@ async function renderProductByCategory() {
       name: "The Wholey One",
       price: "0.00",
     });
-    return renderingByCategory, editor;
+    return deletingProduct, gettingProducts, renderingByCategory, editor;
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 }
 
-async function renderOrdersByCustomerId() {
+async function orderManipulation() {
   try {
-    const renderingOrdersByCustomerId = await Order.getOrderByCustomerId({
-      customerId: "3",
+    const renderingOrdersByCustomerId = await Order.getOrdersByCustomerId({
+      customerId: 3,
     });
-
-    return renderingOrdersByCustomerId;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function updatingOrder() {
-  try {
-    const updatedOrder = await Order.editOrder({
+    const updatedOrder = await Order.editOrders({
       id: 1,
-      totalAmount: "500",
-      isActive: "TRUE",
-    });
-    return updatedOrder;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function deletingOrder() {
-  try {
-    const deletedOrder = await Order.deleteOrder({
-      id: 3,
-    });
-    return deletedOrder;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function renderingActiveOrders() {
-  try {
-    const renderedActiveOrders = await Order.getAllActiveOrders({
+      totalAmount: 500.81,
       isActive: true,
     });
-    // console.log("!!@@!!active orders", renderedActiveOrders);
-    return renderedActiveOrders;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function renderingTotalAmount() {
-  try {
+    const deletedOrder = await Order.deleteOrders({
+      id: 3,
+    });
+    const renderedActiveOrders = await Order.getAllActiveOrders({
+      isActive: false,
+    });
     const renderedTotalAmount = await Order.getTotalAmount({
       customerId: 1,
     });
-    return renderedTotalAmount;
+    console.log;
+    // renderingOrdersByCustomerId,
+    // updatedOrder,
+    // deletedOrder,
+    // renderedActiveOrders,
+    // renderedTotalAmount;
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 }
 
@@ -201,14 +157,8 @@ async function rebuild() {
     await dropTables();
     await createTables();
     await populateInitialData();
-    await unpopulateInitialData();
-    await repopulateData();
-    await renderProductByCategory();
-    // await renderOrdersByCustomerId();
-    await updatingOrder();
-    await deletingOrder();
-    await renderingActiveOrders();
-    renderingTotalAmount();
+    await productManipulation();
+    await orderManipulation();
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;

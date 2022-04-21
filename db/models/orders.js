@@ -1,4 +1,3 @@
-const { Order } = require(".");
 const client = require("../client");
 
 async function createOrders({ customerId, totalAmount }) {
@@ -20,25 +19,24 @@ async function createOrders({ customerId, totalAmount }) {
   }
 }
 
-async function getOrderByCustomerId({ customerId }) {
+async function getOrdersByCustomerId({ customerId }) {
   try {
     const {
       rows: [orders],
     } = await client.query(
       `
-      SELECT *
-      FROM orders
-      WHERE "customerId"=$1;
-      `[customerId]
+      SELECT * FROM orders 
+      WHERE "customerId" = $1;`,
+      [customerId]
     );
-    // console.log("!!!!!orders ", orders);
+    // console.log("Line 33 ", orders);
     return orders;
   } catch (error) {
     console.log(error);
   }
 }
 
-async function editOrder({ id, totalAmount, isActive }) {
+async function editOrders({ id, totalAmount, isActive }) {
   try {
     const {
       rows: [orders],
@@ -51,26 +49,27 @@ async function editOrder({ id, totalAmount, isActive }) {
       `,
       [totalAmount, isActive, id]
     );
-    // console.log("!!@@!!", orders);
+    // console.log("Line 53", orders);
     return orders;
   } catch (error) {
     console.log(error);
   }
 }
 
-async function deleteOrder({ id }) {
+async function deleteOrders({ id }) {
   try {
     const {
       rows: [orders],
     } = await client.query(
       `
-      DELETE FROM orders
+      DELETE FROM orders *
       WHERE id = $1
+      returning *
       ;
       `,
       [id]
     );
-    // console.log("!!@@!! DELETING", orders);
+    // console.log("Line 72", orders);
     return orders;
   } catch (error) {
     console.log(error);
@@ -79,35 +78,33 @@ async function deleteOrder({ id }) {
 
 async function getAllActiveOrders({ isActive }) {
   try {
-    const {
-      rows: [orders],
-    } = await client.query(
+    const { rows } = await client.query(
       `
       SELECT * FROM orders 
-      WHERE isactive = $1
-
-      `[isActive]
+      WHERE isActive = $1
+      `,
+      [isActive]
     );
-    // console.log("!!@@!! Getting Active Orders", orders);
-    return orders;
+    // console.log("line 90", rows);
+    return rows;
   } catch (error) {
     console.log(error);
   }
 }
 
-async function getTotalAmount([customerId]) {
+async function getTotalAmount({ customerId }) {
   try {
     const {
       rows: [orders],
     } = await client.query(
       `
-    SELECT "totalAmount"
-    FROM orders
-    WHERE "customerId" = ${customerId}
+    SELECT "totalAmount" FROM orders
+    WHERE "customerId" = $1
     
-    `[customerId]
+    `,
+      [customerId]
     );
-    console.log("!!@@!! total", orders);
+    // console.log("Line 109", orders);
     return orders;
   } catch (error) {
     console.log(error);
@@ -116,9 +113,9 @@ async function getTotalAmount([customerId]) {
 
 module.exports = {
   createOrders,
-  getOrderByCustomerId,
-  editOrder,
-  deleteOrder,
+  getOrdersByCustomerId,
+  editOrders,
+  deleteOrders,
   getAllActiveOrders,
   getTotalAmount,
 };
