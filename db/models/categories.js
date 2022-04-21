@@ -19,7 +19,42 @@ async function createCategories({ name, tags }) {
     console.log(error);
   }
 }
+async function destroyCategory({ categoryId }) {
+  try {
+    await client.query(
+      `
+    DELETE from orderproduct
+    WHERE id =$1
+    
+    `,
+      [categoryId]
+    );
+    await client.query(
+      `
+    DELETE from product
+    WHERE "categoryId"=$1
+    `,
+      [categoryId]
+    );
+    const {
+      rows: [categories],
+    } = await client.query(
+      `
+  DELETE FROM categories*
+  WHERE categories.id =$1
+  RETURNING *
+  
+  `,
+      [categoryId]
+    );
+    console.log("what", categories);
+    return categories;
+  } catch (error) {
+    throw error;
+  }
+}
 
 module.exports = {
   createCategories,
+  destroyCategory,
 };

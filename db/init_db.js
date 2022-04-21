@@ -129,8 +129,8 @@ async function testingOrderProds() {
   const items = await ProductOrder.getProductById({ productId: "2" });
   const amountOfItems = await ProductOrder.getQuantityById({ productId: "3" });
   const quan = await ProductOrder.editQuantity({id:"2", quantity: "2"})
-
-  return items, amountOfItems, quan;
+const destroooyy = await Categories.destroyCategory({categoryId:"1"})
+  return items, amountOfItems, quan, destroooyy;
 }
 
 async function rebuild() {
