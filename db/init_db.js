@@ -128,9 +128,15 @@ async function populateInitialData() {
 async function testingOrderProds() {
   const items = await ProductOrder.getProductById({ productId: "2" });
   const amountOfItems = await ProductOrder.getQuantityById({ productId: "3" });
-  const quan = await ProductOrder.editQuantity({id:"2", quantity: "2"})
-const destroooyy = await Categories.destroyCategory({categoryId:"1"})
-  return items, amountOfItems, quan, destroooyy;
+  const quan = await ProductOrder.editQuantity({ id: "2", quantity: "2" });
+  const destroooyy = await Categories.destroyCategory({ categoryId: "1" });
+  const edit = await Categories.editCategory({
+    id: "2",
+    name: "theToilet",
+    tags: "CleanCleanClean",
+  });
+
+  return items, amountOfItems, quan, destroooyy, edit;
 }
 
 async function rebuild() {

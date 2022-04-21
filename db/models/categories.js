@@ -25,7 +25,7 @@ async function destroyCategory({ categoryId }) {
       `
     DELETE from orderproduct
     WHERE id =$1
-    
+
     `,
       [categoryId]
     );
@@ -53,8 +53,29 @@ async function destroyCategory({ categoryId }) {
     throw error;
   }
 }
+async function editCategory({ id, name, tags }) {
+  try {
+    const {
+      rows: [categories],
+    } = await client.query(
+      `
+    UPDATE categories
+    SET name = ($1), tags = ($2)
+    WHERE id = $3
+    RETURNING*;
+    `,
+      [name, tags, id]
+    );
+
+    console.log("we can EDIT!!!:", categories);
+    return categories;
+  } catch (error) {
+    throw error;
+  }
+}
 
 module.exports = {
   createCategories,
   destroyCategory,
+  editCategory,
 };
