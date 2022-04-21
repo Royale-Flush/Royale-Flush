@@ -128,7 +128,9 @@ async function populateInitialData() {
 async function testingOrderProds() {
   const items = await ProductOrder.getProductById({ productId: "2" });
   const amountOfItems = await ProductOrder.getQuantityById({ productId: "3" });
-  return items, amountOfItems;
+  const quan = await ProductOrder.editQuantity({id:"2", quantity: "2"})
+
+  return items, amountOfItems, quan;
 }
 
 async function rebuild() {

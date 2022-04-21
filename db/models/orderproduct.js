@@ -53,9 +53,30 @@ async function getQuantityById({ productId }) {
   }
 }
 
+async function editQuantity({ id, quantity }) {
+  try {
+    const {
+      rows: [orderProduct],
+    } = await client.query(
+      `
+    UPDATE orderproduct
+    SET quantity =$2
+    WHERE id = $1
+    RETURNING*; 
+    `,
+      [id, quantity]
+    );
+    console.log("changed quantity?", orderProduct);
+    return orderProduct;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   createProductOrders,
   getProductById,
   getQuantityById,
+  editQuantity,
 };
 //Need to make sure order ID's created are unique, table is set to give up on conflict
