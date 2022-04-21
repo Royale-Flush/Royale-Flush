@@ -71,7 +71,7 @@ async function getProductsByCategory({ categoryId }) {
                 `,
       [categoryId]
     );
-    console.log("getting stuff based on categories: ", product);
+    // console.log("getting stuff based on categories: ", product);
     return product;
   } catch (error) {
     console.log(error);

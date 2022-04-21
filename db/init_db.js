@@ -122,7 +122,6 @@ async function repopulateData() {
 
 async function renderProductByCategory() {
   try {
-    console.log("first attempt");
     const renderingByCategory = await Product.getProductsByCategory({
       categoryId: 3,
     });
@@ -137,6 +136,65 @@ async function renderProductByCategory() {
   }
 }
 
+async function renderOrdersByCustomerId() {
+  try {
+    const renderingOrdersByCustomerId = await Order.getOrderByCustomerId({
+      customerId: "3",
+    });
+
+    return renderingOrdersByCustomerId;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updatingOrder() {
+  try {
+    const updatedOrder = await Order.editOrder({
+      id: 1,
+      totalAmount: "500",
+      isActive: "TRUE",
+    });
+    return updatedOrder;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function deletingOrder() {
+  try {
+    const deletedOrder = await Order.deleteOrder({
+      id: 3,
+    });
+    return deletedOrder;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function renderingActiveOrders() {
+  try {
+    const renderedActiveOrders = await Order.getAllActiveOrders({
+      isActive: true,
+    });
+    // console.log("!!@@!!active orders", renderedActiveOrders);
+    return renderedActiveOrders;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function renderingTotalAmount() {
+  try {
+    const renderedTotalAmount = await Order.getTotalAmount({
+      customerId: 1,
+    });
+    return renderedTotalAmount;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function rebuild() {
   try {
     client.connect();
@@ -146,6 +204,11 @@ async function rebuild() {
     await unpopulateInitialData();
     await repopulateData();
     await renderProductByCategory();
+    // await renderOrdersByCustomerId();
+    await updatingOrder();
+    await deletingOrder();
+    await renderingActiveOrders();
+    renderingTotalAmount();
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;
