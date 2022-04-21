@@ -103,22 +103,32 @@ async function populateInitialData() {
   }
 }
 
-async function testingSTuff() {
-  const everyone = Customer.getAllUsers();
-  const somebody = Customer.getUserById({ id: "1" });
-  const forgotUser = Customer.getUserByPassword({ password: "ChudiChudi1" });
-  const emails = Customer.getUserByEmail({ email: "chudiisnumber1@Yahoo.com" });
-  const erase = Customer.destroyUser({ id: "3" });
-  const change = Customer.updateUser({
-    password: "ChudiChudi1",
-    name: "Chudi1",
-    address: "1281 Hope Ct",
-    email: "chudiisnumber1@Yahoo.com",
-    phone: "281-330-8004",
-    payment: null,
-    id: "2",
-  });
-  return everyone, somebody, forgotUser, emails, erase, change;
+// async function testingSTuff() {
+//   const everyone = await Customer.getAllUsers();
+//   const somebody = await Customer.getUserById({ id: "1" });
+//   const forgotUser = await Customer.getUserByPassword({
+//     password: "ChudiChudi1",
+//   });
+//   const emails = await Customer.getUserByEmail({
+//     email: "chudiisnumber1@Yahoo.com",
+//   });
+//   const erase = await Customer.destroyUser({ id: "3" });
+//   const change = await Customer.updateUser({
+//     password: "ChudiChudi1",
+//     name: "Chudi1",
+//     address: "1281 Hope Ct",
+//     email: "chudiisnumber1@Yahoo.com",
+//     phone: "281-330-8004",
+//     payment: null,
+//     id: "2",
+//   });
+//   return everyone, somebody, forgotUser, emails, erase, change;
+// }
+
+async function testingOrderProds() {
+  const items = await ProductOrder.getProductById({ productId: "2" });
+  const amountOfItems = await ProductOrder.getQuantityById({ productId: "3" });
+  return items, amountOfItems;
 }
 
 async function rebuild() {
@@ -127,7 +137,8 @@ async function rebuild() {
     await dropTables();
     await createTables();
     await populateInitialData();
-    await testingSTuff();
+    // await testingSTuff();
+    await testingOrderProds();
     // console.log("anything");
   } catch (error) {
     console.log("Error rebuilding Tables");
