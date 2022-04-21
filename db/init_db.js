@@ -102,50 +102,12 @@ async function populateInitialData() {
   }
 }
 
-async function unpopulateInitialData() {
-  try {
-    const deletingProduct = await Product.deleteProduct({ id: 1 });
-    return deletingProduct;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function repopulateData() {
-  try {
-    const gettingProducts = await Product.getAllProducts();
-    return gettingProducts;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function renderProductByCategory() {
-  try {
-    console.log("first attempt");
-    const renderingByCategory = await Product.getProductsByCategory({
-      categoryId: 3,
-    });
-    const editor = await Product.EditProduct({
-      id: "2",
-      name: "The Wholey One",
-      price: "0.00",
-    });
-    return renderingByCategory, editor;
-  } catch (error) {
-    throw error;
-  }
-}
-
 async function rebuild() {
   try {
     client.connect();
     await dropTables();
     await createTables();
     await populateInitialData();
-    await unpopulateInitialData();
-    await repopulateData();
-    await renderProductByCategory();
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;
