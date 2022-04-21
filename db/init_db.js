@@ -77,9 +77,10 @@ async function createTables() {
             id SERIAL PRIMARY KEY,
             "customerId" integer references customer(id),
             "totalAmount" numeric not null,
-            isActive boolean default false
+            isActive boolean default false not null
             );
             `);
+    //should customerId be the same as orders serial Id???
   } catch (error) {
     console.error(error);
   }
@@ -98,7 +99,7 @@ async function populateInitialData() {
     );
     return users, categories, order, product, productOrder;
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 }
 
