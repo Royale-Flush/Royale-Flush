@@ -66,7 +66,7 @@ async function createTables() {
     await client.query(`
         CREATE TABLE orderProduct (
             ID SERIAL PRIMARY KEY,
-            "productId" integer REFERENCES product(id) ,
+            "productId" integer REFERENCES product(id),
             quantity integer NOT NULL
             );
         `);
@@ -77,9 +77,10 @@ async function createTables() {
             id SERIAL PRIMARY KEY,
             "customerId" integer references customer(id),
             "totalAmount" numeric not null,
-            isActive boolean default false
+            isActive boolean default false not null
             );
             `);
+    //should customerId be the same as orders serial Id???
   } catch (error) {
     console.error(error);
   }
@@ -96,47 +97,10 @@ async function populateInitialData() {
     const productOrder = await Promise.all(
       newProductOrder.map(ProductOrder.createProductOrders)
     );
-
     return users, categories, order, product, productOrder;
   } catch (error) {
-    throw error;
+    console.error(error);
   }
-}
-
-// async function testingSTuff() {
-//   const everyone = await Customer.getAllUsers();
-//   const somebody = await Customer.getUserById({ id: "1" });
-//   const forgotUser = await Customer.getUserByPassword({
-//     password: "ChudiChudi1",
-//   });
-//   const emails = await Customer.getUserByEmail({
-//     email: "chudiisnumber1@Yahoo.com",
-//   });
-//   const erase = await Customer.destroyUser({ id: "3" });
-//   const change = await Customer.updateUser({
-//     password: "ChudiChudi1",
-//     name: "Chudi1",
-//     address: "1281 Hope Ct",
-//     email: "chudiisnumber1@Yahoo.com",
-//     phone: "281-330-8004",
-//     payment: null,
-//     id: "2",
-//   });
-//   return everyone, somebody, forgotUser, emails, erase, change;
-// }
-
-async function testingOrderProds() {
-  const items = await ProductOrder.getProductById({ productId: "2" });
-  const amountOfItems = await ProductOrder.getQuantityById({ productId: "3" });
-  const quan = await ProductOrder.editQuantity({ id: "2", quantity: "2" });
-  const destroooyy = await Categories.destroyCategory({ categoryId: "1" });
-  const edit = await Categories.editCategory({
-    id: "2",
-    name: "theToilet",
-    tags: "CleanCleanClean",
-  });
-
-  return items, amountOfItems, quan, destroooyy, edit;
 }
 
 async function rebuild() {
@@ -145,9 +109,6 @@ async function rebuild() {
     await dropTables();
     await createTables();
     await populateInitialData();
-    // await testingSTuff();
-    await testingOrderProds();
-    // console.log("anything");
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;
