@@ -66,7 +66,7 @@ async function createTables() {
     await client.query(`
         CREATE TABLE orderProduct (
             ID SERIAL PRIMARY KEY,
-            "productId" integer REFERENCES product(id) ,
+            "productId" integer REFERENCES product(id),
             quantity integer NOT NULL
             );
         `);
@@ -96,21 +96,46 @@ async function populateInitialData() {
     const productOrder = await Promise.all(
       newProductOrder.map(ProductOrder.createProductOrders)
     );
-
-    // create useful starting data by leveraging your
-    // Model.method() adapters to seed your db, for example:
-    // const user1 = await User.createUser({ ...user info goes here... })
     return users, categories, order, product, productOrder;
   } catch (error) {
     throw error;
   }
 }
 
-// buildTables(){
-//   .then(populateInitialData)
-//   .catch(console.error)
-//   .finally(() => client.end());
-// }
+async function unpopulateInitialData() {
+  try {
+    const deletingProduct = await Product.deleteProduct({ id: 1 });
+    return deletingProduct;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function repopulateData() {
+  try {
+    const gettingProducts = await Product.getAllProducts();
+    return gettingProducts;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function renderProductByCategory() {
+  try {
+    console.log("first attempt");
+    const renderingByCategory = await Product.getProductsByCategory({
+      categoryId: 3,
+    });
+    const editor = await Product.EditProduct({
+      id: "2",
+      name: "The Wholey One",
+      price: "0.00",
+    });
+    return renderingByCategory, editor;
+  } catch (error) {
+    throw error;
+  }
+}
 
 async function rebuild() {
   try {
@@ -118,6 +143,9 @@ async function rebuild() {
     await dropTables();
     await createTables();
     await populateInitialData();
+    await unpopulateInitialData();
+    await repopulateData();
+    await renderProductByCategory();
   } catch (error) {
     console.log("Error rebuilding Tables");
     throw error;
