@@ -102,6 +102,7 @@ async function EditProduct({ id, name, price }) {
   }
 }
 
+
 module.exports = {
   createProduct,
   deleteProduct,
