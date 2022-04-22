@@ -1,3 +1,4 @@
+const { Pool } = require("pg/lib");
 const client = require("../client");
 
 async function getAllUsers() {
@@ -143,6 +144,20 @@ async function updateUser({
   }
 }
 
+const getUserByUsername = async ({ username }) => {
+  const {
+    rows: [customer],
+  } = await client.query(
+    `
+    SELECT * FROM  customer
+    WHERE customer.username = $1
+    `,
+    [username]
+  );
+  delete customer.password;
+  return customer;
+};
+
 module.exports = {
   getAllUsers,
   createUser,
@@ -151,4 +166,5 @@ module.exports = {
   getUserByEmail,
   destroyUser,
   updateUser,
+  getUserByUsername,
 };
