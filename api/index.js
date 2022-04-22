@@ -9,13 +9,13 @@ apiRouter.get("/", (req, res, next) => {
   });
 });
 
-apiRouter.get("/health", (req, res, next) => {
-  res.send({
-    healthy: true,
-  });
-});
+apiRouter.use("/auth", require("./auth"));
 
-// place your routers here
+// apiRouter.get("/health", (req, res, next) => {
+//   res.send({
+//     healthy: true,
+//   });
+// });
 
 apiRouter.use((error, req, res, next) => {
   res.send({ name: error.name, message: error.message });

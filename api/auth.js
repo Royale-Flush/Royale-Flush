@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const authRouter = require("express").Router();
 const { Customer } = require("../db/index");
-const { JWT_SECRET } = require("../secrets");
+const { JWT_SECRET } = require("../.env");
 const { auth } = require("./utils");
 const SALT_ROUNDS = 10;
 
@@ -16,7 +16,6 @@ authRouter.post("/register", async (req, res, next) => {
     });
 
     delete user.password;
-
     const token = jwt.sign(user, JWT_SECRET);
 
     res.cookie("token", token, {
@@ -24,9 +23,7 @@ authRouter.post("/register", async (req, res, next) => {
       httpOnly: true,
       signed: true,
     });
-
     delete user.password;
-
     res.send({ user });
   } catch (error) {
     next(error);
@@ -36,23 +33,17 @@ authRouter.post("/register", async (req, res, next) => {
 authRouter.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
-
     const user = await Customer.getUserByUsername(username);
-
-    // This is a boolean
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (validPassword) {
       const token = jwt.sign(user, JWT_SECRET);
-
       res.cookie("token", token, {
         sameSite: "strict",
         httpOnly: true,
         signed: true,
       });
-
       delete user.password;
-
       res.send({ user });
     }
   } catch (error) {
