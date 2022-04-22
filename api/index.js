@@ -1,5 +1,6 @@
 const res = require("express/lib/response");
 const { append } = require("express/lib/response");
+const { authRouter } = require("/auth");
 
 const apiRouter = require("express").Router();
 
