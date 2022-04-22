@@ -74,8 +74,24 @@ async function editCategory({ id, name, tags }) {
   }
 }
 
+async function getAllCategories() {
+  try {
+    const {
+      rows: [categories],
+    } = await client.query(
+      `
+    select * from categories
+    `
+    );
+    return categories;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   createCategories,
   destroyCategory,
   editCategory,
+  getAllCategories,
 };

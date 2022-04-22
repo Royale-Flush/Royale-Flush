@@ -154,7 +154,6 @@ const getUserByUsername = async ({ username }) => {
     `,
     [username]
   );
-  delete customer.password;
   return customer;
 };
 
