@@ -76,7 +76,7 @@ authRouter.get("/logout", async (req, res, next) => {
   }
 });
 
-authRouter.get("/me", authRequired, async (req, res, next) => {
+authRouter.get("/me", auth, async (req, res, next) => {
   try {
     res.send(req.user);
   } catch (error) {
