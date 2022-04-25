@@ -62,17 +62,15 @@ async function getAllProducts() {
 
 async function getProductsByCategory({ categoryId }) {
   try {
-    const {
-      rows: [product],
-    } = await client.query(
+    const { rows } = await client.query(
       `
         select * from product
         where "categoryId" = $1
                 `,
       [categoryId]
     );
-    // console.log("getting stuff based on categories: ", product);
-    return product;
+    // console.log("getting stuff based on categories: ", rows);
+    return rows;
   } catch (error) {
     console.log(error);
   }

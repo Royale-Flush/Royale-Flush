@@ -19,26 +19,24 @@ async function createCategories({ name, tags }) {
     console.log(error);
   }
 }
-async function destroyCategory({ categoryId }) {
+async function destroyCategory({ categoryId, productId }) {
   try {
     await client.query(
       `
-    DELETE from orderproduct
-    WHERE id =$1
+    DELETE from orderproduct*
+    WHERE "productId" =$1
 
     `,
-      [categoryId]
+      [productId]
     );
     await client.query(
       `
-    DELETE from product
+    DELETE from product*
     WHERE "categoryId"=$1
     `,
       [categoryId]
     );
-    const {
-      rows: [categories],
-    } = await client.query(
+    const { rows } = await client.query(
       `
   DELETE FROM categories*
   WHERE categories.id =$1
@@ -47,8 +45,8 @@ async function destroyCategory({ categoryId }) {
   `,
       [categoryId]
     );
-    console.log("what", categories);
-    return categories;
+    // console.log("what", rows);
+    return rows;
   } catch (error) {
     throw error;
   }
@@ -67,7 +65,7 @@ async function editCategory({ id, name, tags }) {
       [name, tags, id]
     );
 
-    console.log("we can EDIT!!!:", categories);
+    // console.log("we can EDIT!!!:", categories);
     return categories;
   } catch (error) {
     throw error;
@@ -83,7 +81,26 @@ async function getAllCategories() {
     select * from categories
     `
     );
+    // console.log("getting all categories: ", categories)
     return categories;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getCategoryByName({ name }) {
+  try {
+    const {
+      rows: [category],
+    } = await client.query(
+      `
+      select id from categories
+      where name = $1
+      `,
+      [name]
+    );
+    // console.log("getting categories by name: ", category)
+    return category;
   } catch (error) {
     throw error;
   }
@@ -94,4 +111,5 @@ module.exports = {
   destroyCategory,
   editCategory,
   getAllCategories,
+  getCategoryByName,
 };
