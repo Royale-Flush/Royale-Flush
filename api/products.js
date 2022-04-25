@@ -3,7 +3,7 @@ const { Product } = require("../db/index");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../.env");
 const { auth } = require("./utils");
-const { EditProduct } = require("../db/models/product");
+const { EditProduct, deleteProduct } = require("../db/models/product");
 
 prodRouter.get("/", async (req, res, next) => {
   try {
@@ -50,4 +50,16 @@ prodRouter.patch("/:productId", auth, async (req, res, next) => {
     next(error);
   }
 });
+prodRouter.delete("/:productId", auth, async (req, res, next) => {
+  const id = req.params.productId;
+  try {
+    await getProductById(id); //NEED TO CREATE IN DATABASE
+    const deleteProduct = await deleteProduct({ id });
+
+    res.send(deleteProduct);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = prodRouter;
