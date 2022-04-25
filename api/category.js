@@ -26,32 +26,4 @@ catRouter.post("/new", async (req, res, next) => {
   }
 });
 
-catRouter.delete("/delete", async (req, res, next) => {
-  const { name } = req.body;
-  try {
-    const idFinder = await Categories.getCategoryByName({ name });
-    const destroy = {
-      categoryId: idFinder.id,
-    };
-    const prodID = await Product.getProductsByCategory(destroy);
-    const prodID2 = {
-      productId: prodID,
-    };
-    const deleting = await Categories.destroyCategory({ destroy, prodID2 });
-    res.send({ deleting });
-  } catch ({ name, message }) {
-    next({
-      name: "Error Deleting category",
-      message: "It didn't work",
-    });
-  }
-});
-
-// catRouter.get("/register", async (req, res, next) => {}
-
-// catRouter.post("/register", async (req, res, next) => {}
-// catRouter.post("/register", async (req, res, next) => {}
-// catRouter.get("/register", async (req, res, next) => {}
-// catRouter.post("/register", async (req, res, next) => {}
-
 module.exports = catRouter;
