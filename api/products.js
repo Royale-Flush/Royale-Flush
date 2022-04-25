@@ -3,7 +3,7 @@ const { Product } = require("../db/index");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../.env");
 const { auth } = require("./utils");
-
+const { EditProduct } = require("../db/models/product");
 
 prodRouter.get("/", async (req, res, next) => {
   try {
@@ -15,25 +15,39 @@ prodRouter.get("/", async (req, res, next) => {
 });
 prodRouter.get("/:categoryId/product", async (req, res, next) => {
   const { categoryId } = req.params;
-    try {
-    const product = await Product.getProductsByCategory({categoryId});
+  try {
+    const product = await Product.getProductsByCategory({ categoryId });
     res.send({ product });
   } catch ({ name, message }) {
     next({ name: "Definitely an Error", message: "Definitely made a mistake" });
   }
 });
 
-
-
-catRouter.post("/new", async (req, res, next) => {
-  const { name, tags } = req.body;
+prodRouter.post("/new", async (req, res, next) => {
+  const { categoryId, name, price } = req.body;
   try {
-    const newCat = await Product.createProduct({ name, tags });
-    res.send({ newCat });
+    const newProd = await Product.createProduct({ categoryId, name, price });
+    res.send({ newProd });
   } catch ({ name, message }) {
     next({
       name: "Error",
-      message: "Didn't make a new category",
+      message: "Did not create new product",
     });
   }
 });
+prodRouter.patch("/:productId", auth, async (req, res, next) => {
+  const { productId } = req.params;
+  const { name, price } = req.body;
+  try {
+    const product = await EditProduct({
+      id: productId,
+      name,
+      price,
+    });
+    // console.log(Product, "FROM PATCH REQUEST")
+    res.send(product);
+  } catch (error) {
+    next(error);
+  }
+});
+module.exports = prodRouter;
