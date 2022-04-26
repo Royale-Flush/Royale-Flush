@@ -3,6 +3,7 @@ const { Customer } = require("../db/index");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../.env");
 const { auth } = require("./utils");
+const { getUserById, destroyUser } = require("../db/models/customer");
 
 userRouter.get("/", async (req, res, next) => {
   try {
@@ -32,14 +33,14 @@ userRouter.post("/new_user", async (req, res, next) => {
     });
   }
 });
-userRouter.delete("/", async (req, res, next) => {
+userRouter.delete("/:customerId", auth, async (req, res, next) => {
+  const id = req.params.customerId;
   try {
+    await getUserById(id);
     const deleteUser = await Customer.destroyUser({ id });
-    res.send({ deleteUser });
-  } catch ({ name, message }) {
-    next({
-      name: "Error",
-      message: "Didn't delete user",
-    });
+
+    res.send(deleteUser);
+  } catch (error) {
+    next(error);
   }
 });
