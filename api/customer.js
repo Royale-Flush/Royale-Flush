@@ -66,7 +66,7 @@ userRouter.post("/new_user", async (req, res, next) => {
 
 prodRouter.patch("/:customerId", auth, async (req, res, next) => {
   const { id } = req.params;
-  const { password, name, address, email, phone, payment, id } = req.body;
+  const { password, name, address, email, phone, payment } = req.body;
   try {
     const updated = await Customer.updateUser({
       password,
