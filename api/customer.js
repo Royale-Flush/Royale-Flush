@@ -32,4 +32,14 @@ userRouter.post("/new_user", async (req, res, next) => {
     });
   }
 });
-userRouter.delete
+userRouter.delete("/", async (req, res, next) => {
+  try {
+    const deleteUser = await Customer.destroyUser({ id });
+    res.send({ deleteUser });
+  } catch ({ name, message }) {
+    next({
+      name: "Error",
+      message: "Didn't delete user",
+    });
+  }
+});
