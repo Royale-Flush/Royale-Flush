@@ -32,3 +32,4 @@ userRouter.post("/new_user", async (req, res, next) => {
     });
   }
 });
+userRouter.delete
