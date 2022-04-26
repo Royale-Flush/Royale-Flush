@@ -32,9 +32,9 @@ const newProduct = [
 ];
 
 const newProductOrder = [
-  { productId: "1", quantity: "7" },
-  { productId: "2", quantity: "6" },
-  { productId: "3", quantity: "98" },
+  { orderId: "1", productId: "1", quantity: "7" },
+  { orderId: "2", productId: "2", quantity: "6" },
+  { orderId: "3", productId: "3", quantity: "98" },
 ];
 
 module.exports = {

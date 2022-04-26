@@ -4,14 +4,15 @@ const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../.env");
 const { auth } = require("./utils");
 
-opRouter.post("/new", async (req, res, next) => {
-  const { productId, quantity } = req.body;
+opRouter.post("/", async (req, res, next) => {
+  const { productId, quantity, orderId } = req.body;
   try {
     const newOProd = await ProductOrder.createProductOrders({
       productId,
       quantity,
+      orderId,
     });
-    res.send({ newOProd });
+    res.send(newOProd);
   } catch ({ name, message }) {
     next({
       name: "Error",

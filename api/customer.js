@@ -13,15 +13,15 @@ userRouter.get("/", async (req, res, next) => {
   }
 });
 
-userRouter.get("/:password/customer", async (req, res, next) => {
-  const { password } = req.params;
-  try {
-    const user = await Customer.getUserByPassword({ password });
-    res.send({ user });
-  } catch ({ name, message }) {
-    next({ name: "Try Again!", message: "Password does not exist." });
-  }
-});
+// userRouter.get("/:password/customer", async (req, res, next) => {
+//   const { password } = req.params;
+//   try {
+//     const user = await Customer.getUserByPassword({ password });
+//     res.send({ user });
+//   } catch ({ name, message }) {
+//     next({ name: "Try Again!", message: "Password does not exist." });
+//   }
+// });
 
 userRouter.get("/:username/customer", async (req, res, next) => {
   const { username } = req.params;

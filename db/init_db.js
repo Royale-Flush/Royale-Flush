@@ -17,8 +17,9 @@ const {
 async function dropTables() {
   try {
     await client.query(`
+ 
+      DROP TABLE IF EXISTS orderproduct;
       DROP TABLE IF EXISTS orders;
-      DROP TABLE IF EXISTS orderProduct;
       DROP TABLE IF EXISTS customer;
       DROP TABLE IF EXISTS product;
       DROP TABLE IF EXISTS categories;
@@ -64,15 +65,6 @@ async function createTables() {
         `);
     console.log("...passed products table ");
     await client.query(`
-        CREATE TABLE orderProduct (
-            ID SERIAL PRIMARY KEY,
-            "productId" integer REFERENCES product(id),
-            quantity integer NOT NULL
-            );
-        `);
-    console.log("...passed orderProducts table ");
-    //orders needs to have a not null customer(id)
-    await client.query(`
         CREATE TABLE orders (
             id SERIAL PRIMARY KEY,
             "customerId" integer references customer(id),
@@ -80,6 +72,16 @@ async function createTables() {
             isActive boolean default false not null
             );
             `);
+    await client.query(`
+        CREATE TABLE orderProduct (
+            ID SERIAL PRIMARY KEY,
+            "productId" integer REFERENCES product(id),
+            "orderId" integer REFERENCES orders(id),
+            quantity integer
+            );
+        `);
+    console.log("...passed orderProducts table ");
+    //orders needs to have a not null customer(id)
     //should customerId be the same as orders serial Id???
   } catch (error) {
     console.error(error);
@@ -97,7 +99,6 @@ async function populateInitialData() {
     const productOrder = await Promise.all(
       newProductOrder.map(ProductOrder.createProductOrders)
     );
-    return users, categories, order, product, productOrder;
   } catch (error) {
     console.error(error);
   }

@@ -13,7 +13,7 @@ async function createCategories({ name, tags }) {
         `,
       [name, tags]
     );
-
+    console.log(categories);
     return categories;
   } catch (error) {
     console.log(error);

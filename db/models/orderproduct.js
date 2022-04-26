@@ -1,17 +1,17 @@
 const { ProductOrder } = require(".");
 const client = require("../client");
 
-async function createProductOrders({ productId, quantity }) {
+async function createProductOrders({ productId, quantity, orderId }) {
   try {
     const {
       rows: [orders],
     } = await client.query(
       `
-          INSERT INTO orderProduct ("productId", quantity)
-          VALUES ($1, $2)
+          INSERT INTO orderProduct ("productId", "orderId", quantity)
+          VALUES ($1, $2, $3)
           RETURNING *;
           `,
-      [productId, quantity]
+      [productId, orderId, quantity]
     );
 
     return orders;
@@ -31,7 +31,10 @@ async function getOrderProductById({ productId }) {
     `,
       [productId]
     );
-    console.log("Gonna get all the ordered product by their product ID's: ", ProductOrder);
+    console.log(
+      "Gonna get all the ordered product by their product ID's: ",
+      ProductOrder
+    );
     return productId;
   } catch (error) {
     throw error;
