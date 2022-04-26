@@ -4,20 +4,13 @@ const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../.env");
 const { auth } = require("./utils");
 
-opRouter.get("/:categoryId/orderProduct", async (req, res, next) => {
-  const { productId } = req.params;
-  try {
-    const ProdOrder = await ProductOrder.getOrderProductById({ productId });
-    res.send({ ProdOrder });
-  } catch ({ name, message }) {
-    next({ name: "Error", message: "No orders to get" });
-  }
-});
-
 opRouter.post("/new", async (req, res, next) => {
-  const {} = req.body;
+  const { productId, quantity } = req.body;
   try {
-    const newOProd = await ProductOrder.createProductOrders({});
+    const newOProd = await ProductOrder.createProductOrders({
+      productId,
+      quantity,
+    });
     res.send({ newOProd });
   } catch ({ name, message }) {
     next({
@@ -26,28 +19,31 @@ opRouter.post("/new", async (req, res, next) => {
     });
   }
 });
-opRouter.patch("/:productId", auth, async (req, res, next) => {
+opRouter.get("/:productId/orderProduct", async (req, res, next) => {
   const { productId } = req.params;
-  const { name, price } = req.body;
   try {
-    const product = await EditProduct({
-      id: productId,
-      name,
-      price,
-    });
-    // console.log(Product, "FROM PATCH REQUEST")
-    res.send(product);
-  } catch (error) {
-    next(error);
+    const ProdOrder = await ProductOrder.getOrderProductById({ productId });
+    res.send({ ProdOrder });
+  } catch ({ name, message }) {
+    next({ name: "Error", message: "No orders to get" });
   }
 });
-opRouter.delete("/:productId", auth, async (req, res, next) => {
-  const id = req.params.productId;
+opRouter.get("/:productId/orderProduct", async (req, res, next) => {
+  const { productId } = req.params;
   try {
-    await getProductById(id);
-    const deleteProduct = await Product.deleteProduct({ id });
+    const quantityID = await ProductOrder.getQuantityById({ productId });
+    res.send({ quantityID });
+  } catch ({ name, message }) {
+    next({ name: "Error", message: "could not match id to quantity" });
+  }
+});
 
-    res.send(deleteProduct);
+opRouter.patch("/:productId", auth, async (req, res, next) => {
+  const { id } = req.params;
+  const { quantity } = req.body;
+  try {
+    const edit = await ProductOrder.editQuantity({ id, quantity });
+    res.send(edit);
   } catch (error) {
     next(error);
   }
