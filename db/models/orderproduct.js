@@ -1,3 +1,4 @@
+const { ProductOrder } = require(".");
 const client = require("../client");
 
 async function createProductOrders({ productId, quantity }) {
@@ -19,19 +20,19 @@ async function createProductOrders({ productId, quantity }) {
   }
 }
 
-async function getProductById({ productId }) {
+async function getOrderProductById({ productId }) {
   try {
     const {
-      rows: [product],
+      rows: [productId],
     } = await client.query(
       `
-    SELECT * FROM product
+    SELECT * FROM orderproduct
     WHERE id = $1
     `,
       [productId]
     );
-    console.log("Gonna get all the products by their product ID's: ", product);
-    return product;
+    console.log("Gonna get all the ordered product by their product ID's: ", ProductOrder);
+    return productId;
   } catch (error) {
     throw error;
   }
@@ -75,7 +76,7 @@ async function editQuantity({ id, quantity }) {
 
 module.exports = {
   createProductOrders,
-  getProductById,
+  getOrderProductById,
   getQuantityById,
   editQuantity,
 };
