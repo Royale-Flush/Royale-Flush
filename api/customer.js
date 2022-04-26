@@ -94,3 +94,5 @@ userRouter.delete("/:customerId", auth, async (req, res, next) => {
     next(error);
   }
 });
+
+module.exports = userRouter;
