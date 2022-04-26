@@ -53,7 +53,7 @@ prodRouter.patch("/:productId", auth, async (req, res, next) => {
 prodRouter.delete("/:productId", auth, async (req, res, next) => {
   const id = req.params.productId;
   try {
-    await getProductById(id); //NEED TO CREATE IN DATABASE
+    await getProductById(id);
     const deleteProduct = await Product.deleteProduct({ id });
 
     res.send(deleteProduct);
