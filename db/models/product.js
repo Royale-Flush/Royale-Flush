@@ -99,7 +99,23 @@ async function EditProduct({ id, name, price }) {
     console.log(error);
   }
 }
-
+async function getProductById({ id }) {
+  try {
+    const {
+      rows: [product],
+    } = await client.query(
+      `
+    SELECT * FROM product
+    WHERE id = $1
+    `,
+      [id]
+    );
+    // console.log("Gonna get all the product's by their ID's: ", product);
+    return product;
+  } catch (error) {
+    throw error;
+  }
+}
 
 module.exports = {
   createProduct,
@@ -107,4 +123,5 @@ module.exports = {
   getAllProducts,
   getProductsByCategory,
   EditProduct,
+  getProductById,
 };
