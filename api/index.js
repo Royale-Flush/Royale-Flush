@@ -13,8 +13,8 @@ apiRouter.get("/", (req, res, next) => {
 
 apiRouter.use("/auth", require("./auth"));
 apiRouter.use("/category", require("./category"));
-// apiRouter.use("/orderProduct", require("./orderProduct"));
-// apiRouter.use("/customer", require("./customer"));
+apiRouter.use("/orderProduct", require("./orderProduct"));
+apiRouter.use("/customer", require("./customer"));
 apiRouter.use("/product", require("./products"));
 apiRouter.use("/order", require("./order"));
 
