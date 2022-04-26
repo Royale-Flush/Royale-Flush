@@ -1,17 +1,18 @@
 const orderRouter = require("express").Router();
 const { Order } = require("./models");
+
 orderRouter.get("/", async (req, res, next) => {
-  const { isACtive } = req.body;
+  const { isActive } = req.body;
   const newOrders = {
-    isACtive: isACtive,
+    isActive: isActive,
   };
   try {
-    const getAllOrders = await Order.getAllActiveOrders(newOrders);
+    const getAllOrders = await Order.getAllActiveOrders({ isActive });
     res.send({
       getAllOrders,
     });
-  } catch (error) {
-    console.log(error);
+  } catch ({ name, message }) {
+    next({ name: "Error", message: "No active order found" });
   }
 });
 
