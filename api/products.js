@@ -3,11 +3,10 @@ const { Product } = require("../db/index");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../.env");
 const { auth } = require("./utils");
-const { EditProduct, deleteProduct } = require("../db/models/product");
 
 prodRouter.get("/", async (req, res, next) => {
   try {
-    const everything = await Product.getAllProduct();
+    const everything = await Product.getAllProducts();
     res.send({ everything });
   } catch ({ name, message }) {
     next({ name: "Definitely an Error", message: "Definitely made a mistake" });
@@ -53,7 +52,7 @@ prodRouter.patch("/:productId", auth, async (req, res, next) => {
 prodRouter.delete("/:productId", auth, async (req, res, next) => {
   const id = req.params.productId;
   try {
-    await getProductById(id); //NEED TO CREATE IN DATABASE
+    await getProductById(id);
     const deleteProduct = await Product.deleteProduct({ id });
 
     res.send(deleteProduct);
