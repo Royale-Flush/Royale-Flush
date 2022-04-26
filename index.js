@@ -8,12 +8,12 @@ const server = express();
 const { COOKIE_SECRET } = require("./.env");
 const cookieParser = require("cookie-parser");
 
-server.use(cookieParser(COOKIE_SECRET));
-server.use(morgan("dev"));
-server.use(express.json());
 server.use(cors());
-server.use(express.static(path.join(__dirname, "build")));
+server.use(express.json());
+server.use(morgan("dev"));
 server.use("/api", require("./api"));
+server.use(cookieParser(COOKIE_SECRET));
+server.use(express.static(path.join(__dirname, "build")));
 server.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
   next();

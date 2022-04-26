@@ -8,11 +8,17 @@ const count = 10;
 
 authRouter.post("/register", async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const { username, password, name, address, email, phone, payment } =
+      req.body;
     const hashedPassword = await bcrypt.hash(password, count);
     const user = await Customer.createUser({
       username,
       password: hashedPassword,
+      name,
+      address,
+      email,
+      phone,
+      payment,
     });
 
     delete user.password;

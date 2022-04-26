@@ -1,5 +1,5 @@
 const catRouter = require("express").Router();
-const { Categories } = require("../db/index");
+const { Categories, Product, ProductOrder } = require("../db/index");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../.env");
 const { auth } = require("./utils");
@@ -25,12 +25,5 @@ catRouter.post("/new", async (req, res, next) => {
     });
   }
 });
-// catRouter.post("/register", async (req, res, next) => {}
-
-// catRouter.get("/register", async (req, res, next) => {}
-// catRouter.post("/register", async (req, res, next) => {}
-// catRouter.post("/register", async (req, res, next) => {}
-// catRouter.get("/register", async (req, res, next) => {}
-// catRouter.post("/register", async (req, res, next) => {}
 
 module.exports = catRouter;
