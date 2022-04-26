@@ -18,11 +18,11 @@ authRouter.post("/register", async (req, res, next) => {
     delete user.password;
     const token = jwt.sign(user, JWT_SECRET);
 
-    // res.cookie("token", token, {
-    //   sameSite: "strict",
-    //   httpOnly: true,
-    //   signed: true,
-    // });
+    res.cookie("token", token, {
+      sameSite: "strict",
+      httpOnly: true,
+      signed: true,
+    });
     res.send({ user });
   } catch ({ name, message }) {
     next({
