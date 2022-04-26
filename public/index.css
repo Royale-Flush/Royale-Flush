@@ -1,0 +1,14 @@
+* {
+}
+
+body {
+  background-color: rgb(158, 152, 160);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  font-size: 14pt;
+  margin-left: 1rem;
+}
