@@ -1,8 +1,8 @@
-const opRouter = require("express").Router();
 const { ProductOrder } = require("../db/index");
+const opRouter = require("express").Router();
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = process.env;
 const { auth } = require("./utils");
+const { JWT_SECRET } = process.env;
 
 opRouter.post("/", async (req, res, next) => {
   const { productId, quantity, orderId } = req.body;

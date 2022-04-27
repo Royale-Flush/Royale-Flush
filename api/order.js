@@ -1,7 +1,8 @@
-const orderRouter = require("express").Router();
 const { editOrders, getOrdersByCustomerId, deleteOrders } = require("../db/models/orders");
+const orderRouter = require("express").Router();
 const { Order } = require("./models");
 const { auth } = require("./utils");
+const { JWT_SECRET } = process.env;
 
 orderRouter.get("/", async (req, res, next) => {
   const { isActive } = req.body;

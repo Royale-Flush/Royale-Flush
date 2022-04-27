@@ -1,5 +1,5 @@
-const userRouter = require("express").Router();
 const { Customer, Order } = require("../db/index");
+const userRouter = require("express").Router();
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
 const { auth } = require("./utils");
@@ -13,16 +13,6 @@ userRouter.get("/", async (req, res, next) => {
   }
 });
 
-// userRouter.get("/:password/customer", async (req, res, next) => {
-//   const { password } = req.params;
-//   try {
-//     const user = await Customer.getUserByPassword({ password });
-//     res.send({ user });
-//   } catch ({ name, message }) {
-//     next({ name: "Try Again!", message: "Password does not exist." });
-//   }
-// });
-
 userRouter.get("/:id", async (req, res, next) => {
   const { id } = req.params;
 
@@ -34,15 +24,10 @@ userRouter.get("/:id", async (req, res, next) => {
   }
 });
 
-// TODO get a customer's cart
-// * Customer.getCartByCustomerID
-
 userRouter.get("/:customerId/cart", async (req, res, next) => {
   const { customerId } = req.params;
-  console.log("!!@@!! customerID", customerId);
   try {
     const cart = await Order.getCartByCustomerId(customerId);
-    console.log("!!@@!!", cart);
     res.send(cart);
   } catch (error) {
     next(error);
@@ -59,6 +44,16 @@ userRouter.get("/:username", async (req, res, next) => {
   }
 });
 
+// userRouter.get("/:password/customer", async (req, res, next) => {
+//   const { password } = req.params;
+//   try {
+//     const user = await Customer.getUserByPassword({ password });
+//     res.send({ user });
+//   } catch ({ name, message }) {
+//     next({ name: "Try Again!", message: "Password does not exist." });
+//   }
+// });
+
 // userRouter.get('/:email/customer', async (req, res, next) => {
 //   const { email } = req.params
 //   try {
@@ -66,27 +61,6 @@ userRouter.get("/:username", async (req, res, next) => {
 //     res.send({ emailUser })
 //   } catch ({ name, message }) {
 //     next({ name: 'Try Again!', message: 'Email does not exist.' })
-//   }
-// })
-
-// userRouter.post('/', async (req, res, next) => {
-//   const { username, password, name, address, email, phone, payment } = req.body
-//   try {
-//     const newUser = await Customer.createUser({
-//       username,
-//       password,
-//       name,
-//       address,
-//       email,
-//       phone,
-//       payment,
-//     })
-//     res.send({ newUser })
-//   } catch ({ name, message }) {
-//     next({
-//       name: 'Error',
-//       message: "Didn't create a new user",
-//     })
 //   }
 // })
 

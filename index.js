@@ -1,44 +1,45 @@
-require('dotenv').config()
-const PORT = process.env.PORT || 4000
-const client = require('./db/client')
-const express = require('express')
-const morgan = require('morgan')
-const cors = require('cors')
-const path = require('path')
-const server = express()
+require("dotenv").config();
 
-const cookieParser = require('cookie-parser')
+const express = require("express");
+const server = express();
 
-const { COOKIE_SECRET } = process.env
+const cors = require("cors");
+server.use(cors());
 
-server.use(cors())
-server.use(express.json())
-server.use(morgan('dev'))
+const morgan = require("morgan");
+server.use(morgan("dev"));
 
-console.log('cookie secret', COOKIE_SECRET)
+const cookieParser = require("cookie-parser");
+const { COOKIE_SECRET } = process.env;
+server.use(cookieParser(COOKIE_SECRET));
 
-server.use(cookieParser(COOKIE_SECRET))
+server.use(express.json());
 
-server.use(express.static(path.join(__dirname, 'build')))
+const path = require("path");
+server.use(express.static(path.join(__dirname, "build")));
 
-server.use('/api', require('./api'))
-
-server.use((error, req, res, next) => {
-  res.status(500).send(error)
-})
+server.use("/api", require("./api"));
 
 server.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+const client = require("./db/client");
+
+const PORT = process.env.PORT || 4000;
+
+server.use((error, req, res, next) => {
+  res.status(500).send(error);
+});
 
 const handle = server.listen(PORT, async () => {
-  console.log(`Server is running on ${PORT}!`)
+  console.log(`Server is running on ${PORT}!`);
   try {
-    client.connect()
-    console.log('Database is open for business!')
+    client.connect();
+    console.log("Database is open for business!");
   } catch (error) {
-    console.error('Database is closed for repairs!\n', error)
+    console.error("Database is closed for repairs!\n", error);
   }
-})
+});
 
-module.exports = { server, handle }
+module.exports = { server, handle };
