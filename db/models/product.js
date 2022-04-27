@@ -1,4 +1,4 @@
-const client = require("../client");
+const client = require('../client')
 
 async function createProduct({ categoryId, name, price }) {
   try {
@@ -12,23 +12,23 @@ async function createProduct({ categoryId, name, price }) {
         RETURNING *;
         `,
       [categoryId, name, price]
-    );
+    )
     //console.log("bunch of random ass text: ", product);
-    return product;
+    return product
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
-async function deleteProduct({ id }) {
+async function deleteProduct(id) {
   try {
     await client.query(
       `DELETE FROM orderproduct
-   WHERE "productId" = $1
+      WHERE "productId" = $1
    ;
    `,
       [id]
-    );
+    )
 
     const {
       rows: [product],
@@ -38,11 +38,11 @@ async function deleteProduct({ id }) {
             WHERE id = ${id}
             RETURNING *;
             `
-    );
+    )
     // console.log("deleting shit: ", product);
-    return product;
+    return product
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
@@ -52,11 +52,11 @@ async function getAllProducts() {
       `
       SELECT * FROM product
     `
-    );
+    )
     // console.log("getting shit: ", rows);
-    return rows;
+    return rows
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
@@ -68,11 +68,11 @@ async function getProductsByCategory({ categoryId }) {
         where "categoryId" = $1
                 `,
       [categoryId]
-    );
+    )
     // console.log("getting stuff based on categories: ", rows);
-    return rows;
+    return rows
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
@@ -92,11 +92,11 @@ async function EditProduct({ id, name, price }) {
     RETURNING *;
     `,
       [name, price, id]
-    );
+    )
     // console.log("adding a shit ton of text : ", product);
-    return product;
+    return product
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 async function getProductById({ id }) {
@@ -109,11 +109,11 @@ async function getProductById({ id }) {
     WHERE id = $1
     `,
       [id]
-    );
+    )
     // console.log("Gonna get all the product's by their ID's: ", product);
-    return product;
+    return product
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
@@ -124,4 +124,4 @@ module.exports = {
   getProductsByCategory,
   EditProduct,
   getProductById,
-};
+}

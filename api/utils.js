@@ -1,19 +1,19 @@
-const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../.env");
+const jwt = require('jsonwebtoken')
+const { JWT_SECRET } = process.env
 
 const auth = async (req, res, next) => {
-  const token = req.signedCookies.token;
+  const token = req.signedCookies.token
   try {
-    const user = await jwt.verify(token, JWT_SECRET);
-    req.user = user;
+    const user = await jwt.verify(token, JWT_SECRET)
+    req.user = user
   } catch (error) {
     res.status(401).send({
       loggedIn: false,
-      message: "You are super not authorized.",
-    });
-    return;
+      message: 'You are super not authorized.',
+    })
+    return
   }
-  next();
-};
+  next()
+}
 
-module.exports = { auth };
+module.exports = { auth }

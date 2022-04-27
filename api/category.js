@@ -1,17 +1,18 @@
-const catRouter = require("express").Router();
-const { Categories, Product, ProductOrder } = require("../db/index");
-const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../.env");
-const { auth } = require("./utils");
+const catRouter = require('express').Router()
+const { Categories, Product, ProductOrder } = require('../db/index')
+const jwt = require('jsonwebtoken')
+const { JWT_SECRET } = process.env
+const { auth } = process.env
 
-catRouter.get("/", async (req, res, next) => {
+catRouter.get('/', async (req, res, next) => {
   try {
-    const everything = await Categories.getAllCategories();
-    res.send(everything);
+    const everything = await Categories.getAllCategories()
+    console.log(everything)
+    res.send(everything)
   } catch ({ name, message }) {
-    next({ name: "Definitely an Error", message: "Definitely made a mistake" });
+    next({ name: 'Definitely an Error', message: 'Definitely made a mistake' })
   }
-});
+})
 
 // catRouter.post("/", async (req, res, next) => {
 //   const { name, tags } = req.body;
@@ -27,4 +28,4 @@ catRouter.get("/", async (req, res, next) => {
 //   }
 // });
 
-module.exports = catRouter;
+module.exports = catRouter

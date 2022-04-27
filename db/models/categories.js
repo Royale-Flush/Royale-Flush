@@ -1,4 +1,4 @@
-const client = require("../client");
+const client = require('../client')
 
 async function createCategories({ name, tags }) {
   try {
@@ -12,11 +12,11 @@ async function createCategories({ name, tags }) {
         RETURNING *;
         `,
       [name, tags]
-    );
-    console.log(categories);
-    return categories;
+    )
+    console.log(categories)
+    return categories
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 async function destroyCategory({ categoryId, productId }) {
@@ -28,14 +28,14 @@ async function destroyCategory({ categoryId, productId }) {
 
     `,
       [productId]
-    );
+    )
     await client.query(
       `
     DELETE from product*
     WHERE "categoryId"=$1
     `,
       [categoryId]
-    );
+    )
     const { rows } = await client.query(
       `
   DELETE FROM categories*
@@ -44,11 +44,11 @@ async function destroyCategory({ categoryId, productId }) {
   
   `,
       [categoryId]
-    );
+    )
     // console.log("what", rows);
-    return rows;
+    return rows
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 async function editCategory({ id, name, tags }) {
@@ -63,28 +63,26 @@ async function editCategory({ id, name, tags }) {
     RETURNING*;
     `,
       [name, tags, id]
-    );
+    )
 
     // console.log("we can EDIT!!!:", categories);
-    return categories;
+    return categories
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
 async function getAllCategories() {
   try {
-    const {
-      rows: [categories],
-    } = await client.query(
+    const { rows } = await client.query(
       `
     select * from categories
     `
-    );
+    )
     // console.log("getting all categories: ", categories)
-    return categories;
+    return rows
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
@@ -98,11 +96,11 @@ async function getCategoryByName({ name }) {
       where name = $1
       `,
       [name]
-    );
+    )
     // console.log("getting categories by name: ", category)
-    return category;
+    return category
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
@@ -112,4 +110,4 @@ module.exports = {
   editCategory,
   getAllCategories,
   getCategoryByName,
-};
+}

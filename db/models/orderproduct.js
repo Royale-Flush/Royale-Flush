@@ -1,5 +1,5 @@
-const { ProductOrder } = require(".");
-const client = require("../client");
+const { ProductOrder } = require('.')
+const client = require('../client')
 
 async function createProductOrders({ productId, quantity, orderId }) {
   try {
@@ -12,11 +12,11 @@ async function createProductOrders({ productId, quantity, orderId }) {
           RETURNING *;
           `,
       [productId, orderId, quantity]
-    );
+    )
 
-    return orders;
+    return orders
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
@@ -30,14 +30,14 @@ async function getOrderProductById({ productId }) {
     WHERE id = $1
     `,
       [productId]
-    );
+    )
     console.log(
       "Gonna get all the ordered product by their product ID's: ",
       ProductOrder
-    );
-    return productId;
+    )
+    return productId
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
@@ -49,31 +49,30 @@ async function getQuantityById({ productId }) {
     WHERE id = $1
     `,
       [productId]
-    );
-    console.log("Gonna get all the quantity by their product ID's: ", quantity);
-    return quantity;
+    )
+    console.log("Gonna get all the quantity by their product ID's: ", quantity)
+    return quantity
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
-async function editQuantity({ id, quantity }) {
+async function editQuantity({ productId, orderId, quantity }) {
   try {
     const {
       rows: [orderProduct],
     } = await client.query(
       `
     UPDATE orderproduct
-    SET quantity =$2
-    WHERE id = $1
+    SET quantity =$3
+    WHERE "orderId" = $2 and "productId" = $1
     RETURNING*; 
     `,
-      [id, quantity]
-    );
-    console.log("changed quantity?", orderProduct);
-    return orderProduct;
+      [productId, orderId, +quantity]
+    )
+    return orderProduct
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
@@ -82,5 +81,5 @@ module.exports = {
   getOrderProductById,
   getQuantityById,
   editQuantity,
-};
+}
 //Need to make sure order ID's created are unique, table is set to give up on conflict
