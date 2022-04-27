@@ -1,4 +1,4 @@
-const client = require('../client')
+const client = require("../client");
 
 async function createOrders({ customerId, totalAmount }) {
   try {
@@ -11,11 +11,11 @@ async function createOrders({ customerId, totalAmount }) {
           RETURNING *;
           `,
       [customerId, totalAmount]
-    )
+    );
 
-    return orders
+    return orders;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -28,11 +28,11 @@ async function getOrdersByCustomerId({ customerId }) {
       SELECT * FROM orders 
       WHERE "customerId" = $1;`,
       [customerId]
-    )
+    );
     // console.log("Line 33 ", orders);
-    return orders
+    return orders;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -48,11 +48,11 @@ async function editOrders({ id, totalAmount, isActive }) {
       RETURNING *
       `,
       [totalAmount, isActive, id]
-    )
+    );
     // console.log("Line 53", orders);
-    return orders
+    return orders;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -68,11 +68,11 @@ async function deleteOrders({ id }) {
       ;
       `,
       [id]
-    )
+    );
     // console.log("Line 72", orders);
-    return orders
+    return orders;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -84,11 +84,11 @@ async function getAllActiveOrders({ isActive }) {
       WHERE isActive = $1
       `,
       [isActive]
-    )
+    );
     // console.log("line 90", rows);
-    return rows
+    return rows;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -103,11 +103,11 @@ async function getTotalAmount({ customerId }) {
     
     `,
       [customerId]
-    )
+    );
     // console.log("Line 109", orders);
-    return orders
+    return orders;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -135,8 +135,8 @@ async function getCartByCustomerId(customerId) {
     GROUP BY orders.id, orderproduct."orderId"
   `,
     [customerId]
-  )
-  return cart
+  );
+  return cart;
 }
 
 module.exports = {
@@ -147,4 +147,4 @@ module.exports = {
   deleteOrders,
   getAllActiveOrders,
   getTotalAmount,
-}
+};

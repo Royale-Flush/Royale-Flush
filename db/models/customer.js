@@ -1,15 +1,15 @@
-const { Pool } = require('pg/lib')
-const client = require('../client')
+const { Pool } = require("pg/lib");
+const client = require("../client");
 
 async function getAllUsers() {
   try {
     const { rows } = await client.query(`
     SELECT * FROM customer
-    `)
+    `);
     // console.log("Gonna get all the users: ", rows);
-    return rows
+    return rows;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -33,12 +33,12 @@ async function createUser({
       RETURNING *;
       `,
       [username, password, name, address, email, phone, payment]
-    )
-    if (user === undefined) return null
+    );
+    if (user === undefined) return null;
     // console.log("Gonna create all the users: ", user);
-    return user
+    return user;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -52,11 +52,11 @@ async function getUserById({ id }) {
     WHERE id = $1
     `,
       [id]
-    )
+    );
     // console.log("Gonna get all the users by their ID's: ", user);
-    return user
+    return user;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -68,11 +68,11 @@ async function getUserByPassword({ password }) {
     WHERE password = $1
     `,
       [password]
-    )
+    );
     // console.log("Gonna get all the users by their passwords: ", user);
-    return user
+    return user;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 async function getUserByEmail({ email }) {
@@ -83,11 +83,11 @@ async function getUserByEmail({ email }) {
     WHERE email = $1
     `,
       [email]
-    )
+    );
     // console.log("Gonna get all the users by their emails: ", user);
-    return user
+    return user;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 async function destroyUser({ id }) {
@@ -98,7 +98,7 @@ async function destroyUser({ id }) {
     WHERE "customerId"=$1
     `,
       [id]
-    )
+    );
     const {
       rows: [user],
     } = await client.query(
@@ -109,11 +109,11 @@ async function destroyUser({ id }) {
   
   `,
       [id]
-    )
-    console.log('what', user)
-    return user
+    );
+    console.log("what", user);
+    return user;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 async function updateUser({
@@ -136,11 +136,11 @@ async function updateUser({
     RETURNING*; 
     `,
       [password, name, address, email, phone, payment, id]
-    )
-    console.log('did we update?', user)
-    return user
+    );
+    console.log("did we update?", user);
+    return user;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -153,9 +153,27 @@ const getUserByUsername = async ({ username }) => {
     WHERE customer.username = $1
     `,
     [username]
-  )
-  delete customer.password
-  return customer
+  );
+  delete customer.password;
+  return customer;
+};
+
+async function getUserById(id) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+    SELECT * FROM customer
+    WHERE id = $1
+    `,
+      [id]
+    );
+    console.log("Gonna get all the users by their ID's: ", user);
+    return user;
+  } catch (error) {
+    throw error;
+  }
 }
 
 module.exports = {
@@ -167,4 +185,4 @@ module.exports = {
   destroyUser,
   updateUser,
   getUserByUsername,
-}
+};
