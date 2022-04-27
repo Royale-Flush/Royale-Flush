@@ -12,3 +12,36 @@ a {
   font-size: 14pt;
   margin-left: 1rem;
 }
+
+.navbar {
+  display: flex;
+  border: 1px solid red;
+  background-color: goldenrod;
+  margin-bottom: 2rem;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.hyperLink {
+  text-decoration: none;
+  color: white;
+}
+
+.hyperLink:hover {
+  background-size: 100% 90%;
+  background: linear-gradient(90deg, #07effd 0%, #005fff 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.4rem;
+  background-position: 0 90%;
+  transition: all 0.3s ease-in-out;
+  font-size: larger;
+  font-weight: bolder
+}
+
+h3 {
+  font-size: xx-large;
+  color: white;
+}
+
+

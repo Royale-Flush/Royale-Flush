@@ -7,19 +7,31 @@ function App() {
   const { user } = useAuth();
   return (
     <div>
-      <header>
-        <h3>Royal Flush Homepage</h3>
-        <Link to="/">Home</Link>
-        <Link to="/Inventory">Inventory</Link>
+      <header className="navbar">
+        <h3>Royal Flush </h3>
+        <Link className="hyperLink" to="/">
+          Home
+        </Link>
+        <Link className="hyperLink" to="/Inventory">
+          Inventory
+        </Link>
         {user.id ? (
           <>
-            <Link to="/Logout">Logout</Link>
-            <Link to="/cart">Cart</Link>
+            <Link className="hyperLink" to="/Logout">
+              Logout
+            </Link>
+            <Link className="hyperLink" to="/cart">
+              Cart
+            </Link>
           </>
         ) : (
           <>
-            <Link to="/Login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+            <Link className="hyperLink" to="/Login">
+              Login
+            </Link>
+            <Link className="hyperLink" to="/signup">
+              Sign Up
+            </Link>
           </>
         )}
       </header>
