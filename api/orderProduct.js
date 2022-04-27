@@ -1,25 +1,25 @@
-const opRouter = require('express').Router()
-const { ProductOrder } = require('../db/index')
-const jwt = require('jsonwebtoken')
-const { JWT_SECRET } = require('../.env')
-const { auth } = require('./utils')
+const opRouter = require("express").Router();
+const { ProductOrder } = require("../db/index");
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = process.env;
+const { auth } = require("./utils");
 
-opRouter.post('/', async (req, res, next) => {
-  const { productId, quantity, orderId } = req.body
+opRouter.post("/", async (req, res, next) => {
+  const { productId, quantity, orderId } = req.body;
   try {
     const newOProd = await ProductOrder.createProductOrders({
       productId,
       quantity,
       orderId,
-    })
-    res.send(newOProd)
+    });
+    res.send(newOProd);
   } catch ({ name, message }) {
     next({
-      name: 'Error',
-      message: 'cannot creat new product orders',
-    })
+      name: "Error",
+      message: "cannot creat new product orders",
+    });
   }
-})
+});
 // opRouter.get("/:productId/orderProduct", async (req, res, next) => {
 //   const { productId } = req.params;
 //   try {
@@ -40,23 +40,23 @@ opRouter.post('/', async (req, res, next) => {
 // })
 
 opRouter.patch(
-  '/:orderId/:productId/:quantity',
+  "/:orderId/:productId/:quantity",
   auth,
   async (req, res, next) => {
-    const { productId, orderId, quantity } = req.params
+    const { productId, orderId, quantity } = req.params;
     try {
       const edit = await ProductOrder.editQuantity({
         productId,
         orderId,
         quantity,
-      })
-      res.send(edit)
+      });
+      res.send(edit);
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
-)
+);
 
 // DELETE FROM CART { orderId, productId}
 
-module.exports = opRouter
+module.exports = opRouter;
