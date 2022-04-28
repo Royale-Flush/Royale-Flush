@@ -1,11 +1,7 @@
 import React from "react";
 
 const Cart = () => {
-  return (
-    <div className="images">
-      <img src="https://i.imgur.com/arzXgMz.png" alt="Happiness" />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Cart;

@@ -4,7 +4,7 @@ const {
   deleteOrders,
 } = require("../db/models/orders");
 const orderRouter = require("express").Router();
-const { Order } = require("./models");
+const { Order } = require("../db/index");
 const { auth } = require("./utils");
 const { JWT_SECRET } = process.env;
 
@@ -15,9 +15,7 @@ orderRouter.get("/", async (req, res, next) => {
   };
   try {
     const getAllOrders = await Order.getAllActiveOrders({ isActive });
-    res.send({
-      getAllOrders,
-    });
+    res.send(getAllOrders);
   } catch ({ name, message }) {
     next({ name: "Error", message: "No active order found" });
   }
@@ -28,17 +26,17 @@ orderRouter.get("/:customerId/order", async (req, res, next) => {
   const { customerId } = req.params;
   try {
     const order = await Order.getOrdersByCustomerId({ customerId });
-    res.send({ order });
+    res.send(order);
   } catch ({ name, message }) {
     next({ name: "Error", message: "Error retrieving your order" });
   }
 });
 
-orderRouter.post("/", async,  (req, res, next) => {
+orderRouter.post("/", async (req, res, next) => {
   const { customerId, totalAmount } = req.body;
   try {
     const newOrder = await Order.createOrders({ customerId, totalAmount });
-    res.send({ newOrder });
+    res.send(newOrder);
   } catch ({ name, message }) {
     next({ name: "Error", message: "Error creating order" });
   }
