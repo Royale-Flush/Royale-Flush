@@ -7,8 +7,10 @@ function App() {
   const { user } = useAuth();
   return (
     <div>
-      <header className="navbar">
-        <h3>Royal Flush </h3>
+      <header id="title01" className="navbar">
+        <h3 id="mask" className="box">
+          Royal Flush{" "}
+        </h3>
         <Link className="hyperLink" to="/">
           Home
         </Link>
