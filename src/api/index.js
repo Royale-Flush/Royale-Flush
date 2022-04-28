@@ -53,21 +53,11 @@ export const registerUser = async (username, password) => {
     return error;
   }
 };
-export const createProduct = async (categoryId, name, price) => {
-  const response = await fetch(`${URL}/products/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-    body: JSON.stringify({
-      post: {
-        categoryId,
-        name,
-        price,
-      },
-    }),
-  });
+export const getAllProducts = async () => {
+  const response = await fetch(`/api/products`);
+  const data = await response.json();
+  console.log("93093903");
+  return data;
 };
 export const logout = async () => {
   const response = await fetch("/api/auth/logout");

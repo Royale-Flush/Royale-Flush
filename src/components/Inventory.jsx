@@ -1,56 +1,44 @@
-import React from "react";
-import { createProduct } from "../api/index";
-
-const Inventory = () => {
-  const { user, isLoggedIn, setIsLoggedIn } = useAuth();
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  return (
-    <div>
-      <h2>Hello</h2>
-      <div>
-        <form
-          onSubmit={async (e) => {
-            e.preventDefault();
-            try {
-              const response = await createProduct(name, price);
-              console.log("111111", response);
-              //check if response works
-              setIsLoggedIn(true);
-            } catch (error) {
-              console.error("Username and password does not exist.", error);
-            }
-          }}
-        >
-          <input
-            type="text"
-            value={name}
-            placeholder="Name of New Toilet:"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
-
-          <input
-            type="text"
-            value={price}
-            placeholder="Price:"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-          <button type="submit">New Toilet</button>
-        </form>
-      </div>
-
-      <div
-        style={{
-          display: isLoggedIn ? "block" : "none",
-        }}
-      >
-        <h3>WELCOME BACK {`${username}`}!</h3>
-      </div>
-    </div>
-  );
+import React, { useEffect, useState } from "react";
+import { getAllProducts } from "../api/index";
+const Inventory = ({ products, setProducts }) => {
+  const Inventory = () => {
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+      const getProducts = async () => {
+        const response = await getAllProducts();
+        setProducts(response);
+      };
+      getProducts();
+    }, [setProducts]);
+    return (
+      <>
+        <h1>Products</h1>
+      </>
+    );
+  };
 };
+
+// import React, { useEffect, useState } from "react";
+// import { getAllProducts } from "../api/index";
+// // import { SingleRoutine, NewRoutine } from "./";
+
+// const Inventory = () => {
+//   const [products, setProducts] = useState([]);
+//   useEffect(() => {
+//     const getProducts = async () => {
+//       const response = await getAllProducts();
+//       setProducts(response);
+//     };
+//     getProducts();
+//   }, [setProducts]);
+//   return(
+//     <div className="container">
+//       <div className="product-page">
+//         {products.map((products, i) => {
+//           return <Inventory key={i} products={products} />;
+//         })}
+//       </div>
+//     </div>
+//   );
+// };
 export default Inventory;
