@@ -23,6 +23,8 @@ authRouter.post("/register", async (req, res, next) => {
     console.log(user);
     delete user.password;
 
+    // create a cart for them in the db
+
     const token = jwt.sign(user, JWT_SECRET);
     console.log("token", token);
     res.cookie("token", token, {
@@ -30,7 +32,7 @@ authRouter.post("/register", async (req, res, next) => {
       httpOnly: true,
       signed: true,
     });
-    console.log("user", user);
+    // console.log("user", user);
     res.send(user);
   } catch (error) {
     next({
@@ -42,20 +44,22 @@ authRouter.post("/register", async (req, res, next) => {
 
 authRouter.post("/login", async (req, res, next) => {
   try {
-    console.log("fsdfjcdcsc", login);
     const { username, password } = req.body;
     const user = await Customer.getUserByUsername(username);
     const validPassword = await bcrypt.compare(password, user.password);
+    console.log(user, password);
     if (validPassword) {
-      delete user.password;
+      console.log("user", user);
+      delete Customer.password;
       const token = jwt.sign(user, JWT_SECRET);
       res.cookie("token", token, {
         sameSite: "strict",
         httpOnly: true,
         signed: true,
       });
-      res.send(user);
     }
+    delete user.password;
+    res.send(user);
   } catch (error) {
     next(error);
   }

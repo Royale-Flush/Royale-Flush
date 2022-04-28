@@ -154,8 +154,8 @@ const getUserByUsername = async (username) => {
     `,
     [username]
   );
-  delete customer.password;
-  console.log("look at me", customer);
+  // delete customer.password;
+  // console.log("look at me", customer);
   return customer;
 };
 

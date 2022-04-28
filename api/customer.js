@@ -1,17 +1,17 @@
-const userRouter = require('express').Router()
-const { Customer } = require('../db/index')
-const jwt = require('jsonwebtoken')
-const { JWT_SECRET } = process.env
-const { auth } = require('./utils')
+const userRouter = require("express").Router();
+const { Customer } = require("../db/index");
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = process.env;
+const { auth } = require("./utils");
 
-userRouter.get('/', async (req, res, next) => {
+userRouter.get("/", async (req, res, next) => {
   try {
-    const everyone = await Customer.getAllUsers()
-    res.send(everyone)
+    const everyone = await Customer.getAllUsers();
+    res.send(everyone);
   } catch ({ name, message }) {
-    next({ name: 'Definitely an Error', message: 'Definitely made a mistake' })
+    next({ name: "Definitely an Error", message: "Definitely made a mistake" });
   }
-})
+});
 
 // userRouter.get("/:password/customer", async (req, res, next) => {
 //   const { password } = req.params;
@@ -28,23 +28,23 @@ userRouter.get('/', async (req, res, next) => {
 // TODO get a customer's cart
 // * Customer.getCartByCustomerID
 
-userRouter.get('/:customerId/cart', async (req, res, next) => {
+userRouter.get("/:customerId/cart", async (req, res, next) => {
   try {
     // get the cart from the db
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
-userRouter.get('/:username', async (req, res, next) => {
-  const { username } = req.params
+userRouter.get("/:username", async (req, res, next) => {
+  const { username } = req.params;
   try {
-    const theUser = await Customer.getUserByUsername({ username })
-    res.send(theUser)
+    const theUser = await Customer.getUserByUsername(username);
+    res.send(theUser);
   } catch ({ name, message }) {
-    next({ name: 'Try Again!', message: 'Username does not exist.' })
+    next({ name: "Try Again!", message: "Username does not exist." });
   }
-})
+});
 
 // userRouter.get('/:email/customer', async (req, res, next) => {
 //   const { email } = req.params
@@ -78,9 +78,9 @@ userRouter.get('/:username', async (req, res, next) => {
 // })
 
 // * ------- STRETCH GOAL -------------
-userRouter.patch('/:customerId', auth, async (req, res, next) => {
-  const { customerId } = req.params
-  const { password, name, address, email, phone, payment } = req.body
+userRouter.patch("/:customerId", auth, async (req, res, next) => {
+  const { customerId } = req.params;
+  const { password, name, address, email, phone, payment } = req.body;
   try {
     const updated = await Customer.updateUser({
       password,
@@ -90,25 +90,25 @@ userRouter.patch('/:customerId', auth, async (req, res, next) => {
       phone,
       payment,
       id: customerId,
-    })
+    });
 
-    res.send(updated)
+    res.send(updated);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 // * ----------- STRETCH GOAL --------------
-userRouter.delete('/:customerId', auth, async (req, res, next) => {
-  const id = req.params.customerId
+userRouter.delete("/:customerId", auth, async (req, res, next) => {
+  const id = req.params.customerId;
   try {
-    await getUserById(id)
-    const deleteUser = await Customer.destroyUser({ id })
+    await getUserById(id);
+    const deleteUser = await Customer.destroyUser({ id });
 
-    res.send(deleteUser)
+    res.send(deleteUser);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
-module.exports = userRouter
+module.exports = userRouter;
