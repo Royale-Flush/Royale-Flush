@@ -1,5 +1,4 @@
-const { ProductOrder } = require('.')
-const client = require('../client')
+const client = require("../client");
 
 async function createProductOrders({ productId, quantity, orderId }) {
   try {
@@ -12,11 +11,11 @@ async function createProductOrders({ productId, quantity, orderId }) {
           RETURNING *;
           `,
       [productId, orderId, quantity]
-    )
+    );
 
-    return orders
+    return orders;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -30,14 +29,14 @@ async function getOrderProductById({ productId }) {
     WHERE id = $1
     `,
       [productId]
-    )
+    );
     console.log(
       "Gonna get all the ordered product by their product ID's: ",
       ProductOrder
-    )
-    return productId
+    );
+    return productId;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -49,11 +48,11 @@ async function getQuantityById({ productId }) {
     WHERE id = $1
     `,
       [productId]
-    )
-    console.log("Gonna get all the quantity by their product ID's: ", quantity)
-    return quantity
+    );
+    console.log("Gonna get all the quantity by their product ID's: ", quantity);
+    return quantity;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -69,10 +68,10 @@ async function editQuantity({ productId, orderId, quantity }) {
     RETURNING*; 
     `,
       [productId, orderId, +quantity]
-    )
-    return orderProduct
+    );
+    return orderProduct;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -81,5 +80,5 @@ module.exports = {
   getOrderProductById,
   getQuantityById,
   editQuantity,
-}
+};
 //Need to make sure order ID's created are unique, table is set to give up on conflict
