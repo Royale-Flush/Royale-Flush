@@ -15,8 +15,7 @@ const Login = () => {
             e.preventDefault();
             try {
               const response = await loginUser(username, password);
-              console.log("111111", response);
-              //check if response works
+              console.log("response after login", response);
               setIsLoggedIn(true);
             } catch (error) {
               console.error("Username and password does not exist.", error);
@@ -49,7 +48,7 @@ const Login = () => {
           display: isLoggedIn ? "block" : "none",
         }}
       >
-        <h3>WELCOME BACK {`${username}`}!</h3>
+        {/* <h3>WELCOME BACK {`${username}`}!</h3> */}
       </div>
     </div>
   );

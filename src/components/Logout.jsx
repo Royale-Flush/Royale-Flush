@@ -1,37 +1,17 @@
-// import React from "react";
-
-// const Logout = () => {
-//   return (
-//     <div>
-//       <h1>hello</h1>
-//     </div>
-//   );
-// };
-
 // export default Logout;
-import React, { useState } from "react";
+
+import { logout } from "../api";
 import useAuth from "../hooks/useAuth";
 
 const Logout = () => {
-  const { token, setToken } = useAuth();
+  const { setIsLoggedIn } = useAuth();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-  const logoutUser = () => {
-    localStorage.removeItem("token");
+  const handleClick = async () => {
+    await logout();
     setIsLoggedIn(false);
-    setToken(localStorage.removeitem("token"));
   };
 
-  return (
-    <form
-      onSubmit={() => {
-        logoutUser();
-      }}
-    >
-      <button type="submit">Logout</button>
-    </form>
-  );
+  return <button onClick={handleClick}>Logout</button>;
 };
 
 export default Logout;
