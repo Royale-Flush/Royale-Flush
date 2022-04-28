@@ -1,0 +1,23 @@
+// import AuthContext from "../AuthContext";  cart context
+import { useState, useEffect } from "react";
+import { getCart } from "../api";
+
+const cartProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const getMyUserFunction = async () => {
+      const result = await getMe();
+      setUser(result);
+    };
+    getMyUserFunction();
+  }, [setUser]);
+
+  return (
+    <cartContext.Provider value={{ user, setUser }}>
+      {children}
+    </cartContext.Provider>
+  );
+};
+
+export default cartProvider;

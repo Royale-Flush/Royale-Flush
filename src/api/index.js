@@ -34,3 +34,18 @@ export const registerUser = async (username, password) => {
     return error;
   }
 };
+
+export const getCart = async (username, password) => {
+  try {
+    const response = await fetch(`${URL}/customer/:customerId/cart`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
