@@ -5,6 +5,8 @@ import useAuth from "./hooks/useAuth";
 
 function App() {
   const { user } = useAuth();
+
+  console.log("The User in App.js:", user);
   return (
     <div>
       <header id="title01" className="navbar">
@@ -19,12 +21,10 @@ function App() {
         </Link>
         {user.id ? (
           <>
-            <Link className="hyperLink" to="/Logout">
-              Logout
-            </Link>
-            <Link className="hyperLink" to="/cart">
-              Cart
-            </Link>
+
+            <Logout />
+            <Link to="/cart">Cart</Link>
+
           </>
         ) : (
           <>
@@ -42,7 +42,6 @@ function App() {
         <Route path="/checkout" element={<Cart />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
         <Route path="/signup" element={<Register />} />
       </Routes>
     </div>
