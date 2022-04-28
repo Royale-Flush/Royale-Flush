@@ -15,19 +15,9 @@ export const getMe = async (token) => {
 };
 
 export const getCart = async (token) => {
-  try {
-    const response = await fetch(`/api/order/:customerId/order`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    return error;
-  }
+  const response = await fetch(`/api/order/:customerId/order`);
+  const data = await response.json();
+  return data;
 };
 
 export const registerUser = async (username, password) => {
