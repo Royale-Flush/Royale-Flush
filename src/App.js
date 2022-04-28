@@ -5,21 +5,35 @@ import useAuth from "./hooks/useAuth";
 
 function App() {
   const { user } = useAuth();
+
+  console.log("The User in App.js:", user);
   return (
     <div>
-      <header>
-        <h3>Royal Flush Homepage</h3>
-        <Link to="/">Home</Link>
-        <Link to="/Inventory">Inventory</Link>
+      <header id="title01" className="navbar">
+        <h3 id="mask" className="box">
+          Royal Flush{" "}
+        </h3>
+        <Link className="hyperLink" to="/">
+          Home
+        </Link>
+        <Link className="hyperLink" to="/Inventory">
+          Inventory
+        </Link>
         {user.id ? (
           <>
-            <Link to="/Logout">Logout</Link>
+
+            <Logout />
             <Link to="/cart">Cart</Link>
+
           </>
         ) : (
           <>
-            <Link to="/Login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+            <Link className="hyperLink" to="/Login">
+              Login
+            </Link>
+            <Link className="hyperLink" to="/signup">
+              Sign Up
+            </Link>
           </>
         )}
       </header>
@@ -28,7 +42,6 @@ function App() {
         <Route path="/checkout" element={<Cart />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
         <Route path="/signup" element={<Register />} />
       </Routes>
     </div>

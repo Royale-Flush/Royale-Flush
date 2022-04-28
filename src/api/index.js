@@ -1,8 +1,8 @@
-const URL = "https://royale-flush.herokuapp.com/api";
+// const URL = "https://royale-flush.herokuapp.com/api";
 
 export const loginUser = async (username, password) => {
   try {
-    const response = await fetch(`${URL}/auth/login`, {
+    const response = await fetch(`/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -12,6 +12,7 @@ export const loginUser = async (username, password) => {
         password,
       }),
     });
+
     const data = await response.json();
     return data;
   } catch (error) {
@@ -20,7 +21,7 @@ export const loginUser = async (username, password) => {
 };
 export const getMe = async (token) => {
   try {
-    const response = await fetch(`${URL}/auth/me`, {
+    const response = await fetch(`/api/auth/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +37,7 @@ export const getMe = async (token) => {
 
 export const registerUser = async (username, password) => {
   try {
-    const response = await fetch(`${URL}/auth/register`, {
+    const response = await fetch(`/api/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,4 +68,9 @@ export const createProduct = async (categoryId, name, price) => {
       },
     }),
   });
+};
+export const logout = async () => {
+  const response = await fetch("/api/auth/logout");
+  const data = await response.json();
+  return response;
 };

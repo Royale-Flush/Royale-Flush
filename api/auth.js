@@ -1,16 +1,16 @@
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const { JWT_SECRET } = process.env
-const authRouter = require('express').Router()
-const { Customer } = require('../db/index')
-const { auth } = require('./utils')
-const count = 10
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = process.env;
+const authRouter = require("express").Router();
+const { Customer } = require("../db/index");
+const { auth } = require("./utils");
+const count = 10;
 
-authRouter.post('/register', async (req, res, next) => {
+authRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password, name, address, email, phone, payment } =
-      req.body
-    const hashedPassword = await bcrypt.hash(password, count)
+      req.body;
+    const hashedPassword = await bcrypt.hash(password, count);
     const user = await Customer.createUser({
       username,
       password: hashedPassword,
@@ -19,69 +19,74 @@ authRouter.post('/register', async (req, res, next) => {
       email,
       phone,
       payment,
-    })
-    console.log(user)
-    delete user.password
+    });
+    console.log(user);
+    delete user.password;
 
-    const token = jwt.sign(user, JWT_SECRET)
-    console.log('token', token)
-    res.cookie('token', token, {
-      sameSite: 'strict',
+    // create a cart for them in the db
+
+    const token = jwt.sign(user, JWT_SECRET);
+    console.log("token", token);
+    res.cookie("token", token, {
+      sameSite: "strict",
       httpOnly: true,
       signed: true,
-    })
-    console.log('user', user)
-    res.send(user)
+    });
+    // console.log("user", user);
+    res.send(user);
   } catch (error) {
     next({
-      name: 'Error Creating new account',
-      message: 'Error Creating new account',
-    })
+      name: "Error Creating new account",
+      message: "Error Creating new account",
+    });
   }
-})
+});
 
-authRouter.post('/login', async (req, res, next) => {
+authRouter.post("/login", async (req, res, next) => {
   try {
-    const { username, password } = req.body
-    const user = await Customer.getUserByUsername({ username })
-    const validPassword = await bcrypt.compare(password, user.password)
+    const { username, password } = req.body;
+    const user = await Customer.getUserByUsername(username);
+    const validPassword = await bcrypt.compare(password, user.password);
+    console.log(user, password);
     if (validPassword) {
-      delete user.password
-      const token = jwt.sign(user, JWT_SECRET)
-      res.cookie('token', token, {
-        sameSite: 'strict',
+      console.log("user", user);
+      delete Customer.password;
+      const token = jwt.sign(user, JWT_SECRET);
+      res.cookie("token", token, {
+        sameSite: "strict",
         httpOnly: true,
         signed: true,
-      })
-      res.send(user)
+      });
     }
+    delete user.password;
+    res.send(user);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
-authRouter.get('/logout', async (req, res, next) => {
+authRouter.get("/logout", async (req, res, next) => {
   try {
-    res.clearCookie('token', {
-      sameSite: 'strict',
+    res.clearCookie("token", {
+      sameSite: "strict",
       httpOnly: true,
       signed: true,
-    })
+    });
     res.send({
       loggedIn: false,
-      message: 'Logged Out',
-    })
+      message: "Logged Out",
+    });
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
-authRouter.get('/me', auth, async (req, res, next) => {
+authRouter.get("/me", auth, async (req, res, next) => {
   try {
-    res.send(req.user)
+    res.send(req.user);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
-module.exports = authRouter
+module.exports = authRouter;
