@@ -105,7 +105,7 @@ a {
   /* margin-left: 10px; */
   width: 40px;
   height: 70px;
-  border-radius: 100%;
+  border-radius: 45%;
   /* border: 2px solid grey; */
   background-image: -webkit-linear-gradient(45deg, 0%, 100%);
   opacity: 0.95;
