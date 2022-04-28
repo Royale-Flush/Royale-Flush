@@ -1,3 +1,5 @@
+// <---------- old code to be deleted below before final build, saved for reference before merging to main ------------>
+
 // import React from "react";
 
 // const Logout = () => {
@@ -9,29 +11,29 @@
 // };
 
 // export default Logout;
-import React, { useState } from "react";
-import useAuth from "../hooks/useAuth";
+// import React, { useState } from "react";
+// import useAuth from "../hooks/useAuth";
 
-const Logout = () => {
-  const { token, setToken } = useAuth();
+// const Logout = () => {
+//   const { token, setToken } = useAuth();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+//   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  const logoutUser = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    setToken(localStorage.removeitem("token"));
-  };
+//   const logoutUser = () => {
+//     localStorage.removeItem("token");
+//     setIsLoggedIn(false);
+//     setToken(localStorage.removeitem("token"));
+//   };
 
-  return (
-    <form
-      onSubmit={() => {
-        logoutUser();
-      }}
-    >
-      <button type="submit">Logout</button>
-    </form>
-  );
-};
+//   return (
+//     <form
+//       onSubmit={() => {
+//         logoutUser();
+//       }}
+//     >
+//       <button type="submit">Logout</button>
+//     </form>
+//   );
+// };
 
-export default Logout;
+// export default Logout;
