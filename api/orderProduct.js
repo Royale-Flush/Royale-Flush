@@ -20,24 +20,6 @@ opRouter.post("/", async (req, res, next) => {
     });
   }
 });
-// opRouter.get("/:productId/orderProduct", async (req, res, next) => {
-//   const { productId } = req.params;
-//   try {
-//     const ProdOrder = await ProductOrder.getOrderProductById({ productId });
-//     res.send({ ProdOrder });
-//   } catch ({ name, message }) {
-//     next({ name: "Error", message: "No orders to get" });
-//   }
-// });
-// opRouter.get('/:productId/orderProduct', async (req, res, next) => {
-//   const { productId } = req.params
-//   try {
-//     const quantityID = await ProductOrder.getQuantityById({ productId })
-//     res.send({ quantityID })
-//   } catch ({ name, message }) {
-//     next({ name: 'Error', message: 'could not match id to quantity' })
-//   }
-// })
 
 opRouter.patch(
   "/:orderId/:productId/:quantity",
@@ -58,5 +40,17 @@ opRouter.patch(
 );
 
 // DELETE FROM CART { orderId, productId}
+opRouter.delete("/:orderId/:productId", auth, async (req, res, next) => {
+  const { orderId, productId } = req.params;
+  try {
+    const id = ProductOrder.getOrderProductById(orderId);
+    console.log(id);
+    const remove = ProductOrder.removeFromCart(id);
+    console.log(remove);
+    res.send();
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = opRouter;

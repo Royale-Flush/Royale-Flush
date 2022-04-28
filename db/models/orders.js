@@ -1,3 +1,4 @@
+const { rows } = require("pg/lib/defaults");
 const client = require("../client");
 
 async function createOrders({ customerId, totalAmount }) {
@@ -139,7 +140,43 @@ async function getCartByCustomerId(customerId) {
   return cart;
 }
 
+async function removeFromCart(id) {
+  try {
+    const {
+      rows: [cart],
+    } = await client.query(
+      `
+      Delete from orderproduct*
+      
+      where id = $1
+      `,
+      [id]
+    );
+    console.log(rows);
+    return cart;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getOPByProductId(orderId) {
+  try {
+    const { rows } = await client.query(
+      `
+      select * from orderproduct
+      where "orderId" = $1
+      `,
+      [productId]
+    );
+    console.log(rows);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
+  getOPByProductId,
   getCartByCustomerId,
   createOrders,
   getOrdersByCustomerId,
@@ -147,4 +184,5 @@ module.exports = {
   deleteOrders,
   getAllActiveOrders,
   getTotalAmount,
+  removeFromCart,
 };

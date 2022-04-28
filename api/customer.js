@@ -44,26 +44,6 @@ userRouter.get("/:username", async (req, res, next) => {
   }
 });
 
-// userRouter.get("/:password/customer", async (req, res, next) => {
-//   const { password } = req.params;
-//   try {
-//     const user = await Customer.getUserByPassword({ password });
-//     res.send({ user });
-//   } catch ({ name, message }) {
-//     next({ name: "Try Again!", message: "Password does not exist." });
-//   }
-// });
-
-// userRouter.get('/:email/customer', async (req, res, next) => {
-//   const { email } = req.params
-//   try {
-//     const emailUser = await Customer.getUserByEmail({ email })
-//     res.send({ emailUser })
-//   } catch ({ name, message }) {
-//     next({ name: 'Try Again!', message: 'Email does not exist.' })
-//   }
-// })
-
 // * ------- STRETCH GOAL -------------
 userRouter.patch("/:customerId", auth, async (req, res, next) => {
   const { customerId } = req.params;

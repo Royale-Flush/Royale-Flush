@@ -35,27 +35,15 @@ prodRouter.post("/", async (req, res, next) => {
   }
 });
 
-// * NOT WORKING -------------
 prodRouter.patch("/:id", auth, async (req, res, next) => {
   const { id } = req.params;
   const { name, price } = req.body;
-
-  console.log(
-    "Lets start by finding shit like id: ",
-    id,
-    "name: ",
-    name,
-    "price: ",
-    price
-  );
-
   try {
     const variable = await Product.EditProduct({
       id: id,
       name: name,
       price: price,
     });
-    console.log(variable, "FROM PATCH REQUEST");
     res.send(variable);
   } catch ({ name, message }) {
     next({ name, message });
