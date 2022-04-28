@@ -9,19 +9,31 @@ function App() {
   console.log("The User in App.js:", user);
   return (
     <div>
-      <header>
-        <h3>Royal Flush Homepage</h3>
-        <Link to="/">Home</Link>
-        <Link to="/Inventory">Inventory</Link>
+      <header id="title01" className="navbar">
+        <h3 id="mask" className="box">
+          Royal Flush{" "}
+        </h3>
+        <Link className="hyperLink" to="/">
+          Home
+        </Link>
+        <Link className="hyperLink" to="/Inventory">
+          Inventory
+        </Link>
         {user.id ? (
           <>
+
             <Logout />
             <Link to="/cart">Cart</Link>
+
           </>
         ) : (
           <>
-            <Link to="/Login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+            <Link className="hyperLink" to="/Login">
+              Login
+            </Link>
+            <Link className="hyperLink" to="/signup">
+              Sign Up
+            </Link>
           </>
         )}
       </header>

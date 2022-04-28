@@ -1,4 +1,5 @@
 * {
+  width: 100%;
 }
 
 body {
@@ -11,4 +12,106 @@ body {
 a {
   font-size: 14pt;
   margin-left: 1rem;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  border: 5px solid #0099ff;
+  background-color: white;
+  margin-bottom: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hyperLink {
+  text-decoration: none;
+  color: #0099ff;
+  margin-bottom: 15px;
+  display: flex;
+  flex: content;
+  justify-content: center;
+}
+
+.hyperLink:hover {
+  background-size: 100% 90%;
+  background: linear-gradient(90deg, #07effd 0%, #005fff 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.4rem;
+  background-position: 0 90%;
+  transition: all 0.3s ease-in-out;
+  font-size: larger;
+  font-weight: bolder;
+  color: rgb(19, 79, 209);
+}
+
+/* h3 {
+  font-size: small;
+  color: white;
+} */
+
+#tile01 {
+  width: 200px;
+  height: 100px;
+}
+
+#mask {
+  position: relative;
+
+  top: 5px;
+  margin-left: 25%;
+  margin-right: 25%;
+  /* align-content: center; */
+  width: 1000px;
+  height: 100px;
+  font-size: 60px;
+  font-weight: 700;
+  font-family: "Lobster Two", cursive;
+  text-align: center;
+  line-height: 90px;
+  text-shadow: 0px 2px 2px #0099ff, 0px 2px 0px gold;
+  background-image: -webkit-radial-gradient(
+    center 10px,
+    100px 100px,
+    #fff9f9 50%,
+    #0099ff 51%
+  );
+
+  background-size: 40px 110px;
+
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation-name: wave-animation;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes wave-animation {
+  0% {
+    background-position: 200px 10px;
+  }
+  50% {
+    background-position: 400px -20px;
+  }
+  100% {
+    background-position: 10px -40px;
+  }
+}
+
+.box {
+  /* margin-left: 10px; */
+  width: 40px;
+  height: 70px;
+  border-radius: 45%;
+  /* border: 2px solid grey; */
+  background-image: -webkit-linear-gradient(45deg, 0%, 100%);
+  opacity: 0.95;
+  box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
+}
+.images {
+  width: 25%;
+  height: 25%;
 }
