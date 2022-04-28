@@ -4,17 +4,17 @@ import { getMe } from "../api";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     const getMyUserFunction = async () => {
       const result = await getMe();
       setUser(result);
     };
     getMyUserFunction();
-  }, [setUser]);
+  }, [user, setUser, isLoggedIn]);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );

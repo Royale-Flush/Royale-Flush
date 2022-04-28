@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import useAuth from "../hooks/useAuth";
-import { getMe } from "../api/index";
+import { loginUser } from "../api/index";
 
 const Login = () => {
-  const { setToken, isLoggedIn, setIsLoggedIn } = useAuth();
+  const { user, isLoggedIn, setIsLoggedIn } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -14,9 +14,9 @@ const Login = () => {
           onSubmit={async (e) => {
             e.preventDefault();
             try {
-              const response = await getMe(username, password);
-              localStorage.setItem("token", response.token);
-              setToken(response.token);
+              const response = await loginUser(username, password);
+              console.log("111111", response);
+              //check if response works
               setIsLoggedIn(true);
             } catch (error) {
               console.error("Username and password does not exist.", error);
