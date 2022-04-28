@@ -52,3 +52,19 @@ export const registerUser = async (username, password) => {
     return error;
   }
 };
+export const createProduct = async (categoryId, name, price) => {
+  const response = await fetch(`${URL}/products/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({
+      post: {
+        categoryId,
+        name,
+        price,
+      },
+    }),
+  });
+};
