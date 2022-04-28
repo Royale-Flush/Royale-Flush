@@ -1,5 +1,5 @@
 const authRouter = require("express").Router();
-const { Customer } = require("../db/index");
+const { Customer, Order } = require("../db/index");
 const jwt = require("jsonwebtoken");
 const { auth } = require("./utils");
 const { JWT_SECRET } = process.env;
@@ -20,6 +20,14 @@ authRouter.post("/register", async (req, res, next) => {
       phone,
       payment,
     });
+
+    const newOrder = {
+      customerId: user.id,
+      totalAmount: 0,
+    };
+
+    Order.createOrders(newOrder);
+
     delete user.password;
     const token = jwt.sign(user, JWT_SECRET);
     res.cookie("token", token, {

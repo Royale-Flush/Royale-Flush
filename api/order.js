@@ -31,7 +31,7 @@ orderRouter.get("/:customerId/order", async (req, res, next ) => {
   }
 })
 
-orderRouter.post("/", (req, res, next) => {
+orderRouter.post("/", auth, async, (req, res, next) => {
   const { customerId, totalAmount } = req.body;
   try {
     const newOrder = await Order.createOrders({customerId, totalAmount}); 
