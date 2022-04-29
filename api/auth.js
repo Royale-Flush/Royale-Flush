@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
 const authRouter = require("express").Router();
-const { Customer } = require("../db/index");
+const { Customer, Order } = require("../db/index");
 const { auth } = require("./utils");
 const count = 10;
 
@@ -20,10 +20,13 @@ authRouter.post("/register", async (req, res, next) => {
       phone,
       payment,
     });
-    console.log(user);
-    delete user.password;
 
-    // create a cart for them in the db
+    const order = {
+      customerId: user.id,
+      totalAmount,
+    };
+    delete user.password;
+    Order.createOrders(order);
 
     const token = jwt.sign(user, JWT_SECRET);
     console.log("token", token);

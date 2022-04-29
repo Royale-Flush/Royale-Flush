@@ -115,3 +115,13 @@ a {
   width: 25%;
   height: 25%;
 }
+
+#check {
+  border: none;
+  padding: 15px 12px;
+  max-width: 150px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}

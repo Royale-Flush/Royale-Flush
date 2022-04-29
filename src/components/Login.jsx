@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { loginUser } from "../api/index";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { user, isLoggedIn, setIsLoggedIn } = useAuth();
+  const { setUser, isLoggedIn, setIsLoggedIn } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   return (
     <div>
       <h2>Hello</h2>
@@ -17,6 +19,8 @@ const Login = () => {
               const response = await loginUser(username, password);
               console.log("response after login", response);
               setIsLoggedIn(true);
+              setUser(username);
+              navigate("/");
             } catch (error) {
               console.error("Username and password does not exist.", error);
             }

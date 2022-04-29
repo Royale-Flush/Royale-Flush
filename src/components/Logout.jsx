@@ -1,14 +1,15 @@
-// export default Logout;
-
 import { logout } from "../api";
 import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
   const { setIsLoggedIn } = useAuth();
+  const navigate = useNavigate();
 
   const handleClick = async () => {
     await logout();
     setIsLoggedIn(false);
+    navigate("/Login");
   };
 
   return <button onClick={handleClick}>Logout</button>;

@@ -59,6 +59,18 @@ export const getAllProducts = async () => {
   console.log("93093903");
   return data;
 };
+
+export const getCart = async (customerId) => {
+  const response = await fetch(`/api/order/${customerId}/order`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  return data;
+};
+
 export const logout = async () => {
   const response = await fetch("/api/auth/logout");
   const data = await response.json();

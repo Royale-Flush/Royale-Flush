@@ -21,10 +21,10 @@ function App() {
         </Link>
         {user.id ? (
           <>
-
             <Logout />
-            <Link to="/cart">Cart</Link>
-
+            <Link className="hyperLink" to="/cart">
+              Cart
+            </Link>
           </>
         ) : (
           <>
@@ -43,6 +43,7 @@ function App() {
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
