@@ -1,9 +1,11 @@
 * {
+  /* background-color: rgb(0, 0, 0); */
+  box-shadow: 0px 2px 2px gray;
   width: 100%;
 }
 
 body {
-  background-color: rgb(158, 152, 160);
+  background-color: whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;
