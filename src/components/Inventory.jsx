@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../api/index";
+import React, { useEffect, useState } from 'react'
+import { getAllProducts } from '../api/index'
 
 const Inventory = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([])
   useEffect(() => {
     const getProducts = async () => {
-      const response = await getAllProducts();
-      setProducts(response);
-    };
-    getProducts();
-  }, [setProducts]);
+      const response = await getAllProducts()
+      setProducts(response)
+    }
+    getProducts()
+  }, [setProducts])
+  console.log('Products:', products)
   return (
     <>
       <h1>Products</h1>
     </>
-  );
-};
+  )
+}
 
 // import React, { useEffect, useState } from "react";
 // import { getAllProducts } from "../api/index";
@@ -40,4 +41,4 @@ const Inventory = () => {
 //     </div>
 //   );
 // };
-export default Inventory;
+export default Inventory
