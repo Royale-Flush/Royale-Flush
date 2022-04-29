@@ -1,25 +1,36 @@
 body {
-  /* background-color: whitesmoke; */
+  background-color: whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: url("stageBackground.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* background-size: cover; */
+  background-size: cover;
 }
 a {
   font-size: 14pt;
   margin-left: 1rem;
 }
 
-.navbar {
-  display: flex;
+.mainRFLogoAnimation {
+  /* display: flex;
   flex-wrap: wrap;
   margin: auto;
   margin-top: 150px;
   /* border: 5px solid #0099ff; */
   /* background-color: white; */
+  /* margin-bottom: 2rem;
+  width: 100%; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  /* margin-right: 40rem; */
   margin-bottom: 2rem;
   width: 100%;
   justify-content: space-between;
@@ -84,24 +95,24 @@ a {
     #0099ff 51%
   );
 
-  background-size: 40px 110px;
+  background-size: 60px 150px;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation-name: wave-animation;
-  animation-duration: 30s;
-  animation-iteration-count: infinite;
+  animation-duration: 7s;
+  animation-iteration-count: initial;
   animation-timing-function: linear;
 }
 
 @keyframes wave-animation {
   0% {
-    background-position: 200px 10px;
+    background-position: 310px 0px;
   }
   50% {
-    background-position: 400px -20px;
+    background-position: 340px -50px;
   }
   100% {
-    background-position: 10px -40px;
+    background-position: 0px 0px;
   }
 }
 
