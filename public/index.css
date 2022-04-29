@@ -122,3 +122,52 @@ a {
   width: 25%;
   height: 25%;
 }
+
+.inputBoxes {
+  display: flex;
+  flex-direction: row;
+  position:absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+  height: 15rem;
+  border: 1px solid blue;
+  align-items: center;
+  box-shadow: 15px 15px 15px black;
+  background-color: rgba(255, 255, 255, 0.485);
+  border-radius: 60px 60px 60px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  gap: 20px;
+  padding-left: 100%;
+  background-color: white;
+}
+
+.inputs button {
+  border-radius: 10px 10px 10px;
+  width: 90px;
+  background-color: #0099ff;
+  animation: glowing 1300ms infinite;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  width:140px;
+  height:140px;
+  border: 2px solid yellow;
+  box-shadow: 40px 40px 40px gold;
+  font-size: xx-large;
+  font-family: "Lobster Two", cursive;
+  flex-direction: row;
+  position:absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+

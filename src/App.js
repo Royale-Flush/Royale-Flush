@@ -21,10 +21,10 @@ function App() {
         </Link>
         {user.id ? (
           <>
-
             <Logout />
-            <Link to="/cart">Cart</Link>
-
+            <Link className="hyperLink" to="/cart">
+              Cart
+            </Link>
           </>
         ) : (
           <>

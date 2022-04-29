@@ -9,7 +9,7 @@ const Login = () => {
   return (
     <div>
       <h2>Hello</h2>
-      <div>
+      <div className="inputBoxes">
         <form
           onSubmit={async (e) => {
             e.preventDefault();
@@ -22,24 +22,26 @@ const Login = () => {
             }
           }}
         >
-          <input
-            type="text"
-            value={username}
-            placeholder="Username"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
+          <div className="inputs">
+            <input
+              type="text"
+              value={username}
+              placeholder="Username"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
 
-          <input
-            type="password"
-            value={password}
-            placeholder="Password"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-          <button type="submit">Log in</button>
+            <input
+              type="password"
+              value={password}
+              placeholder="Password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <button type="submit">Log in</button>
+          </div>
         </form>
       </div>
 

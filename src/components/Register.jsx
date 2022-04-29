@@ -15,7 +15,7 @@ const Register = () => {
   // let token = "pizza";
 
   return (
-    <div>
+    <div className="inputBoxes">
       <form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -30,27 +30,29 @@ const Register = () => {
         }}
       >
         {error ? <h3>Unable to create account: {error}</h3> : null}
-        <input
-          value={username}
-          type="text"
-          placeholder="username"
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-          required
-        />
-        <input
-          value={password}
-          type="password"
-          placeholder="password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          required
-          pattern=".{8,}"
-          title="8 characters minimum"
-        />
-        <button type="submit">Sign Up</button>
+        <div className="inputs">
+          <input
+            value={username}
+            type="text"
+            placeholder="Username"
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+            required
+          />
+          <input
+            value={password}
+            type="password"
+            placeholder="Password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            required
+            pattern=".{8,}"
+            title="8 characters minimum"
+          />
+          <button type="submit">Sign Up</button>
+        </div>
       </form>
     </div>
   );

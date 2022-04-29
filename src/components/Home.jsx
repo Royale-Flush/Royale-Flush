@@ -6,8 +6,8 @@ const Home = () => {
 
   return (
     <div className="images">
-      <img src="https://i.imgur.com/arzXgMz.png" alt="Happiness" />
-      <h2>Hello, {user.username}</h2>
+      <img src="https://i.imgur.com/yvCTyaS.png" />
+      <h2 id="greetings">Hello, {user.username}</h2>
     </div>
   );
 };
