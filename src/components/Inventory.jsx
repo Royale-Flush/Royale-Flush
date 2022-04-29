@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../api/index";
-const Inventory = ({ products, setProducts }) => {
-  const Inventory = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-      const getProducts = async () => {
-        const response = await getAllProducts();
-        setProducts(response);
-      };
-      getProducts();
-    }, [setProducts]);
-    return (
-      <>
-        <h1>Products</h1>
-      </>
-    );
-  };
+
+const Inventory = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const getProducts = async () => {
+      const response = await getAllProducts();
+      setProducts(response);
+    };
+    getProducts();
+  }, [setProducts]);
+  return (
+    <>
+      <h1>Products</h1>
+    </>
+  );
 };
 
 // import React, { useEffect, useState } from "react";
