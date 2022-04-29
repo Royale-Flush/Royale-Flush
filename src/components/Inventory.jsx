@@ -26,7 +26,6 @@ const Inventory = () => {
 
             <h1>{product.price}</h1>
 
-            <h1>{category.name}</h1>
             <br />
             <br />
           </div>
