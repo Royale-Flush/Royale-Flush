@@ -1,16 +1,13 @@
-* {
-  /* background-color: rgb(0, 0, 0); */
-  box-shadow: 0px 2px 2px gray;
-  width: 100%;
-}
-
 body {
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("stageBackground.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background-size: cover; */
 }
-
 a {
   font-size: 14pt;
   margin-left: 1rem;
@@ -20,8 +17,9 @@ a {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  border: 5px solid #0099ff;
-  background-color: white;
+  margin-top: 150px;
+  /* border: 5px solid #0099ff; */
+  /* background-color: white; */
   margin-bottom: 2rem;
   width: 100%;
   justify-content: space-between;
@@ -30,11 +28,18 @@ a {
 
 .hyperLink {
   text-decoration: none;
-  color: #0099ff;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
+  color: black;
+  box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
+  background-color: rgba(255, 255, 255, 0.469);
   margin-bottom: 15px;
   display: flex;
   flex: content;
-  justify-content: center;
+  justify-content: left;
+
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 .hyperLink:hover {
@@ -63,17 +68,15 @@ a {
   position: relative;
 
   top: 5px;
-  margin-left: 25%;
-  margin-right: 25%;
   /* align-content: center; */
-  width: 1000px;
+  width: 400px;
   height: 100px;
   font-size: 60px;
   font-weight: 700;
   font-family: "Lobster Two", cursive;
   text-align: center;
   line-height: 90px;
-  text-shadow: 0px 2px 2px #0099ff, 0px 2px 0px gold;
+  text-shadow: 0px 2px 2px black, 0px 2px 0px #0099ff;
   background-image: -webkit-radial-gradient(
     center 10px,
     100px 100px,
@@ -82,7 +85,6 @@ a {
   );
 
   background-size: 40px 110px;
-
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation-name: wave-animation;
@@ -104,13 +106,16 @@ a {
 }
 
 .box {
-  /* margin-left: 10px; */
+  margin-top: 10px;
+  position: absolute;
   width: 40px;
   height: 70px;
-  border-radius: 45%;
+  border-radius: 70%;
   /* border: 2px solid grey; */
   background-image: -webkit-linear-gradient(45deg, 0%, 100%);
   opacity: 0.95;
+  margin-left: 25%;
+  margin-right: 25%;
   box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
 }
 .images {
