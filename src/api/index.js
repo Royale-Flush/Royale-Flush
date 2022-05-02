@@ -89,6 +89,20 @@ export const editCart = async (quantity, productId) => {
   return data;
 };
 
+export const getTag = async (id) => {
+  const response = await fetch(`/api/category/tag`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  });
+  const data = await response.json();
+  return data;
+};
+
 export const logout = async () => {
   const response = await fetch("/api/auth/logout");
   const data = await response.json();

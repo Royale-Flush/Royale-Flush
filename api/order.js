@@ -20,7 +20,7 @@ orderRouter.get("/", async (req, res, next) => {
 // check route path below...
 orderRouter.get("/:customerId/order", async (req, res, next) => {
   const { customerId } = req.params;
-  console.log(customerId);
+  console.log("What is the customer ID from order coming back as", customerId);
   try {
     const order = await Order.getCartByCustomerId(customerId);
     res.send(order);

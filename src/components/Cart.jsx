@@ -14,7 +14,6 @@ const Cart = () => {
               <h1>{newCart.name}</h1>
               <h2>{newCart.price}</h2>
               <h2>{newCart.quantity}</h2>
-              <h2>{newCart.categoryId}</h2>
             </div>
           );
         })}

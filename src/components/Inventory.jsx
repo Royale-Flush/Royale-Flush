@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../api/index";
+import { getAllProducts, getTag } from "../api/index";
 
 const Inventory = () => {
   const [products, setProducts] = useState([]);
@@ -10,7 +10,7 @@ const Inventory = () => {
     };
     getProducts();
   }, [setProducts]);
-  console.log("Products:", products);
+
   return (
     <>
       <h1>TOILETS!!!! GET YOUR TOILETS HERE!</h1>
@@ -25,7 +25,6 @@ const Inventory = () => {
             <h1>{product.name}</h1>
 
             <h1>{product.price}</h1>
-
             <br />
             <br />
           </div>
