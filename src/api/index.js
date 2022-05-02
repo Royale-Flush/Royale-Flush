@@ -56,10 +56,11 @@ export const registerUser = async (username, password) => {
 export const getAllProducts = async () => {
   const response = await fetch(`/api/products`);
   const data = await response.json();
-  console.log("93093903");
+
   return data;
 };
 
+<<<<<<< HEAD
 export const getCart = async (customerId) => {
   console.log(customerId);
   const response = await fetch(`/api/order/${customerId}/order`, {
@@ -89,6 +90,8 @@ export const editCart = async (quantity, productId) => {
   return data;
 };
 
+=======
+>>>>>>> main
 export const logout = async () => {
   const response = await fetch("/api/auth/logout");
   const data = await response.json();
