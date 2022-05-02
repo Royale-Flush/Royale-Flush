@@ -6,10 +6,6 @@ import useAuth from "./hooks/useAuth";
 function App() {
   const { user } = useAuth();
 
-  // // i want to move navar contents to the left of screen while keeping royal flush logo centered.
-  // added div inside header tag to begin making these moves
-  // royal flush logo is now broken
-
   return (
     <div>
       <header id="title01" className="mainRFLogoAnimation">
@@ -17,7 +13,7 @@ function App() {
           Royal Flush{" "}
         </h3>
       </header>
-      <div className="navbar">
+      <nav className="navbar">
         <Link className="hyperLink" to="/">
           Home
         </Link>
@@ -39,7 +35,7 @@ function App() {
             </Link>
           </>
         )}
-      </div>
+      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/checkout" element={<Cart />} />

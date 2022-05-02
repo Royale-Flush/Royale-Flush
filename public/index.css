@@ -29,12 +29,12 @@ a {
 .navbar {
   display: flex;
   flex-wrap: wrap;
-  margin: auto;
-  /* margin-right: 40rem; */
+  /* margin: auto;
+  margin-right: 40rem;
   margin-bottom: 2rem;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
+  align-items: left; */
 }
 
 .hyperLink {
@@ -76,7 +76,7 @@ a {
 }
 
 #mask {
-  position: relative;
+  position: sticky;
 
   top: 5px;
   /* align-content: center; */
@@ -102,7 +102,10 @@ a {
   animation-duration: 7s;
   animation-iteration-count: initial;
   animation-timing-function: linear;
+
+  /* below is from .box */
 }
+/* set count iteration count to infinite to get animation to loop */
 
 @keyframes wave-animation {
   0% {
@@ -122,7 +125,7 @@ a {
   width: 40px;
   height: 70px;
   border-radius: 70%;
-  /* border: 2px solid grey; */
+  border: 2px solid grey;
   background-image: -webkit-linear-gradient(45deg, 0%, 100%);
   opacity: 0.95;
   margin-left: 25%;
