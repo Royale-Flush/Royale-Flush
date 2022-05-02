@@ -13,28 +13,31 @@ function App() {
           Royal Flush{" "}
         </h3>
       </header>
+
       <nav className="navbar">
-        <Link className="hyperLink" to="/">
-          Home
-        </Link>
-        <Link className="hyperLink" to="/Inventory">
-          Inventory
-        </Link>
-        {user.id ? (
-          <>
-            <Logout />
-            <Link to="/cart">Cart</Link>
-          </>
-        ) : (
-          <>
-            <Link className="hyperLink" to="/Login">
-              Login
-            </Link>
-            <Link className="hyperLink" to="/signup">
-              Sign Up
-            </Link>
-          </>
-        )}
+        <div>
+          <Link className="hyperLink" to="/">
+            Home
+          </Link>
+          <Link className="hyperLink" to="/Inventory">
+            Inventory
+          </Link>
+          {user.id ? (
+            <>
+              <Logout />
+              <Link to="/cart">Cart</Link>
+            </>
+          ) : (
+            <>
+              <Link className="hyperLink" to="/Login">
+                Login
+              </Link>
+              <Link className="hyperLink" to="/signup">
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
