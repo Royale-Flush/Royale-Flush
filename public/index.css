@@ -115,3 +115,30 @@ a {
   width: 25%;
   height: 25%;
 }
+
+.Product-Container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #07effd;
+  gap: 4rem;
+  box-shadow: 4px 4px 4px #005fff;
+  background-color: lightskyblue;
+  width: 45%;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-top: 8rem;
+  float: left;
+  padding-left: 1rem;
+  position: sticky;
+}
+
+.inventoryHead {
+  font-size: 45px;
+  font-weight: 700;
+  font-family: "Lobster Two", cursive;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+

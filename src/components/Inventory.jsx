@@ -13,9 +13,10 @@ const Inventory = () => {
   console.log("Products:", products);
   return (
     <>
-      <h1>TOILETS!!!! GET YOUR TOILETS HERE!</h1>
+      <h1 className="inventoryHead">Royale Inventory</h1>
       <br />
       <br />
+
       {products.map((product, i) => {
         // the below section displays the individual products
         return (
