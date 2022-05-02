@@ -6,7 +6,6 @@ import useAuth from "./hooks/useAuth";
 function App() {
   const { user } = useAuth();
 
-  console.log("The User in App.js:", user);
   return (
     <div>
       <header id="title01" className="navbar">

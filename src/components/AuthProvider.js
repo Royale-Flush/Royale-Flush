@@ -6,8 +6,6 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  console.log("The user is:", user);
-
   useEffect(() => {
     const getMyUserFunction = async () => {
       const result = await getMe();

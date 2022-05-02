@@ -18,7 +18,6 @@ const useCart = () => {
   // function deletefromcart() {
 
   // }
-  console.log("user line 21 useCart: ", user);
 
   return {
     cart,

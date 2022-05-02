@@ -5,9 +5,9 @@ import useAuth from "../hooks/useAuth";
 
 const CartProvider = ({ children }) => {
   const { user } = useAuth();
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState([]);
 
-  console.log("what is the user id: ", user);
+  console.log("guessing: ", user.id);
 
   useEffect(() => {
     const fetchCart = async () => {
