@@ -23,7 +23,7 @@ authRouter.post("/register", async (req, res, next) => {
 
     const order = {
       customerId: user.id,
-      totalAmount,
+      totalAmount: 0,
     };
     delete user.password;
     Order.createOrders(order);

@@ -61,11 +61,29 @@ export const getAllProducts = async () => {
 };
 
 export const getCart = async (customerId) => {
+  console.log(customerId);
   const response = await fetch(`/api/order/${customerId}/order`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
+  });
+  const data = await response.json();
+  return data;
+};
+
+export const editCart = async (quantity, productId) => {
+  const response = await fetch(`/api/${orderId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user: {
+        quantity,
+        productId,
+      },
+    }),
   });
   const data = await response.json();
   return data;

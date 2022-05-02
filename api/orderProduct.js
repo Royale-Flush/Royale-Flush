@@ -39,23 +39,20 @@ opRouter.post("/", async (req, res, next) => {
 //   }
 // })
 
-opRouter.patch(
-  "/:orderId/:productId/:quantity",
-  auth,
-  async (req, res, next) => {
-    const { productId, orderId, quantity } = req.params;
-    try {
-      const edit = await ProductOrder.editQuantity({
-        productId,
-        orderId,
-        quantity,
-      });
-      res.send(edit);
-    } catch (error) {
-      next(error);
-    }
+opRouter.patch("/:orderId/:productId/", auth, async (req, res, next) => {
+  const { productId, orderId } = req.params;
+  const { quantity } = req.body;
+  try {
+    const edit = await ProductOrder.editQuantity({
+      productId,
+      orderId,
+      quantity,
+    });
+    res.send(edit);
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // DELETE FROM CART { orderId, productId}
 

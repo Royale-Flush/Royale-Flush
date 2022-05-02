@@ -8,7 +8,7 @@ const Cart = () => {
   try {
     return (
       <div>
-        {cart.map((newCart) => {
+        {cart.items.map((newCart) => {
           return (
             <div className="cart-items" key={`${newCart.id}`}>
               <h1>{newCart.name}</h1>
