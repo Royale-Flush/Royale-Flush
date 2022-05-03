@@ -90,7 +90,7 @@ async function createTables() {
 
 async function populateInitialData() {
   try {
-    // const users = await Promise.all(newPeople.map(Customer.createUser))
+    const users = await Promise.all(newPeople.map(Customer.createUser));
     const categories = await Promise.all(
       newCategories.map(Categories.createCategories)
     );

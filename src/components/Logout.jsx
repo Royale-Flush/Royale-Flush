@@ -9,7 +9,7 @@ const Logout = () => {
   const handleClick = async () => {
     await logout();
     setIsLoggedIn(false);
-    navigate("/Login");
+    navigate("/");
   };
 
   return <button onClick={handleClick}>Logout</button>;
