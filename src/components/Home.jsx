@@ -5,9 +5,12 @@ const Home = () => {
   const { user } = useAuth();
 
   return (
-    <div className="images">
+    <div className="homePage">
+      <div className="welcome">
+        <h2>Hello, {user.username}</h2>
+      </div>
+
       <img src="https://i.imgur.com/arzXgMz.png" alt="Happiness" />
-      <h2>Hello, {user.username}</h2>
     </div>
   );
 };
