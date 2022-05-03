@@ -295,3 +295,7 @@ a {
   font-weight: bolder;
   color: rgb(19, 79, 209);
 }
+
+#stickman {
+  margin-right: 10rem;
+}

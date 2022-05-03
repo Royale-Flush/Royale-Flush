@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Routes, Route, Link } from "react-router-dom";
 import { Home, Cart, Inventory, Login, Logout, Register } from "./components";
 import useAuth from "./hooks/useAuth";
