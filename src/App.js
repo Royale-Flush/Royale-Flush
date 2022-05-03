@@ -28,7 +28,7 @@ function App() {
                 Cart
               </Link>
 
-              <Logout className="logoutButton" />
+              <Logout className="logoutButton" to="/logout" />
             </>
           ) : (
             <>
