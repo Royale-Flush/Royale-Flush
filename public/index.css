@@ -71,11 +71,6 @@ a {
   color: rgb(19, 79, 209);
 }
 
-/* h3 {
-  font-size: small;
-  color: white;
-} */
-
 #tile01 {
   margin-left: -10px;
   width: 200px;
@@ -226,6 +221,45 @@ a {
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
 
+.Product-Container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #07effd;
+  gap: 4rem;
+  box-shadow: 4px 4px 4px #005fff;
+  background-color: lightskyblue;
+  width: 45%;
+  margin-bottom: 2px;
+  margin-left: 2rem;
+  margin-top: 8rem;
+  float: left;
+  padding-left: 1rem;
+  position: sticky;
+}
+.prodCont1 {
+  margin-top: -3rem;
+  margin-bottom: 2px;
+  margin-left: 2rem;
+  float: left;
+  padding-left: 1rem;
+  position: sticky;
+}
+.prodCont2 {
+  margin-top: -3rem;
+  margin-bottom: 2px;
+  margin-left: 2rem;
+  float: left;
+  padding-left: 1rem;
+  position: sticky;
+}
+
+.inventoryHead {
+  font-size: 45px;
+  font-weight: 700;
+  font-family: "Lobster Two", cursive;
+  display: flex;
+  justify-content: center;
+  position: absolute;
 .homePage {
   display: inline-block;
   align-content: space-around;
