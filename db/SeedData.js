@@ -37,11 +37,16 @@ const newProduct = [
     price: "10.49",
     imageUrl: "/deluxe.jpeg",
   },
-  { categoryId: "3", name: "The King", price: "11.49", imageUrl: "/king.jpeg" },
+  {
+    categoryId: "3",
+    name: "The King",
+    price: "11.49",
+    imageUrl: "/king.jpeg",
+  },
   {
     categoryId: "1",
     name: "The Queen",
-    price: "7.49",
+    price: "6.49",
     imageUrl: "/queen.jpeg",
   },
 ];
