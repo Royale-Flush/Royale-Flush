@@ -1,26 +1,30 @@
-import CartContext from "../CartContext";
-import { useState, useEffect } from "react";
-import { getCart } from "../api";
-import useAuth from "../hooks/useAuth";
+import CartContext from '../CartContext'
+import { useState, useEffect } from 'react'
+import { getCart } from '../api'
+import useAuth from '../hooks/useAuth'
 
 const CartProvider = ({ children }) => {
-  const { user } = useAuth();
-  const [cart, setCart] = useState([]);
+  const { user } = useAuth()
+  const [cart, setCart] = useState({})
+
+  console.log('User in Cart Provider:', user)
 
   useEffect(() => {
     const fetchCart = async () => {
-      const result = await getCart(user.id);
-      console.log("looking for results in cart provider", result);
-      setCart(result);
-    };
-    fetchCart();
-  }, [setCart]);
+      if (user.username !== 'guest') {
+        const result = await getCart(user.id)
+        console.log('cart', result)
+      }
+      // setCart(result)
+    }
+    fetchCart()
+  }, [user])
 
   return (
     <CartContext.Provider value={{ cart, setCart }}>
       {children}
     </CartContext.Provider>
-  );
-};
+  )
+}
 
-export default CartProvider;
+export default CartProvider

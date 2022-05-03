@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import useAuth from "../hooks/useAuth";
-import { loginUser } from "../api/index";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import useAuth from '../hooks/useAuth'
+import { loginUser } from '../api/index'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-  const { setUser, isLoggedIn, setIsLoggedIn } = useAuth();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const { setUser, isLoggedIn, setIsLoggedIn } = useAuth()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
   return (
     <div>
       <h2>Hello</h2>
       <div>
         <form
           onSubmit={async (e) => {
-            e.preventDefault();
+            e.preventDefault()
             try {
-              const response = await loginUser(username, password);
-              console.log("response after login", response);
-              setIsLoggedIn(true);
-              setUser(username);
-              navigate("/");
+              const response = await loginUser(username, password)
+              console.log('response after login', response)
+              setIsLoggedIn(true)
+              setUser(response)
+              navigate('/')
             } catch (error) {
-              console.error("Username and password does not exist.", error);
+              console.error('Username and password does not exist.', error)
             }
           }}
         >
@@ -31,7 +31,7 @@ const Login = () => {
             value={username}
             placeholder="Username"
             onChange={(e) => {
-              setUsername(e.target.value);
+              setUsername(e.target.value)
             }}
           />
 
@@ -40,7 +40,7 @@ const Login = () => {
             value={password}
             placeholder="Password"
             onChange={(e) => {
-              setPassword(e.target.value);
+              setPassword(e.target.value)
             }}
           />
           <button type="submit">Log in</button>
@@ -49,13 +49,13 @@ const Login = () => {
 
       <div
         style={{
-          display: isLoggedIn ? "block" : "none",
+          display: isLoggedIn ? 'block' : 'none',
         }}
       >
         {/* <h3>WELCOME BACK {`${username}`}!</h3> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
