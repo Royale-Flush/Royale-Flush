@@ -11,6 +11,9 @@ const Home = () => {
       </div>
 
       <img src="https://i.imgur.com/arzXgMz.png" alt="Happiness" />
+      {/* <video autoPlay loop muted>
+        <source src="waterfall.mp4" type="video/mp4" />
+      </video> */}
     </div>
   );
 };
