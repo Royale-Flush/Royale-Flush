@@ -1,9 +1,9 @@
-import useCart from "../hooks/useCart";
-import React, { useEffect, useState } from "react";
+import useCart from '../hooks/useCart'
+import React, { useEffect, useState } from 'react'
 
 const Cart = () => {
-  const { cart } = useCart();
-  console.log("what really is a cart: ", cart);
+  const { cart } = useCart()
+  console.log('Cart in Cart Component:', cart)
 
   try {
     return (
@@ -15,12 +15,12 @@ const Cart = () => {
               <h2>{newCart.price}</h2>
               <h2>{newCart.quantity}</h2>
             </div>
-          );
+          )
         })}
       </div>
-    );
+    )
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
-export default Cart;
+}
+export default Cart
