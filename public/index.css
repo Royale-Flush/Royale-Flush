@@ -18,7 +18,7 @@ a {
   justify-content: center;
   position: sticky;
   flex-wrap: nowrap;
-  margin-top: 150px;
+  margin-top: 100px;
   /* display: flex;
   flex-wrap: wrap;
   margin: auto;
@@ -32,7 +32,7 @@ a {
 }
 
 .navbar {
-  position: sticky;
+  position: fixed;
   display: flex;
   /* display: flex;
   flex-wrap: wrap;
@@ -52,21 +52,24 @@ a {
   color: black;
   box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
   background-color: rgba(255, 255, 255, 0.469);
-  margin-bottom: 15px;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
   display: flex;
   flex: content;
   justify-content: center;
-
-  margin-right: 100rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  height: 3rem;
+  border-radius: 2rem 2rem 2rem;
 }
 
 .hyperLink:hover {
-  background-size: 100% 90%;
   background: linear-gradient(90deg, #07effd 0%, #005fff 100%);
   background-repeat: no-repeat;
   background-size: 100% 0.4rem;
   background-position: 0 90%;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s;
   font-size: larger;
   font-weight: bolder;
   color: rgb(19, 79, 209);
@@ -79,9 +82,9 @@ a {
 }
 
 #mask {
-  position: sticky;
+  position: fixed;
   top: 5px;
-  /* align-content: center; */
+  align-content: center;
   width: 400px;
   height: 100px;
   font-size: 60px;
@@ -122,8 +125,8 @@ a {
 }
 
 .box {
-  margin-top: 10px;
-  position: absolute;
+  margin-top: 10%;
+  position: fixed;
   width: 40px;
   height: 70px;
   border-radius: 70%;
@@ -230,9 +233,23 @@ a {
   box-shadow: 4px 4px 4px #005fff;
   background-color: lightskyblue;
   width: 45%;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  margin-bottom: 15rem;
+  border: 1px solid blue;
+  align-items: left;
+  box-shadow: 15px 15px 15px black;
+  background-color: rgb(255, 255, 255);
+  border-radius: 60px 60px 60px;
+  position: sticky;
+}
+
+.prodCont {
+  margin-top: 2rem;
   margin-bottom: 2px;
   margin-left: 2rem;
-  margin-top: 8rem;
   float: left;
   padding-left: 1rem;
   position: sticky;
@@ -256,11 +273,11 @@ a {
 
 .inventoryHead {
   font-size: 45px;
-  font-weight: 700;
+  font-weight: 800;
   font-family: "Lobster Two", cursive;
-  display: flex;
-  justify-content: center;
-  position: absolute;
+  margin-left: 37%;
+  margin-top: 9rem;
+  position: fixed;
 }
 .homePage {
   display: inline-block;
