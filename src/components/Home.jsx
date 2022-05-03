@@ -5,9 +5,15 @@ const Home = () => {
   const { user } = useAuth();
 
   return (
-    <div className="images">
+    <div className="homePage">
+      <div className="welcome">
+        <h2>Hello, {user.username}</h2>
+      </div>
+
       <img src="https://i.imgur.com/arzXgMz.png" alt="Happiness" />
-      <h2>Hello, {user.username}</h2>
+      {/* <video autoPlay loop muted>
+        <source src="waterfall.mp4" type="video/mp4" />
+      </video> */}
     </div>
   );
 };
