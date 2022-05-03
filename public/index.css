@@ -3,6 +3,7 @@ body {
   /* justify-content: center; */
   /* align-items: center; */
   background-image: url("stageBackground.jpeg");
+  /* background-image: url("waterfall.mp4"); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -53,9 +54,9 @@ a {
   margin-bottom: 15px;
   display: flex;
   flex: content;
-  justify-content: left;
+  justify-content: center;
 
-  margin-right: 60rem;
+  margin-right: 100rem;
 }
 
 .hyperLink:hover {
