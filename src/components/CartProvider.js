@@ -7,8 +7,6 @@ const CartProvider = ({ children }) => {
   const { user } = useAuth();
   const [cart, setCart] = useState({});
 
-  console.log("User in Cart Provider:", user);
-
   useEffect(() => {
     const fetchCart = async () => {
       if (user.username !== "guest") {

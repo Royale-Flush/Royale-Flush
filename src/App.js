@@ -8,10 +8,11 @@ function App() {
 
   return (
     <div>
-      <header id="title01" className="navbar">
+      <header id="title01" className="mainRFLogoAnimation">
         <h3 id="mask" className="box">
-          Royal Flush{" "}
+          Royale Flush{" "}
         </h3>
+<<<<<<< HEAD
         <Link className="hyperLink" to="/">
           Home
         </Link>
@@ -35,7 +36,35 @@ function App() {
             </Link>
           </>
         )}
+=======
+>>>>>>> origin/main
       </header>
+
+      <nav className="navbar">
+        <div>
+          <Link className="hyperLink" to="/">
+            Home
+          </Link>
+          <Link className="hyperLink" to="/Inventory">
+            Inventory
+          </Link>
+          {user.id ? (
+            <>
+              <Logout />
+              <Link to="/cart">Cart</Link>
+            </>
+          ) : (
+            <>
+              <Link className="hyperLink" to="/Login">
+                Login
+              </Link>
+              <Link className="hyperLink" to="/signup">
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
+      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/checkout" element={<Cart />} />

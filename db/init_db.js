@@ -60,7 +60,8 @@ async function createTables() {
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) UNIQUE NOT NULL,
             price numeric not null, 
-            "categoryId" integer REFERENCES categories(id)
+            "categoryId" integer REFERENCES categories(id),
+            "imageUrl" VARCHAR(255)
             );
         `);
     console.log("...passed products table ");
