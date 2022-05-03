@@ -19,6 +19,8 @@ console.log('cookie secret', COOKIE_SECRET)
 
 server.use(cookieParser(COOKIE_SECRET))
 
+server.use(express.static(path.join(__dirname, 'public')))
+
 server.use(express.static(path.join(__dirname, 'build')))
 
 server.use('/api', require('./api'))

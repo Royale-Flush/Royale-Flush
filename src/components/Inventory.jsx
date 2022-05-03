@@ -10,34 +10,29 @@ const Inventory = () => {
     };
     getProducts();
   }, [setProducts]);
+  console.log("Products:", products);
   return (
     <>
-      <h1>Products</h1>
+      <h1>TOILETS!!!! GET YOUR TOILETS HERE!</h1>
+      <br />
+      <br />
+      {products.map((product, i) => {
+        // the below section displays the individual products
+        return (
+          <div className="Product-Container" key={`product key, ${i}`}>
+            <h1>{product.id}</h1>
+
+            <h1>{product.name}</h1>
+
+            <h1>{product.price}</h1>
+
+            <br />
+            <br />
+          </div>
+        );
+      })}
     </>
   );
 };
 
-// import React, { useEffect, useState } from "react";
-// import { getAllProducts } from "../api/index";
-// // import { SingleRoutine, NewRoutine } from "./";
-
-// const Inventory = () => {
-//   const [products, setProducts] = useState([]);
-//   useEffect(() => {
-//     const getProducts = async () => {
-//       const response = await getAllProducts();
-//       setProducts(response);
-//     };
-//     getProducts();
-//   }, [setProducts]);
-//   return(
-//     <div className="container">
-//       <div className="product-page">
-//         {products.map((products, i) => {
-//           return <Inventory key={i} products={products} />;
-//         })}
-//       </div>
-//     </div>
-//   );
-// };
 export default Inventory;
