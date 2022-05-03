@@ -1,17 +1,26 @@
-import CartContext from "../CartContext";
-import { useState, useEffect } from "react";
 import { getCart } from "../api";
 import useAuth from "../hooks/useAuth";
+import CartContext from "../CartContext";
+import { useState, useEffect } from "react";
 
 const CartProvider = ({ children }) => {
   const { user } = useAuth();
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({});
+
+  const id = user.id;
+
+  console.log("what really is a cart: ", cart);
 
   useEffect(() => {
     const fetchCart = async () => {
-      const result = await getCart(user.id);
-      console.log("looking for results in cart provider", result);
-      setCart(result);
+      console.log("gotta find what is happening on line 16", user.id);
+      const result = getCart(id);
+      console.log("what is the result", result);
+      if (result === false) {
+        setCart({});
+      } else {
+        setCart(result);
+      }
     };
     fetchCart();
   }, [setCart]);
