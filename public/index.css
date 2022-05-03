@@ -55,7 +55,7 @@ a {
   display: flex;
   flex: content;
   justify-content: center;
-
+  width: 6rem;
   margin-right: 100rem;
 }
 
@@ -145,9 +145,9 @@ a {
   height: 15rem;
   position: absolute;
   top: 50%;
-  left:0;
-  right:0;
-  margin:0 auto;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   border: 1px solid blue;
   align-items: center;
   box-shadow: 15px 15px 15px black;
@@ -158,7 +158,7 @@ a {
 .inputs {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   gap: 20px;
   padding-left: 100%;
   background-color: white;
@@ -174,17 +174,17 @@ a {
 .images {
   display: flex;
   flex-direction: column;
-  width:140px;
-  height:140px;
+  width: 140px;
+  height: 140px;
   border: 2px solid yellow;
   box-shadow: 40px 40px 40px gold;
   font-size: xx-large;
   font-family: "Lobster Two", cursive;
   position: absolute;
   top: 50%;
-  left:0;
-  right:0;
-  margin:0 auto;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 
 .welcome {
@@ -193,33 +193,34 @@ a {
   font-family: "Lobster Two", cursive;
   position: absolute;
   top: 40%;
-  left:0%;
-  right:0;
-  margin:0 auto;
+  left: 0%;
+  right: 0;
+  margin: 0 auto;
   justify-content: center;
 }
 
-.toiletCompare{
+.toiletCompare {
   width: 300px;
   height: 300px;
   position: absolute;
   top: -80%;
-  left:225%;
-  right:0;
-  margin:0 auto;
+  left: 225%;
+  right: 0;
+  margin: 0 auto;
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
 }
-.portaToiletCompare{
+.portaToiletCompare {
   width: 400px;
   height: 200px;
   position: absolute;
   top: 150%;
-  left:200%;
-  right:0;
-  margin:0 auto;
+  left: 200%;
+  right: 0;
+  margin: 0 auto;
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
+}
 
 .Product-Container {
   display: flex;
@@ -260,7 +261,37 @@ a {
   display: flex;
   justify-content: center;
   position: absolute;
+}
+
 .homePage {
   display: inline-block;
   align-content: space-around;
+}
+
+.logoutButton {
+  text-decoration: none;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
+  color: black;
+  box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
+  background-color: rgba(255, 255, 255, 0.469);
+  margin-bottom: 15px;
+  display: flex;
+  flex: content;
+  justify-content: center;
+  border: none;
+  margin-left: 20px;
+  width: 6rem;
+}
+
+.logoutButton:hover {
+  background-size: 100% 90%;
+  background: linear-gradient(90deg, #07effd 0%, #005fff 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.4rem;
+  background-position: 0 90%;
+  transition: all 0.3s ease-in-out;
+  font-size: larger;
+  font-weight: bolder;
+  color: rgb(19, 79, 209);
 }

@@ -11,7 +11,11 @@ const Logout = () => {
     setIsLoggedIn(false);
   };
 
-  return <button onClick={handleClick}>Logout</button>;
+  return (
+    <button className="logoutButton" onClick={handleClick}>
+      Logout
+    </button>
+  );
 };
 
 export default Logout;
