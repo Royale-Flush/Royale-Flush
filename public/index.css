@@ -237,9 +237,9 @@ a {
   left: 0;
   right: 0;
   margin: 0 auto;
-  margin-bottom: 15rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
   border: 1px solid blue;
-  align-items: left;
   box-shadow: 15px 15px 15px black;
   background-color: rgb(255, 255, 255);
   border-radius: 60px 60px 60px;
@@ -278,6 +278,10 @@ a {
   margin-left: 37%;
   margin-top: 9rem;
   position: fixed;
+}
+.productImage {
+  height: 20rem;
+  width: 20rem;
 }
 .homePage {
   display: inline-block;

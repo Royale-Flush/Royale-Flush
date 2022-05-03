@@ -21,14 +21,15 @@ const Inventory = () => {
         // the below section displays the individual products
         return (
           <div className="Product-Container" key={`product key, ${i}`}>
-            <h3 className="prodCont">Royale ID: {product.id}</h3>
-            <h2 className="prodCont1">Royale Name: {product.name}</h2>
-            <h3 className="prodCont2">Royale Price: {product.price}</h3>
             <img
               className="productImage"
               src={product.imageUrl}
               alt="product image"
             />
+
+            <h3 className="prodCont">Royale ID: {product.id}</h3>
+            <h2 className="prodCont1">Royale Name: {product.name}</h2>
+            <h3 className="prodCont2">Royale Price: {product.price}</h3>
 
             <br />
             <br />
