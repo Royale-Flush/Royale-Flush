@@ -19,6 +19,15 @@ const Home = () => {
           src="http://www.portablerestroomsusa.com/images/portable-restrooms.jpg"
         />{" "}
       </div>
+    <div className="homePage">
+      <div className="welcome">
+        <h2>Hello, {user.username}</h2>
+      </div>
+
+      <img src="https://i.imgur.com/arzXgMz.png" alt="Happiness" />
+      {/* <video autoPlay loop muted>
+        <source src="waterfall.mp4" type="video/mp4" />
+      </video> */}
     </div>
   );
 };

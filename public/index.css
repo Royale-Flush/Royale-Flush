@@ -1,29 +1,47 @@
 body {
-  /* background-color: whitesmoke; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   background-image: url("stageBackground.jpeg");
+  /* background-image: url("waterfall.mp4"); */
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* background-size: cover; */
+  background-size: cover;
 }
 a {
   font-size: 14pt;
   margin-left: 1rem;
 }
 
-.navbar {
+.mainRFLogoAnimation {
   display: flex;
+  justify-content: center;
+  position: sticky;
+  flex-wrap: nowrap;
+  /* display: flex;
   flex-wrap: wrap;
   margin: auto;
   margin-top: 150px;
   /* border: 5px solid #0099ff; */
   /* background-color: white; */
+  /* margin-bottom: 2rem;
+  width: 100%; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+}
+
+.navbar {
+  position: sticky;
+  display: flex;
+  /* display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end; */
+  /* margin: auto;
+  margin-right: 40rem;
   margin-bottom: 2rem;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
+  align-items: left; */
 }
 
 .hyperLink {
@@ -36,10 +54,9 @@ a {
   margin-bottom: 15px;
   display: flex;
   flex: content;
-  justify-content: left;
+  justify-content: center;
 
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-right: 100rem;
 }
 
 .hyperLink:hover {
@@ -66,8 +83,7 @@ a {
 }
 
 #mask {
-  position: relative;
-
+  position: sticky;
   top: 5px;
   /* align-content: center; */
   width: 400px;
@@ -85,24 +101,27 @@ a {
     #0099ff 51%
   );
 
-  background-size: 40px 110px;
+  background-size: 60px 150px;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation-name: wave-animation;
-  animation-duration: 30s;
-  animation-iteration-count: infinite;
+  animation-duration: 7s;
+  animation-iteration-count: initial;
   animation-timing-function: linear;
+
+  /* below is from .box */
 }
+/* set count iteration count to infinite to get animation to loop */
 
 @keyframes wave-animation {
   0% {
-    background-position: 200px 10px;
+    background-position: 310px 0px;
   }
   50% {
-    background-position: 400px -20px;
+    background-position: 340px -50px;
   }
   100% {
-    background-position: 10px -40px;
+    background-position: 0px 0px;
   }
 }
 
@@ -112,7 +131,7 @@ a {
   width: 40px;
   height: 70px;
   border-radius: 70%;
-  /* border: 2px solid grey; */
+  border: 2px solid grey;
   background-image: -webkit-linear-gradient(45deg, 0%, 100%);
   opacity: 0.95;
   margin-left: 25%;
@@ -207,4 +226,7 @@ a {
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
 
+.homePage {
+  display: inline-block;
+  align-content: space-around;
 }
