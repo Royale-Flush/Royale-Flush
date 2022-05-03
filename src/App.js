@@ -10,7 +10,7 @@ function App() {
     <div>
       <header id="title01" className="mainRFLogoAnimation">
         <h3 id="mask" className="box">
-          Royal Flush{" "}
+          Royale Flush{" "}
         </h3>
       </header>
 
