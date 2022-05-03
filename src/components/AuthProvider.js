@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
       }
     }
     getMyUserFunction()
-  }, [setUser, isLoggedIn])
+  }, [isLoggedIn])
 
   return (
     <AuthContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>

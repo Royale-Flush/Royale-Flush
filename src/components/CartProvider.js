@@ -13,9 +13,8 @@ const CartProvider = ({ children }) => {
     const fetchCart = async () => {
       if (user.username !== 'guest') {
         const result = await getCart(user.id)
-        console.log('cart', result)
+        setCart(result)
       }
-      // setCart(result)
     }
     fetchCart()
   }, [user])

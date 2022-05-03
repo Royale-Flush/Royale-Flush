@@ -17,9 +17,7 @@ const Login = () => {
             e.preventDefault()
             try {
               const response = await loginUser(username, password)
-              console.log('response after login', response)
               setIsLoggedIn(true)
-              setUser(response)
               navigate('/')
             } catch (error) {
               console.error('Username and password does not exist.', error)
