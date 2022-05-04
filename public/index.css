@@ -299,6 +299,11 @@ position: sticky;
   margin-left: 3vw;
   margin-right: 3vw;
   margin-bottom: 2rem;
+  transition: transform .2s ease-out;
+    cursor: pointer;
+}
+.productImage:hover{
+  transform: scale(2.0);
 }
 
 .homePage {
