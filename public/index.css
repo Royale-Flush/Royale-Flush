@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 body {
   /* display: flex; */
@@ -228,14 +228,14 @@ a {
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
 }
-.mainContainer{
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-flex-grow: 1;
-margin-top:15vw;
-margin-left: 10vw;
-position: sticky;
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  margin-top: 15vw;
+  margin-left: 10vw;
+  position: sticky;
 }
 
 .Product-Container {
@@ -256,14 +256,12 @@ position: sticky;
   flex-shrink: 0; */
 }
 
-
-
 .prodCont {
   padding-left: 1rem;
   position: sticky;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   /* font-family:"Lobster Two", cursive; */
-  margin-bottom: -1vw; 
+  margin-bottom: -1vw;
 }
 .prodCont1 {
   padding-left: 1rem;
@@ -288,7 +286,6 @@ position: sticky;
   margin-left: 37%;
   margin-top: -3vw;
   /* position: fixed; */
- 
 }
 .productImage {
   display: flex;
@@ -338,9 +335,9 @@ position: sticky;
 }
 
 #prodText {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   color: blue;
 }
 
