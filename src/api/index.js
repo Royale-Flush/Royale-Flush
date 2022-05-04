@@ -71,54 +71,48 @@ export const getCart = async (customerId) => {
   return data;
 };
 
-export const addItem = async (quantity, productId, orderId) => {
+export const addItem = async ({ quantity, productId, orderId }) => {
+  console.log("need to find out what is being send in addItem", quantity);
   const response = await fetch(`/api/orderProducts`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      user: {
-        quantity,
-        productId,
-        orderId,
-      },
+      quantity,
+      productId,
+      orderId,
     }),
   });
   const data = await response.json();
-  console.log("Looking for data in api index", data);
   return data;
 };
 
-export const editCart = async (quantity, productId, orderId) => {
+export const editCart = async ({ quantity, productId, orderId }) => {
   const response = await fetch(`/api/orderProducts`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      user: {
-        quantity,
-        productId,
-        orderId,
-      },
+      quantity,
+      productId,
+      orderId,
     }),
   });
   const data = await response.json();
   return data;
 };
 
-export const removeFromCart = async (productId, orderId) => {
+export const removeFromCart = async ({ productId, orderId }) => {
   const response = await fetch(`/api/orderProducts`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      user: {
-        productId,
-        orderId,
-      },
+      productId,
+      orderId,
     }),
   });
   const data = await response.json();

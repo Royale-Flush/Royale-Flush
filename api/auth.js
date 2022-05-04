@@ -26,7 +26,7 @@ authRouter.post("/register", async (req, res, next) => {
       totalAmount: 0,
     };
     delete user.password;
-    Order.createOrders(order);
+    const newOrder = Order.createOrders(order);
 
     const token = jwt.sign(user, JWT_SECRET);
     console.log("token", token);

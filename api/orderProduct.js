@@ -16,7 +16,7 @@ opRouter.post("/", async (req, res, next) => {
   } catch ({ name, message }) {
     next({
       name: "Error",
-      message: "cannot creat new product order",
+      message: "cannot create new product order",
     });
   }
 });

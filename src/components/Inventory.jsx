@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllProducts, getTag } from "../api/index";
 import useCart from "../hooks/useCart";
-import Cart from "./Cart";
 
 const Inventory = () => {
   const [products, setProducts] = useState([]);
@@ -32,9 +31,9 @@ const Inventory = () => {
             <h3 className="prodCont">Royale ID: {product.id}</h3>
             <h2 className="prodCont1">Royale Name: {product.name}</h2>
             <h3 className="prodCont2">Royale Price: {product.price}</h3>
-            {/* <button onClick={addToOrder(product.id, 1, cart.id)}>
+            <button id="add" onClick={() => addToOrder(product.id, 1, cart.id)}>
               Add to Cart
-            </button> */}
+            </button>
             <br />
             <br />
           </div>
