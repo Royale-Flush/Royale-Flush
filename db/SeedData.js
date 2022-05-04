@@ -29,7 +29,7 @@ const newProduct = [
     categoryId: "1",
     name: "The Royale",
     price: "12.49",
-    imageUrl: "/drake.jpg",
+    imageUrl: "/royale.jpeg",
   },
   {
     categoryId: "2",

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 body {
   /* display: flex; */
   /* justify-content: center; */
@@ -84,7 +86,7 @@ a {
 }
 
 #mask {
-  position: fixed;
+  /* position: fixed; */
   top: 5px;
   align-content: center;
   width: 400px;
@@ -127,8 +129,8 @@ a {
 }
 
 .box {
-  margin-top: 10%;
-  position: fixed;
+  margin-top: 5vw;
+  /* position: fixed; */
   width: 40px;
   height: 70px;
   border-radius: 70%;
@@ -227,48 +229,57 @@ a {
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
 }
+.mainContainer{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+flex-grow: 1;
+margin-top:15vw;
+margin-left: 10vw;
+position: sticky;
+}
 
 .Product-Container {
   display: flex;
   flex-direction: column;
-  width: 45%;
-
-  left: 0;
-  /* right: 0; */
   margin: 0 auto;
-  /* margin-bottom: 2rem; */
-  margin-top: 2rem;
+  margin-top: -15vw;
+  margin-bottom: 20vw;
+  margin-left: 4vw;
   padding-bottom: 2rem;
   border: 1px solid blue;
   box-shadow: 15px 15px 15px black;
   background-color: rgb(255, 255, 255);
   border-radius: 60px 60px 60px;
-  /* position: sticky; */
+  width: 24vw;
+  /* flex-basis:35%; */
+  /* flex-grow:1;
+  flex-shrink: 0; */
 }
 
+
+
 .prodCont {
-  margin-top: 2rem;
-  margin-bottom: 2px;
-  margin-left: 2rem;
-  float: left;
   padding-left: 1rem;
   position: sticky;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  /* font-family:"Lobster Two", cursive; */
+  margin-bottom: -1vw; 
 }
 .prodCont1 {
-  margin-top: -3rem;
-  margin-bottom: 2px;
-  margin-left: 2rem;
-  float: left;
   padding-left: 1rem;
   position: sticky;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  /* font-family:"Lobster Two", cursive;  */
+  margin-bottom: -1vw;
+  font-size: larger;
 }
 .prodCont2 {
-  margin-top: -3rem;
-  margin-bottom: 2px;
-  margin-left: 2rem;
-  float: left;
   padding-left: 1rem;
   position: sticky;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  /* font-family:"Lobster Two", cursive;  */
+  margin-bottom: -1vw;
 }
 
 .inventoryHead {
@@ -276,8 +287,9 @@ a {
   font-weight: 800;
   font-family: "Lobster Two", cursive;
   margin-left: 37%;
-  margin-top: 9rem;
-  position: fixed;
+  margin-top: -3vw;
+  /* position: fixed; */
+ 
 }
 .productImage {
   display: flex;
@@ -285,8 +297,8 @@ a {
   width: 15rem;
   border-radius: 10%;
   margin-top: 3rem;
-  margin-left: 10vw;
-  margin-right: 20vw;
+  margin-left: 3vw;
+  margin-right: 3vw;
   margin-bottom: 2rem;
 }
 
@@ -326,3 +338,11 @@ a {
 #stickman {
   margin-right: 10rem;
 }
+
+#prodText {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-family: 'Permanent Marker', cursive;
+  color: blue;
+}
+
