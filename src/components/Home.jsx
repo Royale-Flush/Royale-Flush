@@ -24,26 +24,29 @@ const Home = () => {
       </div> */}
 
       <Carousel
-        width="300px"
+        // className={styles.homeCarousel}
+        infiniteLoop={true}
         transitionTime={2000}
         showThumbs={false}
         autoPlay={true}
+        showArrows={false}
+        showStatus={false}
       >
         <div>
           <img src="https://i.imgur.com/yvCTyaS.png" />
-          <p>Hello</p>
+          <p>Welcome</p>
         </div>
         <div>
           <img src="https://i.imgur.com/yvCTyaS.png" />
-          <p>Hello</p>
+          <p>To</p>
         </div>
         <div>
           <img src="https://i.imgur.com/yvCTyaS.png" />
-          <p>Hello</p>
+          <p>Royale</p>
         </div>
         <div>
           <img src="https://i.imgur.com/yvCTyaS.png" />
-          <p>Hello</p>
+          <p>Flush</p>
         </div>
       </Carousel>
     </div>
