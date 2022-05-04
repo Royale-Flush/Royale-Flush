@@ -1,10 +1,40 @@
 .stickman {
   width: 200px;
 }
+/* .homeCarousel {
+   display: block;
+  width: 500px;
+  height: 500px;
+  align-items: center;
+  width: 900px;
+} */
 .homeCarousel {
   /* display: block;
   width: 500px;
   height: 500px;
   /* align-items: center; */
   /* width: 900px; */
+  display: flex;
+  position: absolute;
+  left: 20%;
+  bottom: -5%;
+  margin: auto;
+}
+#greeting {
+  display: flex;
+  justify-content: left;
+  float: right;
+  font-size: large;
+  font-family: "Lobster Two", cursive;
+  position: absolute;
+  top: 25%;
+  left: 90%;
+  right: 0%;
+
+  /* margin: 0 auto;
+  justify-content: center; */
+}
+
+.carouselPics {
+  height: 400px;
 }

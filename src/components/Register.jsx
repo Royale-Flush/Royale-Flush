@@ -15,45 +15,48 @@ const Register = () => {
   // let token = "pizza";
 
   return (
-    <div className="inputBoxes">
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          const result = await registerUser(username, password);
+    <div>
+      <h2 className="welcome">Sign Up to experience the Royale Flush! </h2>
+      <div className="inputBoxes">
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            const result = await registerUser(username, password);
 
-          if (result.error) {
-            setError(result.error);
-          } else {
-            setIsLoggedIn(true);
-            navigate("/");
-          }
-        }}
-      >
-        {error ? <h3>Unable to create account: {error}</h3> : null}
-        <div className="inputs">
-          <input
-            value={username}
-            type="text"
-            placeholder="Username"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-            required
-          />
-          <input
-            value={password}
-            type="password"
-            placeholder="Password"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            required
-            pattern=".{8,}"
-            title="8 characters minimum"
-          />
-          <button type="submit">Sign Up</button>
-        </div>
-      </form>
+            if (result.error) {
+              setError(result.error);
+            } else {
+              setIsLoggedIn(true);
+              navigate("/");
+            }
+          }}
+        >
+          {error ? <h3>Unable to create account: {error}</h3> : null}
+          <div className="inputs">
+            <input
+              value={username}
+              type="text"
+              placeholder="Username"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+              required
+            />
+            <input
+              value={password}
+              type="password"
+              placeholder="Password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              required
+              pattern=".{8,}"
+              title="8 characters minimum"
+            />
+            <button type="submit">Sign Up</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

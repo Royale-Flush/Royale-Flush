@@ -14,6 +14,7 @@ const Inventory = () => {
   return (
     <>
       <h1 className="inventoryHead">Royale Inventory</h1>
+
       <br />
       <br />
       <div className="mainContainer">
