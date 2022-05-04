@@ -228,22 +228,19 @@ a {
 .Product-Container {
   display: flex;
   flex-direction: column;
-  border: 1px solid #07effd;
-  gap: 4rem;
-  box-shadow: 4px 4px 4px #005fff;
-  background-color: lightskyblue;
   width: 45%;
-  top: 50%;
+
   left: 0;
-  right: 0;
+  /* right: 0; */
   margin: 0 auto;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   margin-top: 2rem;
+  padding-bottom: 2rem;
   border: 1px solid blue;
   box-shadow: 15px 15px 15px black;
   background-color: rgb(255, 255, 255);
   border-radius: 60px 60px 60px;
-  position: sticky;
+  /* position: sticky; */
 }
 
 .prodCont {
@@ -280,8 +277,14 @@ a {
   position: fixed;
 }
 .productImage {
-  height: 20rem;
-  width: 20rem;
+  display: flex;
+  height: 15rem;
+  width: 15rem;
+  border-radius: 10%;
+  margin-top: 3rem;
+  margin-left: 10vw;
+  margin-right: 20vw;
+  margin-bottom: 2rem;
 }
 .homePage {
   display: inline-block;
