@@ -62,6 +62,8 @@ a {
   padding-top: 1rem;
   height: 3rem;
   border-radius: 2rem 2rem 2rem;
+  width: 6rem;
+  margin-right: 100rem;
 }
 
 .hyperLink:hover {
@@ -225,6 +227,7 @@ a {
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
 }
+
 .Product-Container {
   display: flex;
   flex-direction: column;
@@ -286,7 +289,40 @@ a {
   margin-right: 20vw;
   margin-bottom: 2rem;
 }
+
 .homePage {
   display: inline-block;
   align-content: space-around;
+}
+
+.logoutButton {
+  text-decoration: none;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
+  color: black;
+  box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
+  background-color: rgba(255, 255, 255, 0.469);
+  margin-bottom: 15px;
+  display: flex;
+  flex: content;
+  justify-content: center;
+  border: none;
+  margin-left: 20px;
+  width: 6rem;
+}
+
+.logoutButton:hover {
+  background-size: 100% 90%;
+  background: linear-gradient(90deg, #07effd 0%, #005fff 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.4rem;
+  background-position: 0 90%;
+  transition: all 0.3s ease-in-out;
+  font-size: larger;
+  font-weight: bolder;
+  color: rgb(19, 79, 209);
+}
+
+#stickman {
+  margin-right: 10rem;
 }
