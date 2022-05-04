@@ -92,25 +92,6 @@ async function getAllActiveOrders({ isActive }) {
   }
 }
 
-async function getTotalAmount({ customerId }) {
-  try {
-    const {
-      rows: [orders],
-    } = await client.query(
-      `
-    SELECT "totalAmount" FROM orders
-    WHERE "customerId" = $1
-    
-    `,
-      [customerId]
-    );
-    // console.log("Line 109", orders);
-    return orders;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 async function getCartByCustomerId(customerId) {
   const {
     rows: [cart],
@@ -146,5 +127,4 @@ module.exports = {
   editOrders,
   deleteOrders,
   getAllActiveOrders,
-  getTotalAmount,
 };

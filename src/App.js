@@ -12,32 +12,6 @@ function App() {
         <h3 id="mask" className="box">
           Royale Flush{" "}
         </h3>
-<<<<<<< HEAD
-        <Link className="hyperLink" to="/">
-          Home
-        </Link>
-        <Link className="hyperLink" to="/Inventory">
-          Inventory
-        </Link>
-        {user.id ? (
-          <>
-            <Logout />
-            <Link className="hyperLink" to="/cart">
-              Cart
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link className="hyperLink" to="/Login">
-              Login
-            </Link>
-            <Link className="hyperLink" to="/signup">
-              Sign Up
-            </Link>
-          </>
-        )}
-=======
->>>>>>> origin/main
       </header>
 
       <nav className="navbar">

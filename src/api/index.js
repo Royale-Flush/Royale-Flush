@@ -1,5 +1,3 @@
-// const URL = "https://royale-flush.herokuapp.com/api";
-
 export const loginUser = async (username, password) => {
   try {
     const response = await fetch(`/api/auth/login`, {
@@ -19,6 +17,7 @@ export const loginUser = async (username, password) => {
     return error;
   }
 };
+
 export const getMe = async (token) => {
   try {
     const response = await fetch(`/api/auth/me`, {
@@ -53,6 +52,7 @@ export const registerUser = async (username, password) => {
     return error;
   }
 };
+
 export const getAllProducts = async () => {
   const response = await fetch(`/api/products`);
   const data = await response.json();
@@ -71,8 +71,8 @@ export const getCart = async (customerId) => {
   return data;
 };
 
-export const addToCart = async (quantity, productId) => {
-  const response = await fetch(`/api/${orderId}`, {
+export const addItem = async (quantity, productId, orderId) => {
+  const response = await fetch(`/api/orderProducts`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -81,15 +81,17 @@ export const addToCart = async (quantity, productId) => {
       user: {
         quantity,
         productId,
+        orderId,
       },
     }),
   });
   const data = await response.json();
+  console.log("Looking for data in api index", data);
   return data;
 };
 
-export const editCart = async (quantity, productId) => {
-  const response = await fetch(`/api/${orderId}`, {
+export const editCart = async (quantity, productId, orderId) => {
+  const response = await fetch(`/api/orderProducts`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -98,6 +100,7 @@ export const editCart = async (quantity, productId) => {
       user: {
         quantity,
         productId,
+        orderId,
       },
     }),
   });
@@ -105,12 +108,18 @@ export const editCart = async (quantity, productId) => {
   return data;
 };
 
-export const removeFromCart = async (productId) => {
-  const response = await fetch(`/api/${orderId}`, {
+export const removeFromCart = async (productId, orderId) => {
+  const response = await fetch(`/api/orderProducts`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      user: {
+        productId,
+        orderId,
+      },
+    }),
   });
   const data = await response.json();
   return data;

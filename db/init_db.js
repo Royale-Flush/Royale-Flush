@@ -98,7 +98,7 @@ async function populateInitialData() {
     const order = await Promise.all(newOrder.map(Order.createOrders));
     const product = await Promise.all(newProduct.map(Product.createProduct));
     const productOrder = await Promise.all(
-      newProductOrder.map(ProductOrder.createProductOrders)
+      newProductOrder.map(ProductOrder.addToOrder)
     );
   } catch (error) {
     console.error(error);
