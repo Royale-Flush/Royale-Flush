@@ -24,6 +24,11 @@ const Inventory = () => {
             <h3>Royale ID: {product.id}</h3>
             <h2 className="prodCont1">Royale Name: {product.name}</h2>
             <h3 className="prodCont2">Royale Price: {product.price}</h3>
+            <img
+              className="productImage"
+              src={product.imageUrl}
+              alt="product image"
+            />
 
             <br />
             <br />
