@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   return (
     <div>
-      <h2 className="welcome">Please log in and Happy Flushing! </h2>
+      <h2 className="welcome">Please Login and Happy Flushing! </h2>
       <div className="inputBoxes">
         <form
           onSubmit={async (e) => {

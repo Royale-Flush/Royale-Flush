@@ -16,6 +16,7 @@ const newCategories = [
   { name: "Toilet", tags: "Crapper" },
   { name: "Bidet", tags: "Bougie Toilet" },
   { name: "Portable", tags: "Outhouse" },
+  { name: "Old School", tags: "Back in the day" },
 ];
 
 const newOrder = [
@@ -26,28 +27,40 @@ const newOrder = [
 
 const newProduct = [
   {
-    categoryId: "1",
+    categoryId: "4",
     name: "The Royale",
-    price: "12.49",
-    imageUrl: "/drake.jpg",
+    price: "120.49",
+    imageUrl: "/royale.jpeg",
   },
   {
     categoryId: "2",
     name: "The Deluxe",
-    price: "10.49",
+    price: "100.00",
     imageUrl: "/deluxe.jpeg",
   },
   {
-    categoryId: "3",
+    categoryId: "1",
     name: "The King",
-    price: "11.49",
+    price: "1400.49",
     imageUrl: "/king.jpeg",
   },
   {
     categoryId: "1",
     name: "The Queen",
-    price: "6.49",
+    price: "1600.49",
     imageUrl: "/queen.jpeg",
+  },
+  {
+    categoryId: "3",
+    name: "The Main Event",
+    price: "12000.62",
+    imageUrl: "/party.jpeg",
+  },
+  {
+    categoryId: "3",
+    name: "The Main Event",
+    price: "12000.62",
+    imageUrl: "/party.jpeg",
   },
 ];
 
