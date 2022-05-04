@@ -23,14 +23,6 @@ const Inventory = () => {
       <h1 className="inventoryHead">Royale Inventory</h1>
       <br />
       <br />
-
-      <form
-        onSubmit={async (event) => {
-          event.preventDefault();
-          const result = await addToOrder({ a, b, c });
-        }}
-      ></form>
-
       {products.map((product, i) => {
         // the below section displays the individual products
         return (
@@ -40,17 +32,18 @@ const Inventory = () => {
               src={product.imageUrl}
               alt="product image"
             />
-
+            <h2>
+              {cart.items.length >= 0
+                ? console.log(
+                    "im inside inventory looking for my current cart",
+                    cart.id
+                  )
+                : null}
+            </h2>
             <h3 className="prodCont">Royale ID: {product.id}</h3>
             <h2 className="prodCont1">Royale Name: {product.name}</h2>
             <h3 className="prodCont2">Royale Price: {product.price}</h3>
-            <button
-              type="submit"
-              value={(product.id, product.name, product.price)}
-              onClick={(event) =>
-                setCart({ ...cart, items: event.target.value })
-              }
-            >
+            <button onClick={addToOrder(product.id, 1, cart.id)}>
               Add to Cart
             </button>
             <br />
