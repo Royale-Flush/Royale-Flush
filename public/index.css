@@ -143,16 +143,6 @@ a {
   height: 25%;
 }
 
-<<<<<<< HEAD
-#check {
-  border: none;
-  padding: 15px 12px;
-  max-width: 150px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-=======
 .inputBoxes {
   display: flex;
   flex-direction: row;
@@ -301,7 +291,6 @@ a {
 .homePage {
   display: inline-block;
   align-content: space-around;
->>>>>>> origin/main
 }
 */ .logoutButton {
   text-decoration: none;

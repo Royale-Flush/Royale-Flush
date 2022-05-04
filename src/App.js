@@ -3,7 +3,6 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { Home, Cart, Inventory, Login, Logout, Register } from "./components";
 import useAuth from "./hooks/useAuth";
-import styles from "./style/Home.module.css";
 
 function App() {
   const { user } = useAuth();
@@ -14,7 +13,7 @@ function App() {
         <h3 id="mask" className="box">
           Royale Flush{" "}
         </h3>
-        <h2 id={styles.greeting}> Hello, {user.username}</h2>
+        <h2 id="greeting"> Hello, {user.username}</h2>
       </header>
 
       <nav className="navbar">

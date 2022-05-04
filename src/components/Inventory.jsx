@@ -6,9 +6,6 @@ import Cart from "./Cart";
 const Inventory = () => {
   const [products, setProducts] = useState([]);
   const { addToOrder, cart, setCart } = useCart();
-  let a = 1;
-  let b = 4;
-  let c = 4;
 
   useEffect(() => {
     const getProducts = async () => {
@@ -32,20 +29,12 @@ const Inventory = () => {
               src={product.imageUrl}
               alt="product image"
             />
-            <h2>
-              {cart.items.length >= 0
-                ? console.log(
-                    "im inside inventory looking for my current cart",
-                    cart.id
-                  )
-                : null}
-            </h2>
             <h3 className="prodCont">Royale ID: {product.id}</h3>
             <h2 className="prodCont1">Royale Name: {product.name}</h2>
             <h3 className="prodCont2">Royale Price: {product.price}</h3>
-            <button onClick={addToOrder(product.id, 1, cart.id)}>
+            {/* <button onClick={addToOrder(product.id, 1, cart.id)}>
               Add to Cart
-            </button>
+            </button> */}
             <br />
             <br />
           </div>
