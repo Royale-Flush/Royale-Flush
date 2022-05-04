@@ -18,6 +18,7 @@ a {
   justify-content: center;
   position: sticky;
   flex-wrap: nowrap;
+  margin-top: 100px;
   /* display: flex;
   flex-wrap: wrap;
   margin: auto;
@@ -31,7 +32,7 @@ a {
 }
 
 .navbar {
-  position: sticky;
+  position: fixed;
   display: flex;
   /* display: flex;
   flex-wrap: wrap;
@@ -51,21 +52,26 @@ a {
   color: black;
   box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
   background-color: rgba(255, 255, 255, 0.469);
-  margin-bottom: 15px;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
   display: flex;
   flex: content;
   justify-content: center;
-
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  height: 3rem;
+  border-radius: 2rem 2rem 2rem;
+  width: 6rem;
   margin-right: 100rem;
 }
 
 .hyperLink:hover {
-  background-size: 100% 90%;
   background: linear-gradient(90deg, #07effd 0%, #005fff 100%);
   background-repeat: no-repeat;
   background-size: 100% 0.4rem;
   background-position: 0 90%;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s;
   font-size: larger;
   font-weight: bolder;
   color: rgb(19, 79, 209);
@@ -78,9 +84,9 @@ a {
 }
 
 #mask {
-  position: sticky;
+  position: fixed;
   top: 5px;
-  /* align-content: center; */
+  align-content: center;
   width: 400px;
   height: 100px;
   font-size: 60px;
@@ -101,7 +107,7 @@ a {
   -webkit-text-fill-color: transparent;
   animation-name: wave-animation;
   animation-duration: 7s;
-  animation-iteration-count: initial;
+  animation-iteration-count: infinite;
   animation-timing-function: linear;
 
   /* below is from .box */
@@ -121,8 +127,8 @@ a {
 }
 
 .box {
-  margin-top: 10px;
-  position: absolute;
+  margin-top: 10%;
+  position: fixed;
   width: 40px;
   height: 70px;
   border-radius: 70%;
@@ -155,9 +161,9 @@ a {
   height: 15rem;
   position: absolute;
   top: 50%;
-  left:0;
-  right:0;
-  margin:0 auto;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   border: 1px solid blue;
   align-items: center;
   box-shadow: 15px 15px 15px black;
@@ -168,7 +174,7 @@ a {
 .inputs {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   gap: 20px;
   padding-left: 100%;
   background-color: white;
@@ -184,17 +190,17 @@ a {
 .images {
   display: flex;
   flex-direction: column;
-  width:140px;
-  height:140px;
+  width: 140px;
+  height: 140px;
   border: 2px solid yellow;
   box-shadow: 40px 40px 40px gold;
   font-size: xx-large;
   font-family: "Lobster Two", cursive;
   position: absolute;
   top: 50%;
-  left:0;
-  right:0;
-  margin:0 auto;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 
 .welcome {
@@ -203,45 +209,57 @@ a {
   font-family: "Lobster Two", cursive;
   position: absolute;
   top: 40%;
-  left:0%;
-  right:0;
-  margin:0 auto;
+  left: 0%;
+  right: 0;
+  margin: 0 auto;
   justify-content: center;
 }
 
-.toiletCompare{
+.toiletCompare {
   width: 300px;
   height: 300px;
   position: absolute;
   top: -80%;
-  left:225%;
-  right:0;
-  margin:0 auto;
+  left: 225%;
+  right: 0;
+  margin: 0 auto;
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
 }
-.portaToiletCompare{
+.portaToiletCompare {
   width: 400px;
   height: 200px;
   position: absolute;
   top: 150%;
-  left:200%;
-  right:0;
-  margin:0 auto;
+  left: 200%;
+  right: 0;
+  margin: 0 auto;
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
+}
 
 .Product-Container {
   display: flex;
   flex-direction: column;
-  border: 1px solid #07effd;
-  gap: 4rem;
-  box-shadow: 4px 4px 4px #005fff;
-  background-color: lightskyblue;
   width: 45%;
+
+  left: 0;
+  /* right: 0; */
+  margin: 0 auto;
+  /* margin-bottom: 2rem; */
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  border: 1px solid blue;
+  box-shadow: 15px 15px 15px black;
+  background-color: rgb(255, 255, 255);
+  border-radius: 60px 60px 60px;
+  /* position: sticky; */
+}
+
+.prodCont {
+  margin-top: 2rem;
   margin-bottom: 2px;
   margin-left: 2rem;
-  margin-top: 8rem;
   float: left;
   padding-left: 1rem;
   position: sticky;
@@ -265,13 +283,57 @@ a {
 
 .inventoryHead {
   font-size: 45px;
-  font-weight: 700;
+  font-weight: 800;
   font-family: "Lobster Two", cursive;
+  margin-left: 37%;
+  margin-top: 9rem;
+  position: fixed;
+}
+.productImage {
   display: flex;
-  justify-content: center;
-  position: absolute;
+  height: 15rem;
+  width: 15rem;
+  border-radius: 10%;
+  margin-top: 3rem;
+  margin-left: 10vw;
+  margin-right: 20vw;
+  margin-bottom: 2rem;
+}
+
 .homePage {
   display: inline-block;
   align-content: space-around;
 >>>>>>> origin/main
+}
+
+.logoutButton {
+  text-decoration: none;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
+  color: black;
+  box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
+  background-color: rgba(255, 255, 255, 0.469);
+  margin-bottom: 15px;
+  display: flex;
+  flex: content;
+  justify-content: center;
+  border: none;
+  margin-left: 20px;
+  width: 6rem;
+}
+
+.logoutButton:hover {
+  background-size: 100% 90%;
+  background: linear-gradient(90deg, #07effd 0%, #005fff 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.4rem;
+  background-position: 0 90%;
+  transition: all 0.3s ease-in-out;
+  font-size: larger;
+  font-weight: bolder;
+  color: rgb(19, 79, 209);
+}
+
+#stickman {
+  margin-right: 10rem;
 }

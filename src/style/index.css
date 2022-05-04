@@ -2,24 +2,24 @@
 
 /* import fonts here */
 
-/* * {
+* {
   box-sizing: border-box;
-} */
+}
 
-/* :root {
-  define variables here
+:root {
+  /* define variables here */
   --green: green;
   --red: red;
   --blue: blue;
-} */
+}
 
-/* html {
+html {
   touch-action: manipulation;
-} */
+}
 
-/* body {
+body {
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
-} */
+}

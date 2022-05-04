@@ -4,13 +4,18 @@ import { loginUser } from "../api/index";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+<<<<<<< HEAD
   const { setUser, isLoggedIn, setIsLoggedIn } = useAuth();
+=======
+  const { user, setIsLoggedIn } = useAuth();
+  const navigate = useNavigate();
+>>>>>>> main
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   return (
     <div>
-      <h2 className="welcome">Please log in and Happy Flushing!</h2>
+      <h2 className="welcome">Please log in and Happy Flushing! </h2>
       <div className="inputBoxes">
         <form
           onSubmit={async (e) => {
@@ -45,14 +50,6 @@ const Login = () => {
             <button type="submit">Log in</button>
           </div>
         </form>
-      </div>
-
-      <div
-        style={{
-          display: isLoggedIn ? "block" : "none",
-        }}
-      >
-        {/* <h3>WELCOME BACK {`${username}`}!</h3> */}
       </div>
     </div>
   );

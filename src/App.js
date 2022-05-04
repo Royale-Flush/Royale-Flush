@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Routes, Route, Link } from "react-router-dom";
 import { Home, Cart, Inventory, Login, Logout, Register } from "./components";
 import useAuth from "./hooks/useAuth";
@@ -24,8 +25,11 @@ function App() {
           </Link>
           {user.id ? (
             <>
-              <Logout />
-              <Link to="/cart">Cart</Link>
+              <Link className="hyperLink" to="/cart">
+                Cart
+              </Link>
+
+              <Logout className="logoutButton" to="/logout" />
             </>
           ) : (
             <>
@@ -45,7 +49,11 @@ function App() {
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
+<<<<<<< HEAD
         <Route path="/cart" element={<Cart />} />
+=======
+        <Route path="/logout" element={<Logout />} />
+>>>>>>> main
       </Routes>
     </div>
   );
