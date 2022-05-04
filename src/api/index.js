@@ -132,6 +132,18 @@ export const getTag = async (id) => {
   return data;
 };
 
+export const getImg = async (id) => {
+  const response = await fetch(`/api/products/img`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(id),
+  });
+  const data = await response.json();
+  return data;
+};
+
 export const logout = async () => {
   const response = await fetch("/api/auth/logout");
   const data = await response.json();
