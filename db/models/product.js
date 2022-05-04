@@ -116,6 +116,20 @@ async function getProductById({ id }) {
     throw error;
   }
 }
+async function getImageByID({ id }) {
+  try {
+    const { rows } = await client.query(
+      `
+      select "imageUrl" from product
+      where id = $1
+      `,
+      [id]
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
 
 module.exports = {
   createProduct,
@@ -124,4 +138,5 @@ module.exports = {
   getProductsByCategory,
   EditProduct,
   getProductById,
+  getImageByID,
 };

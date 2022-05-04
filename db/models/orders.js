@@ -105,6 +105,7 @@ async function getCartByCustomerId(customerId) {
           'id', product.id,
           'name', product.name,
           'price', product.price,
+          'imageUrl', product."imageUrl",
           'category', product."categoryId",
           'quantity', orderproduct.quantity
           )
