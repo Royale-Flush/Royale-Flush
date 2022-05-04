@@ -49,9 +49,7 @@ const Login = () => {
         style={{
           display: isLoggedIn ? "block" : "none",
         }}
-      >
-        {/* <h3>WELCOME BACK {`${username}`}!</h3> */}
-      </div>
+      ></div>
     </div>
   );
 };
