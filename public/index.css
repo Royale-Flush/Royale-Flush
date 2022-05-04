@@ -336,7 +336,7 @@ footer {
   align-items: center;
   justify-content: center;
 }
-section {
+ul {
   display: flex;
   flex-direction: column;
 }
