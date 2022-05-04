@@ -1,5 +1,3 @@
-// const URL = "https://royale-flush.herokuapp.com/api";
-
 export const loginUser = async (username, password) => {
   try {
     const response = await fetch(`/api/auth/login`, {
@@ -19,6 +17,7 @@ export const loginUser = async (username, password) => {
     return error;
   }
 };
+
 export const getMe = async (token) => {
   try {
     const response = await fetch(`/api/auth/me`, {
@@ -53,10 +52,83 @@ export const registerUser = async (username, password) => {
     return error;
   }
 };
+
 export const getAllProducts = async () => {
   const response = await fetch(`/api/products`);
   const data = await response.json();
 
+  return data;
+};
+
+export const getCart = async (customerId) => {
+  const response = await fetch(`/api/order/${customerId}/order`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  return data;
+};
+
+export const addItem = async ({ quantity, productId, orderId }) => {
+  const response = await fetch(`/api/orderProducts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      quantity,
+      productId,
+      orderId,
+    }),
+  });
+  const data = await response.json();
+  return data;
+};
+
+export const editCart = async ({ quantity, productId, orderId }) => {
+  const response = await fetch(`/api/orderProducts`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      quantity,
+      productId,
+      orderId,
+    }),
+  });
+  const data = await response.json();
+  return data;
+};
+
+export const removeFromCart = async ({ productId, orderId }) => {
+  const response = await fetch(`/api/orderProducts`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      productId,
+      orderId,
+    }),
+  });
+  const data = await response.json();
+  return data;
+};
+
+export const getTag = async (id) => {
+  const response = await fetch(`/api/category/tag`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  });
+  const data = await response.json();
   return data;
 };
 

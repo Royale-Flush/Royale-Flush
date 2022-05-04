@@ -17,7 +17,6 @@ const Login = () => {
             e.preventDefault();
             try {
               const response = await loginUser(username, password);
-              console.log("response after login", response);
               setIsLoggedIn(true);
               navigate("/");
             } catch (error) {

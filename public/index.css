@@ -352,3 +352,8 @@ position: sticky;
 .carouselPics {
   height: 500px;
 }
+
+#add {
+  max-width: 200px;
+  position: relative;
+}
