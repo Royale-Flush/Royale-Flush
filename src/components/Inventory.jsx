@@ -41,6 +41,13 @@ const Inventory = () => {
                 Royale Price:<span id="prodText"> {product.price} </span>
               </h3>
 
+              <button
+                id="add"
+                onClick={() => addToOrder(product.id, 1, cart.id)}
+              >
+                Add to Cart
+              </button>
+
               <br />
               <br />
             </div>

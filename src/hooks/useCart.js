@@ -10,6 +10,7 @@ const useCart = () => {
 
     const newItems = [...cart.items, item];
     setCart({ ...cart, items: newItems });
+    console.log("did this actually add to the cart", cart);
   }
 
   async function removeItem(a, b) {

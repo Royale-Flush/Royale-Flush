@@ -72,7 +72,6 @@ export const getCart = async (customerId) => {
 };
 
 export const addItem = async ({ quantity, productId, orderId }) => {
-  console.log("need to find out what is being send in addItem", quantity);
   const response = await fetch(`/api/orderProducts`, {
     method: "POST",
     headers: {
