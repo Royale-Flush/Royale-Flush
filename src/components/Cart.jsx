@@ -11,29 +11,38 @@ const Cart = () => {
 
   try {
     return (
-      <div>
+      <div className="mainContainer">
         {cart.items.length ? (
           cart.items.map((newCart) => {
             return (
-              <div className="cart-items" key={`${newCart.id}`}>
+              <div className="Product-Container" key={`${newCart.id}`}>
                 <h1>{newCart.name}</h1>
-                <h2>{newCart.price}</h2>
+                <h2 className="prodCont1">
+                  Royale Price: <span id="prodText">{newCart.price}</span>{" "}
+                </h2>
                 <h2>{newCart.quantity}</h2>
                 <button
-                  id="remove"
-                  onClick={() => removeItem(newCart.id, cart.id)}
+                  id="add"
+                  onClick={(e) => {
+                    removeItem(newCart.id, cart.id);
+                    {
+                      e.preventDefault();
+                    }
+                  }}
                 >
                   Remove to Cart
                 </button>
-                <option>
-                  Update quantity
-                  <input type="number" min="1" max="100"></input>
-                  <input
-                    type="submit"
-                    onSubmit={(e) =>
-                      updateItem(newCart.id, (newCart.quantity = e), cart.id)
-                    }
-                  ></input>
+                <option className="prodCont2">
+                  Royale Quantity:
+                  <span id="prodText">
+                    <input type="number" min="1" max="100"></input>
+                    <input
+                      type="submit"
+                      onSubmit={(e) =>
+                        updateItem(newCart.id, (newCart.quantity = e), cart.id)
+                      }
+                    ></input>
+                  </span>
                 </option>
               </div>
             );
