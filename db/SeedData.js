@@ -35,25 +35,31 @@ const newProduct = [
   {
     categoryId: "2",
     name: "The Deluxe",
-    price: "$100.00",
+    price: "100.00",
     imageUrl: "/deluxe.jpeg",
   },
   {
     categoryId: "1",
     name: "The King",
-    price: "$1,400.49",
+    price: "1400.49",
     imageUrl: "/king.jpeg",
   },
   {
     categoryId: "1",
     name: "The Queen",
-    price: "$1,600.49",
+    price: "1600.49",
     imageUrl: "/queen.jpeg",
   },
   {
     categoryId: "3",
     name: "The Main Event",
-    price: "$12,000.62",
+    price: "12000.62",
+    imageUrl: "/party.jpeg",
+  },
+  {
+    categoryId: "3",
+    name: "The Main Event",
+    price: "12000.62",
     imageUrl: "/party.jpeg",
   },
 ];
