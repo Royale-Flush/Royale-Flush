@@ -67,19 +67,19 @@ const newProduct = [
     categoryId: "5",
     name: "Paw Potty",
     price: "15.99",
-    imageUrl: "potty.jpeg",
+    imageUrl: "/potty.jpeg",
   },
   {
     categoryId: "2",
     name: "Wall Bidet",
     price: "345.99",
-    imageUrl: "wall_bidet.webp",
+    imageUrl: "/wall_bidet.webp",
   },
   {
     categoryId: "2",
     name: "Floor Bidet",
     price: "300.99",
-    imageUrl: "floor_bidet.webp",
+    imageUrl: "/floor_bidet.webp",
   },
   {
     categoryId: "1",
@@ -91,7 +91,13 @@ const newProduct = [
     categoryId: "5",
     name: "Elmo's Potty",
     price: "19.99",
-    imageUrl: "elmo.jpeg",
+    imageUrl: "/elmo.jpeg",
+  },
+  {
+    categoryId: "1",
+    name: "Black & Gold",
+    price: "1800.99",
+    imageUrl: "/black_gold.jpeg",
   },
 ];
 
