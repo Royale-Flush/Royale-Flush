@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
-import styles from "../style/Home.module.css";
+import styles from "../style/Home.css";
 
 const Home = () => {
   const { user } = useAuth();
@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
       <Carousel
-        className={styles.homeCarousel}
+        className="homeCarousel"
         infiniteLoop={true}
         transitionTime={3000}
         showThumbs={false}

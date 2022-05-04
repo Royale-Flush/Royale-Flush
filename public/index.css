@@ -85,8 +85,8 @@ a {
 }
 
 #mask {
-  /* position: fixed; */
-  top: 5px;
+  position: fixed;
+  top: 7%;
   align-content: center;
   width: 400px;
   height: 100px;
@@ -233,19 +233,20 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   flex-grow: 1;
-  margin-top: 15vw;
+  margin-top: 45vw;
   margin-left: 10vw;
   position: sticky;
 }
 
 .Product-Container {
   display: flex;
+  /* top:40%; */
   flex-direction: column;
   margin: 0 auto;
-  margin-top: -15vw;
-  margin-bottom: 20vw;
+  margin-top: -30vw;
+  margin-bottom: 37vw;
   margin-left: 4vw;
-  padding-bottom: 2rem;
+  /* padding-bottom: 2rem; */
   border: 1px solid blue;
   box-shadow: 15px 15px 15px black;
   background-color: rgb(255, 255, 255);
@@ -280,12 +281,13 @@ a {
 }
 
 .inventoryHead {
+  top: 38%;
   font-size: 45px;
   font-weight: 800;
   font-family: "Lobster Two", cursive;
   margin-left: 37%;
   margin-top: -3vw;
-  /* position: fixed; */
+  position: fixed;
 }
 .productImage {
   display: flex;
@@ -296,6 +298,11 @@ a {
   margin-left: 3vw;
   margin-right: 3vw;
   margin-bottom: 2rem;
+  transition: transform 0.2s ease-out;
+  cursor: pointer;
+}
+.productImage:hover {
+  transform: scale(2);
 }
 
 .homePage {
@@ -343,4 +350,10 @@ a {
 
 .carouselPics {
   height: 500px;
+}
+
+#add {
+  max-width: 200px;
+  margin-top: 25px;
+  margin-left: 50px;
 }

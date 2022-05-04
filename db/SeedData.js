@@ -17,6 +17,7 @@ const newCategories = [
   { name: "Bidet", tags: "Bougie Toilet" },
   { name: "Portable", tags: "Outhouse" },
   { name: "Old School", tags: "Back in the day" },
+  { name: "For Kids", tags: "Potty" },
 ];
 
 const newOrder = [
@@ -57,10 +58,46 @@ const newProduct = [
     imageUrl: "/party.jpeg",
   },
   {
-    categoryId: "3",
-    name: "The Main Event",
-    price: "12000.62",
-    imageUrl: "/party.jpeg",
+    categoryId: "4",
+    name: "The Old Timer",
+    price: "10999.99",
+    imageUrl: "/old.jpeg",
+  },
+  {
+    categoryId: "5",
+    name: "Paw Potty",
+    price: "15.99",
+    imageUrl: "/potty.jpeg",
+  },
+  {
+    categoryId: "2",
+    name: "Wall Bidet",
+    price: "345.99",
+    imageUrl: "/wall_bidet.webp",
+  },
+  {
+    categoryId: "2",
+    name: "Floor Bidet",
+    price: "300.99",
+    imageUrl: "/floor_bidet.webp",
+  },
+  {
+    categoryId: "1",
+    name: "The International",
+    price: "1200.99",
+    imageUrl: "/international.jpeg",
+  },
+  {
+    categoryId: "5",
+    name: "Elmo's Potty",
+    price: "19.99",
+    imageUrl: "/elmo.jpeg",
+  },
+  {
+    categoryId: "1",
+    name: "Black & Gold",
+    price: "1800.99",
+    imageUrl: "/black_gold.jpeg",
   },
 ];
 

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../api/index";
+import { getAllProducts, getTag } from "../api/index";
+import useCart from "../hooks/useCart";
 
 const Inventory = () => {
   const [products, setProducts] = useState([]);
+  const { addToOrder, cart, setCart } = useCart();
+
   useEffect(() => {
     const getProducts = async () => {
       const response = await getAllProducts();
@@ -10,7 +13,7 @@ const Inventory = () => {
     };
     getProducts();
   }, [setProducts]);
-  console.log("Products:", products);
+
   return (
     <>
       <h1 className="inventoryHead">Royale Inventory</h1>
@@ -37,6 +40,13 @@ const Inventory = () => {
               <h3 className="prodCont2">
                 Royale Price:<span id="prodText"> {product.price} </span>
               </h3>
+
+              <button
+                id="add"
+                onClick={() => addToOrder(product.id, 1, cart.id)}
+              >
+                Add to Cart
+              </button>
 
               <br />
               <br />

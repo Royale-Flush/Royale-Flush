@@ -1,4 +1,4 @@
-const client = require('../client')
+const client = require("../client");
 
 async function createCategories({ name, tags }) {
   try {
@@ -12,11 +12,11 @@ async function createCategories({ name, tags }) {
         RETURNING *;
         `,
       [name, tags]
-    )
-    console.log(categories)
-    return categories
+    );
+    console.log(categories);
+    return categories;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 async function destroyCategory({ categoryId, productId }) {
@@ -28,14 +28,14 @@ async function destroyCategory({ categoryId, productId }) {
 
     `,
       [productId]
-    )
+    );
     await client.query(
       `
     DELETE from product*
     WHERE "categoryId"=$1
     `,
       [categoryId]
-    )
+    );
     const { rows } = await client.query(
       `
   DELETE FROM categories*
@@ -44,11 +44,11 @@ async function destroyCategory({ categoryId, productId }) {
   
   `,
       [categoryId]
-    )
+    );
     // console.log("what", rows);
-    return rows
+    return rows;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 async function editCategory({ id, name, tags }) {
@@ -63,12 +63,12 @@ async function editCategory({ id, name, tags }) {
     RETURNING*;
     `,
       [name, tags, id]
-    )
+    );
 
     // console.log("we can EDIT!!!:", categories);
-    return categories
+    return categories;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -78,29 +78,29 @@ async function getAllCategories() {
       `
     select * from categories
     `
-    )
+    );
     // console.log("getting all categories: ", categories)
-    return rows
+    return rows;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
-async function getCategoryByName({ name }) {
+async function getCategoryById(id) {
   try {
     const {
       rows: [category],
     } = await client.query(
       `
-      select id from categories
-      where name = $1
+      select name from categories
+      where id = $1
       `,
-      [name]
-    )
+      [id]
+    );
     // console.log("getting categories by name: ", category)
-    return category
+    return category;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -109,5 +109,5 @@ module.exports = {
   destroyCategory,
   editCategory,
   getAllCategories,
-  getCategoryByName,
-}
+  getCategoryById,
+};

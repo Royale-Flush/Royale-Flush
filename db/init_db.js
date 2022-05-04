@@ -1,18 +1,18 @@
-const client = require('./client')
+const client = require("./client");
 const {
   Customer,
   Categories,
   Order,
   Product,
   ProductOrder,
-} = require('./models')
+} = require("./models");
 const {
   newPeople,
   newCategories,
   newOrder,
   newProduct,
   newProductOrder,
-} = require('./SeedData')
+} = require("./SeedData");
 
 async function dropTables() {
   try {
@@ -24,15 +24,15 @@ async function dropTables() {
       DROP TABLE IF EXISTS product;
       DROP TABLE IF EXISTS categories;
       
-      `)
+      `);
   } catch (error) {
-    console.log('Error dropping Tables', error)
+    console.log("Error dropping Tables", error);
   }
 }
 
 async function createTables() {
   try {
-    console.log('...creating customers')
+    console.log("...creating customers");
     await client.query(`
         CREATE TABLE customer(
             id SERIAL PRIMARY KEY,
@@ -44,8 +44,8 @@ async function createTables() {
             phone VARCHAR(20), 
             payment VARCHAR(20)
             );
-        `)
-    console.log('...passed customer table ')
+        `);
+    console.log("...passed customer table ");
     await client.query(`
 
         CREATE TABLE categories (
@@ -53,8 +53,8 @@ async function createTables() {
             name VARCHAR(255) UNIQUE NOT NULL,
             tags VARCHAR(255)
             );
-        `)
-    console.log('...passed categories table ')
+        `);
+    console.log("...passed categories table ");
     await client.query(`
         CREATE TABLE product (
             id SERIAL PRIMARY KEY,
@@ -63,8 +63,8 @@ async function createTables() {
             "categoryId" integer REFERENCES categories(id),
             "imageUrl" VARCHAR(255)
             );
-        `)
-    console.log('...passed products table ')
+        `);
+    console.log("...passed products table ");
     await client.query(`
         CREATE TABLE orders (
             id SERIAL PRIMARY KEY,
@@ -72,7 +72,7 @@ async function createTables() {
             "totalAmount" numeric not null,
             isActive boolean default true not null
             );
-            `)
+            `);
     await client.query(`
         CREATE TABLE orderProduct (
             ID SERIAL PRIMARY KEY,
@@ -80,45 +80,45 @@ async function createTables() {
             "orderId" integer REFERENCES orders(id),
             quantity integer
             );
-        `)
-    console.log('...passed orderProducts table ')
+        `);
+    console.log("...passed orderProducts table ");
     //orders needs to have a not null customer(id)
     //should customerId be the same as orders serial Id???
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
 async function populateInitialData() {
   try {
-    const users = await Promise.all(newPeople.map(Customer.createUser))
+    const users = await Promise.all(newPeople.map(Customer.createUser));
     const categories = await Promise.all(
       newCategories.map(Categories.createCategories)
-    )
-    const order = await Promise.all(newOrder.map(Order.createOrders))
-    const product = await Promise.all(newProduct.map(Product.createProduct))
+    );
+    const order = await Promise.all(newOrder.map(Order.createOrders));
+    const product = await Promise.all(newProduct.map(Product.createProduct));
     const productOrder = await Promise.all(
-      newProductOrder.map(ProductOrder.createProductOrders)
-    )
+      newProductOrder.map(ProductOrder.addToOrder)
+    );
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
 async function rebuild() {
   try {
-    client.connect()
-    await dropTables()
-    await createTables()
-    await populateInitialData()
+    client.connect();
+    await dropTables();
+    await createTables();
+    await populateInitialData();
   } catch (error) {
-    console.log('Error rebuilding Tables')
-    throw error
+    console.log("Error rebuilding Tables");
+    throw error;
   } finally {
-    client.end()
+    client.end();
   }
 }
 
-rebuild()
+rebuild();
 
-module.exports = { rebuild }
+module.exports = { rebuild };

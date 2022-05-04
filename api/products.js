@@ -3,6 +3,7 @@ const { Product } = require("../db/index");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
 const { auth } = require("./utils");
+const { getImageByID } = require("../db/models/product");
 
 prodRouter.get("/", async (req, res, next) => {
   try {
@@ -35,22 +36,15 @@ prodRouter.post("/", async (req, res, next) => {
   }
 });
 
-// * NOT WORKING -------------
-// prodRouter.patch('/:productId', auth, async (req, res, next) => {
-//   const { productId } = req.params
-//   const { name, price } = req.body
-//   try {
-//     const product = await EditProduct({
-//       id: productId,
-//       name,
-//       price,
-//     })
-//     // console.log(Product, "FROM PATCH REQUEST")
-//     res.send(product)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
+prodRouter.get("/img", auth, async (req, res, next) => {
+  const { id } = req.body;
+  try {
+    const image = await getImageByID(id);
+    res.send(image);
+  } catch (error) {
+    next(error);
+  }
+});
 
 prodRouter.delete("/:productId", auth, async (req, res, next) => {
   const id = req.params.productId;
