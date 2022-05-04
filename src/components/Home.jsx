@@ -13,7 +13,7 @@ const Home = () => {
       <Carousel
         className={styles.homeCarousel}
         infiniteLoop={true}
-        transitionTime={2000}
+        transitionTime={3000}
         showThumbs={false}
         autoPlay={true}
         showArrows={false}
@@ -25,23 +25,32 @@ const Home = () => {
       >
         <div>
           <img src="roman_toilets2.jpg" className="carouselPics" />
-          <p>Welcome To Royale Flush</p>
+          {/* <h6>Welcome To Royale Flush</h6> */}
+          <p>Our work in the world...and beyond</p>
         </div>
         <div>
           <img src="theShining1.png" className="carouselPics" />
-          <p>From The Shining</p>
+          <p>
+            <em>The Shining</em>
+          </p>
         </div>
         <div>
           <img src="lunarloo.webp" className="carouselPics" />
-          <p>Our First Lunar Loo</p>
+          <p>
+            <em>Space</em>
+          </p>
         </div>
         <div>
           <img src="theShining2.webp" className="carouselPics" />
-          <p>From The Shining</p>
+          <p>
+            <em>The Shining</em>
+          </p>
         </div>
         <div>
           <img src="theDude.png" className="carouselPics" />
-          <p>From The Big Lebowski</p>
+          <p>
+            <em>The Big Lebowski</em>
+          </p>
         </div>
       </Carousel>
     </div>
