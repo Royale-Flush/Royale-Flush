@@ -3,7 +3,6 @@ body {
   /* justify-content: center; */
   /* align-items: center; */
   background-image: url("stageBackground.jpeg");
-  /* background-image: url("waterfall.mp4"); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -18,6 +17,7 @@ a {
   justify-content: center;
   position: sticky;
   flex-wrap: nowrap;
+  margin-top: 150px;
   /* display: flex;
   flex-wrap: wrap;
   margin: auto;
@@ -101,7 +101,7 @@ a {
   -webkit-text-fill-color: transparent;
   animation-name: wave-animation;
   animation-duration: 7s;
-  animation-iteration-count: initial;
+  animation-iteration-count: infinite;
   animation-timing-function: linear;
 
   /* below is from .box */
@@ -221,7 +221,6 @@ a {
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
 }
-
 .Product-Container {
   display: flex;
   flex-direction: column;
@@ -262,11 +261,10 @@ a {
   justify-content: center;
   position: absolute;
 }
-
-.homePage {
+/* .homePage {
   display: inline-block;
   align-content: space-around;
-}
+} */
 
 .logoutButton {
   text-decoration: none;
@@ -298,4 +296,8 @@ a {
 
 #stickman {
   margin-right: 10rem;
+}
+
+.carouselPics {
+  height: 500px;
 }
