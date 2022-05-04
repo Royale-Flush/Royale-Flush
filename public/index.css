@@ -8,6 +8,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  margin-top: 130px; 
 }
 a {
   font-size: 14pt;
@@ -17,9 +18,9 @@ a {
 .mainRFLogoAnimation {
   display: flex;
   justify-content: center;
-  position: sticky;
+  /* position: sticky;
   flex-wrap: nowrap;
-  margin-top: 100px;
+  margin-top: 100px; */
   /* display: flex;
     flex-wrap: wrap;
     margin: auto;
@@ -85,8 +86,8 @@ a {
 }
 
 #mask {
-  position: fixed;
-  top: 7%;
+  /* position: fixed;
+  top: 7%; */
   align-content: center;
   width: 400px;
   height: 100px;
@@ -128,7 +129,7 @@ a {
 }
 
 .box {
-  margin-top: 5vw;
+  /* margin-top: 5vw; */
   /* position: fixed; */
   width: 40px;
   height: 70px;
@@ -136,8 +137,8 @@ a {
   border: 2px solid grey;
   background-image: -webkit-linear-gradient(45deg, 0%, 100%);
   opacity: 0.95;
-  margin-left: 25%;
-  margin-right: 25%;
+  /* margin-left: 25%;
+  margin-right: 25%; */
   box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
 }
 .images {
@@ -206,55 +207,40 @@ a {
   justify-content: center;
 }
 
-.toiletCompare {
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  top: -80%;
-  left: 225%;
-  right: 0;
-  margin: 0 auto;
-  border: 2px solid yellow;
-  box-shadow: 15px 15px 15px gold;
-}
-.portaToiletCompare {
-  width: 400px;
-  height: 200px;
-  position: absolute;
-  top: 150%;
-  left: 200%;
-  right: 0;
-  margin: 0 auto;
-  border: 2px solid yellow;
-  box-shadow: 15px 15px 15px gold;
-}
+
 .mainContainer{
 display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-flex-grow: 1;
-margin-top:45vw;
+/* position: absolute; */
+flex-direction: column;
 margin-left: 10vw;
-position: sticky;
+margin-right: 10vw;
+/* flex-wrap: wrap; */
+/* flex-grow: 1; */
+/* margin-top:45vw; */
+/* margin-left: 10vw; */
+/* position: sticky; */
 }
 
 .Product-Container {
   display: flex;
   /* top:40%; */
   flex-direction: column;
-  margin: 0 auto;
-  margin-top: -30vw;
-  margin-bottom: 37vw;
+  /* margin: 0 auto; */
+  /* margin-top: -30vw; */
+  margin-bottom:5vw;
   margin-left: 4vw;
+  margin-right: 80vw;
   /* padding-bottom: 2rem; */
   border: 1px solid blue;
   box-shadow: 15px 15px 15px black;
   background-color: rgb(255, 255, 255);
   border-radius: 60px 60px 60px;
   width: 24vw;
-  /* flex-basis:35%; */
+  flex-basis:35%;
+  flex-grow: 1;
+  flex-shrink:0 ;
   /* flex-grow:1;
-  flex-shrink: 0; */
+  /* flex-shrink: 0; */
 }
 
 
@@ -360,3 +346,9 @@ position: sticky;
   margin-top: 25px;
   margin-left:50px;
 }
+#headerWrapper {
+  position:sticky;
+  width:100%;
+  top:10%;
+  height: 10rem; 
+  }
