@@ -45,15 +45,11 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/checkout" element={<Cart />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
-<<<<<<< HEAD
-        <Route path="/cart" element={<Cart />} />
-=======
         <Route path="/logout" element={<Logout />} />
->>>>>>> main
       </Routes>
     </div>
   );

@@ -4,15 +4,10 @@ import { loginUser } from "../api/index";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-<<<<<<< HEAD
-  const { setUser, isLoggedIn, setIsLoggedIn } = useAuth();
-=======
   const { user, setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
->>>>>>> main
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   return (
     <div>
       <h2 className="welcome">Please log in and Happy Flushing! </h2>
