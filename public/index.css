@@ -3,7 +3,6 @@ body {
   /* justify-content: center; */
   /* align-items: center; */
   background-image: url("stageBackground.jpeg");
-  /* background-image: url("waterfall.mp4"); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -20,13 +19,13 @@ a {
   flex-wrap: nowrap;
   margin-top: 100px;
   /* display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  margin-top: 150px;
-  /* border: 5px solid #0099ff; */
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 150px;
+    /* border: 5px solid #0099ff; */
   /* background-color: white; */
   /* margin-bottom: 2rem;
-  width: 100%; */
+    width: 100%; */
   /* justify-content: space-between; */
   /* align-items: center; */
 }
@@ -35,14 +34,14 @@ a {
   position: fixed;
   display: flex;
   /* display: flex;
-  flex-wrap: wrap;
-  align-content: flex-end; */
+    flex-wrap: wrap;
+    align-content: flex-end; */
   /* margin: auto;
-  margin-right: 40rem;
-  margin-bottom: 2rem;
-  width: 100%;
-  justify-content: space-between;
-  align-items: left; */
+    margin-right: 40rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    justify-content: space-between;
+    align-items: left; */
 }
 
 .hyperLink {
@@ -227,7 +226,6 @@ a {
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
 }
-
 .Product-Container {
   display: flex;
   flex-direction: column;
@@ -294,8 +292,7 @@ a {
   display: inline-block;
   align-content: space-around;
 }
-
-.logoutButton {
+*/ .logoutButton {
   text-decoration: none;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 25px;
@@ -325,4 +322,8 @@ a {
 
 #stickman {
   margin-right: 10rem;
+}
+
+.carouselPics {
+  height: 500px;
 }
