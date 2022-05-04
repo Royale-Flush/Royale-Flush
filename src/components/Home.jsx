@@ -2,8 +2,7 @@ import React from "react";
 import useAuth from "../hooks/useAuth";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-
-// import styles from "../style/Home.module.css";
+//import styles from "../style/Home.module.css";
 
 const Home = () => {
   const { user } = useAuth();
