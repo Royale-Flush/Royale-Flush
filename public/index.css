@@ -8,6 +8,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  margin-top: 130px;
 }
 a {
   font-size: 14pt;
@@ -17,9 +18,9 @@ a {
 .mainRFLogoAnimation {
   display: flex;
   justify-content: center;
-  position: sticky;
+  /* position: sticky;
   flex-wrap: nowrap;
-  margin-top: 100px;
+  margin-top: 100px; */
   /* display: flex;
     flex-wrap: wrap;
     margin: auto;
@@ -35,6 +36,7 @@ a {
 .navbar {
   position: fixed;
   display: flex;
+  top: 0;
   /* display: flex;
     flex-wrap: wrap;
     align-content: flex-end; */
@@ -53,8 +55,8 @@ a {
   color: black;
   box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
   background-color: rgba(255, 255, 255, 0.469);
-  margin-top: 5rem;
-  margin-bottom: 1rem;
+  margin-top: 10vw;
+  margin-bottom: 2vw;
   display: flex;
   flex: content;
   justify-content: center;
@@ -85,8 +87,6 @@ a {
 }
 
 #mask {
-  position: fixed;
-  top: 7%;
   align-content: center;
   width: 400px;
   height: 100px;
@@ -128,16 +128,12 @@ a {
 }
 
 .box {
-  margin-top: 5vw;
-  /* position: fixed; */
   width: 40px;
   height: 70px;
   border-radius: 70%;
   border: 2px solid grey;
   background-image: -webkit-linear-gradient(45deg, 0%, 100%);
   opacity: 0.95;
-  margin-left: 25%;
-  margin-right: 25%;
   box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
 }
 .images {
@@ -232,63 +228,70 @@ a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: flex-start;
   flex-grow: 1;
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+  margin-left: 13vw;
+  /* flex-grow: 1;
   margin-top: 45vw;
   margin-left: 10vw;
-  position: sticky;
+  position: sticky; */
 }
 
 .Product-Container {
   display: flex;
-  /* top:40%; */
+  margin-right: 2vw;
   flex-direction: column;
-  margin: 0 auto;
-  margin-top: -30vw;
-  margin-bottom: 37vw;
-  margin-left: 4vw;
-  /* padding-bottom: 2rem; */
-  border: 1px solid blue;
+  box-shadow: 4px 4px lightgrey;
+  margin-bottom: 5vw;
+  flex-basis: 5%;
+  flex-grow: 1;
+  flex-shrink: 0;
   box-shadow: 15px 15px 15px black;
+  padding-bottom: 2rem;
+  border: 1px solid blue;
   background-color: rgb(255, 255, 255);
+  width: 20vw;
   border-radius: 60px 60px 60px;
-  width: 24vw;
-  height: 53vh;
-  /* flex-basis:35%; */
-  /* flex-grow:1;
-  flex-shrink: 0; */
 }
 
 .prodCont {
   padding-left: 1rem;
-  position: sticky;
+  position: static;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   /* font-family:"Lobster Two", cursive; */
   margin-bottom: -1vw;
 }
 .prodCont1 {
   padding-left: 1rem;
-  position: sticky;
+  position: static;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  /* font-family:"Lobster Two", cursive;  */
   margin-bottom: -1vw;
   font-size: larger;
 }
 .prodCont2 {
   padding-left: 1rem;
-  position: sticky;
+  position: static;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  /* font-family:"Lobster Two", cursive;  */
   margin-bottom: -1vw;
 }
 
 .inventoryHead {
-  top: 38%;
+  top: 38vw;
   font-size: 45px;
+  font-weight: 800;
+  font-family: "Lobster Two", cursive;
+  margin-left: 41vw;
+  margin-top: -4vw;
+  position: static;
+  top: 38%;
+  /* font-size: 45px;
   font-weight: 800;
   font-family: "Lobster Two", cursive;
   margin-left: 37%;
   margin-top: -3vw;
-  position: fixed;
+  position: fixed; */
 }
 .productImage {
   display: flex;
@@ -310,29 +313,35 @@ a {
   display: inline-block;
   align-content: space-around;
 }
-*/ .logoutButton {
+.logoutButton {
   text-decoration: none;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 25px;
   color: black;
   box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
   background-color: rgba(255, 255, 255, 0.469);
-  margin-bottom: 15px;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
   display: flex;
   flex: content;
   justify-content: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  height: 4rem;
+  border-radius: 2rem 2rem 2rem;
+  width: 8rem;
+  margin-right: 100rem;
+  margin-left: 1rem;
   border: none;
-  margin-left: 20px;
-  width: 6rem;
 }
 
 .logoutButton:hover {
-  background-size: 100% 90%;
   background: linear-gradient(90deg, #07effd 0%, #005fff 100%);
   background-repeat: no-repeat;
   background-size: 100% 0.4rem;
   background-position: 0 90%;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s;
   font-size: larger;
   font-weight: bolder;
   color: rgb(19, 79, 209);
@@ -357,4 +366,12 @@ a {
   max-width: 200px;
   margin-top: 25px;
   margin-left: 50px;
+}
+#headerWrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 15rem;
+  background-color: rgba(211, 211, 211, 0.541);
+  /* background-image: url("header_wrap.jpg"); */
 }

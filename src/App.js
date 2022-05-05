@@ -9,12 +9,14 @@ function App() {
 
   return (
     <div>
-      <header id="title01" className="mainRFLogoAnimation">
-        <h3 id="mask" className="box">
-          Royale Flush{" "}
-        </h3>
-        <h2 id="greeting"> Hello, {user.username}</h2>
-      </header>
+      <div id="headerWrapper">
+        <header id="title01" className="mainRFLogoAnimation">
+          <h3 id="mask" className="box">
+            Royale Flush{" "}
+          </h3>
+          <h2 id="greeting"> Hello, {user.username}</h2>
+        </header>
+      </div>
 
       <nav className="navbar">
         <div>
