@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 const CartProvider = ({ children }) => {
   const { user } = useAuth();
   const [cart, setCart] = useState({});
+  const [cartChg, setCartChg] = useState(0);
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -15,10 +16,10 @@ const CartProvider = ({ children }) => {
       }
     };
     fetchCart();
-  }, [user]);
+  }, [user, cartChg]);
 
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
+    <CartContext.Provider value={{ cart, setCart, cartChg, setCartChg }}>
       {children}
     </CartContext.Provider>
   );

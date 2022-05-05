@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 body {
   /* display: flex; */
@@ -228,14 +228,14 @@ a {
   border: 2px solid yellow;
   box-shadow: 15px 15px 15px gold;
 }
-.mainContainer{
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-flex-grow: 1;
-margin-top:45vw;
-margin-left: 10vw;
-position: sticky;
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  margin-top: 45vw;
+  margin-left: 10vw;
+  position: sticky;
 }
 
 .Product-Container {
@@ -252,19 +252,18 @@ position: sticky;
   background-color: rgb(255, 255, 255);
   border-radius: 60px 60px 60px;
   width: 24vw;
+  height: 53vh;
   /* flex-basis:35%; */
   /* flex-grow:1;
   flex-shrink: 0; */
 }
-
-
 
 .prodCont {
   padding-left: 1rem;
   position: sticky;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   /* font-family:"Lobster Two", cursive; */
-  margin-bottom: -1vw; 
+  margin-bottom: -1vw;
 }
 .prodCont1 {
   padding-left: 1rem;
@@ -283,14 +282,13 @@ position: sticky;
 }
 
 .inventoryHead {
-  top:38%;
+  top: 38%;
   font-size: 45px;
   font-weight: 800;
   font-family: "Lobster Two", cursive;
   margin-left: 37%;
   margin-top: -3vw;
   position: fixed;
- 
 }
 .productImage {
   display: flex;
@@ -301,11 +299,11 @@ position: sticky;
   margin-left: 3vw;
   margin-right: 3vw;
   margin-bottom: 2rem;
-  transition: transform .2s ease-out;
-    cursor: pointer;
+  transition: transform 0.2s ease-out;
+  cursor: pointer;
 }
-.productImage:hover{
-  transform: scale(2.0);
+.productImage:hover {
+  transform: scale(2);
 }
 
 .homePage {
@@ -345,9 +343,9 @@ position: sticky;
 }
 
 #prodText {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   color: blue;
 }
 
@@ -358,5 +356,5 @@ position: sticky;
 #add {
   max-width: 200px;
   margin-top: 25px;
-  margin-left:50px;
+  margin-left: 50px;
 }

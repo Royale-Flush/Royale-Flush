@@ -1,13 +1,20 @@
 import useCart from "../hooks/useCart";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import useAuth from "../hooks/useAuth";
+import { getCart } from "../api";
 
 const Cart = () => {
-  const { cart, removeItem, updateItem, setCart } = useCart();
+  const { setCart, cart, removeItem, updateItem, cartChg, setCartChg } =
+    useCart();
+  const { user } = useAuth();
   console.log("Cart in Cart Component:", cart);
 
   useEffect(() => {
-    setTimeout(() => {}, 3000);
-  }, [cart]);
+    async () => {
+      const reset = await getCart(user.id);
+      setCart(reset);
+    };
+  }, [cartChg]);
 
   try {
     return (
@@ -38,31 +45,41 @@ const Cart = () => {
                   </h2>
                   <button
                     id="add"
-                    onClick={(e) => {
-                      removeItem(newCart.id, cart.id);
-                      {
-                        e.preventDefault();
-                      }
+                    onClick={async () => {
+                      await removeItem(newCart.id, cart.id);
+                      setCartChg(Math.random());
                     }}
                   >
-                    Remove to Cart
+                    Remove from Cart
                   </button>
-                  <option className="prodCont2">
-                    Royale Quantity:
-                    <span id="prodText">
-                      <input type="number" min="1" max="100"></input>
-                      <input
-                        type="submit"
-                        onSubmit={(e) =>
-                          updateItem(
-                            newCart.id,
-                            (newCart.quantity = e),
-                            cart.id
-                          )
-                        }
-                      ></input>
-                    </span>
-                  </option>
+
+                  <div className="prodCont1">
+                    <button
+                      className="subtract"
+                      onClick={async () => {
+                        await updateItem(
+                          newCart.id,
+                          --newCart.quantity,
+                          cart.id
+                        );
+                        setCartChg(Math.random());
+                      }}
+                    >
+                      {" "}
+                      -
+                    </button>
+                    <input className="quantity" value={newCart.quantity} />
+                    <button
+                      className="add"
+                      onClick={() => {
+                        updateItem(newCart.id, ++newCart.quantity, cart.id);
+                        setCartChg(Math.random());
+                      }}
+                    >
+                      {" "}
+                      +
+                    </button>
+                  </div>
                 </div>
               );
             })
@@ -77,3 +94,29 @@ const Cart = () => {
   }
 };
 export default Cart;
+
+// updateItem(newCart.id, (newCart.quantity = e), cart.id)
+
+// <input type="text" id="add"></input>
+// <select>
+//   <option min="1" max="100"></option>
+// </select>
+
+{
+  /* <input
+placeholder="Update Quantity"
+type="number"
+id="add"
+min="1"
+max="10"
+/>
+{ <form
+onSubmit={async (e) => {
+  e.preventDefault();
+  // newCart.quantity = e.target.value;
+}}
+>
+<input type="number" min="1" max="100" />
+<button type="submit">Submit</button>
+</form> } */
+}
