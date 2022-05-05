@@ -202,6 +202,28 @@ a {
   justify-content: center;
 }
 
+.toiletCompare {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: -80%;
+  left: 225%;
+  right: 0;
+  margin: 0 auto;
+  border: 2px solid yellow;
+  box-shadow: 15px 15px 15px gold;
+}
+.portaToiletCompare {
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  top: 150%;
+  left: 200%;
+  right: 0;
+  margin: 0 auto;
+  border: 2px solid yellow;
+  box-shadow: 15px 15px 15px gold;
+}
 .mainContainer {
   display: flex;
   flex-direction: row;
@@ -211,6 +233,10 @@ a {
   margin-top: 5vw;
   margin-bottom: 5vw;
   margin-left: 13vw;
+  /* flex-grow: 1;
+  margin-top: 45vw;
+  margin-left: 10vw;
+  position: sticky; */
 }
 
 .Product-Container {
@@ -259,6 +285,13 @@ a {
   margin-left: 41vw;
   margin-top: -4vw;
   position: static;
+  top: 38%;
+  /* font-size: 45px;
+  font-weight: 800;
+  font-family: "Lobster Two", cursive;
+  margin-left: 37%;
+  margin-top: -3vw;
+  position: fixed; */
 }
 .productImage {
   display: flex;
@@ -280,29 +313,35 @@ a {
   display: inline-block;
   align-content: space-around;
 }
-*/ .logoutButton {
+.logoutButton {
   text-decoration: none;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 25px;
   color: black;
   box-shadow: 0px 1px 0px rgba(128, 128, 128, 0.366);
   background-color: rgba(255, 255, 255, 0.469);
-  margin-bottom: 15px;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
   display: flex;
   flex: content;
   justify-content: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  height: 4rem;
+  border-radius: 2rem 2rem 2rem;
+  width: 8rem;
+  margin-right: 100rem;
+  margin-left: 1rem;
   border: none;
-  margin-left: 20px;
-  width: 6rem;
 }
 
 .logoutButton:hover {
-  background-size: 100% 90%;
   background: linear-gradient(90deg, #07effd 0%, #005fff 100%);
   background-repeat: no-repeat;
   background-size: 100% 0.4rem;
   background-position: 0 90%;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s;
   font-size: larger;
   font-weight: bolder;
   color: rgb(19, 79, 209);
