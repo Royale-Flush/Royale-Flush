@@ -18,7 +18,7 @@ const Home = () => {
         autoPlay={true}
         showArrows={false}
         showStatus={false}
-        width="1000px"
+        width="75vw"
         dynamicHeight={false}
         centerMode={false}
         centerSlidePercentage="100"

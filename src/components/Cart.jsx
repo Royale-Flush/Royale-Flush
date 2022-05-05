@@ -45,7 +45,7 @@ const Cart = () => {
                       }
                     }}
                   >
-                    Remove to Cart
+                    Remove from Cart
                   </button>
                   <option className="prodCont2">
                     Royale Quantity:
