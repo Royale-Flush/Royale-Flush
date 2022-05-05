@@ -1,4 +1,3 @@
-const { Pool } = require("pg/lib");
 const client = require("../client");
 
 async function getAllUsers() {
