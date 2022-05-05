@@ -19,7 +19,7 @@ function App() {
       </div>
 
       <nav className="navbar">
-        <div>
+        <div className="fixed">
           <Link className="hyperLink" to="/">
             Home
           </Link>

@@ -47,7 +47,10 @@ const Cart = () => {
                     id="add"
                     onClick={async () => {
                       await removeItem(newCart.id, cart.id);
-                      setCartChg(Math.random());
+                      {
+                        e.preventDefault();
+                        setCartChg(Math.random());
+                      }
                     }}
                   >
                     Remove from Cart
