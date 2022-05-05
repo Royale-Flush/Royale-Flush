@@ -20,7 +20,13 @@ if (process.env.CI) {
   });
 } else {
   // local / heroku client config
-  client = new Client(DB_URL);
+  client = new Client({
+    DB_URL,
+    ssl:
+      process.env.NODE_ENV === "production"
+        ? { rejectUnauthorized: false }
+        : undefined,
+  });
 }
 
 module.exports = client;
