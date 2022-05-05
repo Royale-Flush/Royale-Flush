@@ -17,7 +17,7 @@
   display: flex;
   position: absolute;
   left: 15%;
-  bottom: 10%;
+  bottom: 5%;
   margin: auto;
   border-radius: 60px 60px 60px;
 }
@@ -37,7 +37,7 @@
 }
 
 .carouselPics {
-  height: 48vh;
+  height: 50vh;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.83);
   border-radius: 60px 60px 60px;
 }
