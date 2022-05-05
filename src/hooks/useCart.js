@@ -1,35 +1,28 @@
 import { useContext } from "react";
 import CartContext from "../CartContext";
-import { addItem, editCart, removeFromCart } from "../api";
+import { addItem, editCart, removeFromCart, getCart } from "../api";
+import useAuth from "./useAuth";
 
 const useCart = () => {
   const { cart, setCart } = useContext(CartContext);
-
+  const { user } = useAuth();
   async function addToOrder(a, b, c) {
     const item = await addItem({ productId: a, quantity: b, orderId: c });
 
-    const newItems = [...cart.items, item];
-    setCart({ ...cart, items: newItems });
-    console.log("did this actually add to the cart", cart);
+    const newCart = await getCart(user.id);
+    setCart(newCart);
   }
 
   async function removeItem(a, b) {
     const newItem = await removeFromCart({ productId: a, orderId: b });
-    const filteredItems = cart.items.filter((item) => {
-      return item.id !== newItem.id;
-    });
-    setCart({ ...cart, items: filteredItems });
+    const newCart = await getCart(user.id);
+    setCart(newCart);
   }
 
-  async function updateItem({ productId: a, quantity: b, orderId: c }) {
+  async function updateItem(a, b, c) {
     const newQty = await editCart({ productId: a, quantity: b, orderId: c });
-    const mappedItems = cart.Items.map((item) => {
-      if (item.id === itemId) {
-        item.qty = newQty;
-      }
-      return item;
-    });
-    setCart({ ...cart, items: mappedItems });
+    const newCart = await getCart(user.id);
+    setCart(newCart);
   }
 
   return {
