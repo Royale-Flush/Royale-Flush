@@ -10,7 +10,7 @@ const DB_URL =
 let client;
 
 client = new Client({
-  DB_URL,
+  connectionString: DB_URL,
   ssl:
     process.env.NODE_ENV === "production"
       ? { rejectUnauthorized: false }
